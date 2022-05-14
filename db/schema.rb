@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_05_14_112758) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "offer_id", null: false
@@ -87,7 +88,6 @@ ActiveRecord::Schema.define(version: 2022_05_14_112758) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["offer_id"], name: "index_reviews_on_offer_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 2022_05_14_112758) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
