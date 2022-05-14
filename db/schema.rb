@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_14_104813) do
+ActiveRecord::Schema.define(version: 2022_05_14_112758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,53 @@ ActiveRecord::Schema.define(version: 2022_05_14_104813) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_bookings_on_offer_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_favourites_on_offer_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "price_per_person"
+    t.integer "capacity"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.boolean "is_external"
+    t.string "url"
+    t.date "offer_date"
+    t.time "offer_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "comment"
+    t.bigint "offer_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_reviews_on_offer_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,10 +98,21 @@ ActiveRecord::Schema.define(version: 2022_05_14_104813) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "offers"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "favourites", "offers"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "offers", "users"
+  add_foreign_key "reviews", "offers"
+  add_foreign_key "reviews", "users"
 end
