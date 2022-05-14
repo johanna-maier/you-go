@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
   belongs_to :user, optional: true
+  belongs_to :tag
   has_many :bookings
 
   validates :title, presence: true
