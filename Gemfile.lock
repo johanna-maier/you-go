@@ -283,14 +283,15 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
   ahoy_matey
   autoprefixer-rails (= 10.2.5)
-  blazer
   better_errors (~> 2.9, >= 2.9.1)
+  blazer
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
