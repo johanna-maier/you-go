@@ -12,5 +12,5 @@ class User < ApplicationRecord
   CATEGORY = ['male', 'female'].freeze
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :gender, inclusion: { in: CATEGORY }
+  validates :gender, inclusion: { in: CATEGORY }, allow_nil: true
 end
