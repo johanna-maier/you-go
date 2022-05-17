@@ -1,12 +1,14 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :index]
+  before_action :set_offer
+  skip_before_action :set_offer, only: :index
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
   end
 
   def show
+    authorize @offer
     # Add tracking for viewing an offers showpage
     @user = current_user
     ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
@@ -23,5 +25,4 @@ class OffersController < ApplicationController
   def set_offer
     @offer = Offer.find(params[:id])
   end
-
 end
