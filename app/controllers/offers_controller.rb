@@ -6,7 +6,8 @@ class OffersController < ApplicationController
     @offers = Offer.all
   end
 
-  def show; end
+  def show
+  end
 
   # private
 
