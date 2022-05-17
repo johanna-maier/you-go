@@ -70,3 +70,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Adding Ahoy and Blazer - https://www.engineyard.com/blog/ruby-unbundled-track-how-customers-use-new-features/
 gem 'ahoy_matey'
 gem 'blazer'
+
+# Adding Faker Gem for seed data
+gem 'faker'
