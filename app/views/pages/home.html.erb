@@ -1,2 +1,35 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+
+<div class="container">
+  <div class="row ">
+  <h2>Example row with each card taking 3 columns</h2>
+
+    <div class="col-3">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+    <div class="col-3">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+    <div class="col-3">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+    <div class="col-3">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+  </div>
+
+  <div class="row">
+  <h2>Example row with each card taking 3 columns</h2>
+    <div class="col-4">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+    <div class="col-4">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+    <div class="col-4">
+      <%= render 'shared/basic_offer_card' %>
+    </div>
+  </div>
+</div>
