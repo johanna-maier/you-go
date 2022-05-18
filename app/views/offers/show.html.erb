@@ -1,1 +1,47 @@
-<h1>See a particular offer</h1>
+<!-- info / title/ short description / Star rating / Add to wishlist-->
+<div class="container mt-3">
+  <div id="offer-header" class="row">
+    <div class="col-10">
+      <p><%= @offer.tag.name.upcase %> . RATING 4.0</p>
+      <h1><%= @offer.title %></h1>
+      <h5><%= @offer.description %></h5>
+    </div>
+    <div class="col-2">
+      <p>Average rating</p>
+      <p>Add to Wishlist</p>
+    </div>
+  </div>
+
+  <div id="offer-image-preview" class="row">
+    <%= render 'shared/photos_grid_first_two' %>
+  </div>
+
+  <div id="offer-tags" class="row mt-3">
+    <div class="col">
+        <span class='offer-tag'><%= @offer.price_per_person %>€ pp</span>
+        <span class='offer-tag'><%= @offer.tag.name.capitalize %></span>
+         <span class='offer-tag'>4.0</span>
+        <span class='offer-tag'><%= pluralize(@offer.capacity, 'person') %></span>
+      </div>
+  </div>
+
+  <div id="offer-description" class="row mt-3">
+    <h4>Read more about the experience you go to</h4>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt iste commodi reiciendis laboriosam voluptate eius nobis. Reiciendis libero quae quibusdam provident, laudantium officiis optio rem ipsum quia, iusto architecto aliquid!</p>
+  </div>
+
+  <div id="offer-reviews" class="row mt-3">
+    <h4>Read what others said</h4>
+  </div>
+
+  <div class="offer-details-card">
+    <h2>Details</h2>
+    <ul>
+      <li><i class="fas fa-map-marker-alt"></i>Street 1, Hawaii, USA</li>
+      <li><i class="far fa-clock"></i>03 September 2022, 9am</li>
+      <li><i class="fas fa-users"></i>Up to 12 participants</li>
+      <li><i class="fas fa-euro-sign"></i>65€ per person</li>
+      <li>Hosted on Get Your Guide</li>
+    </ul>
+  </div>
+</div>

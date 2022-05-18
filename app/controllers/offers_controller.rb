@@ -9,9 +9,9 @@ class OffersController < ApplicationController
 
   def show
     authorize @offer
-    # Add tracking for viewing an offers showpage
     @user = current_user
-    ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
+    # Add tracking for viewing an offers showpage
+    # ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
   end
 
   private

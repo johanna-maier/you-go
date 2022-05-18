@@ -1,0 +1,19 @@
+.grid-border {
+  // background-color: darkslategray;
+}
+
+.photo-grid-first-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, auto));
+  grid-gap: 4px;
+  align-items: center;
+  img {
+    border-radius: 8px;
+  }
+}
+
+// .photo-grid-one-photo {
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   justify-items: center;
+// }

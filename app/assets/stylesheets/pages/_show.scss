@@ -1,0 +1,12 @@
+// #offer-header{
+//   justify-content: space-between;
+// }
+.offer-details-card {
+  border: 1px solid $blue;
+  border-radius: 8px;
+  padding: 10px;
+
+  h3{
+    color: $blue;
+  }
+}
