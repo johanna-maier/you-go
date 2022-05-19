@@ -8,6 +8,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @review = Review.new # need this for the review form on same page
     authorize @offer
     @user = current_user
     # Add tracking for viewing an offers showpage

@@ -1,14 +1,11 @@
-.grid-border {
-  // background-color: darkslategray;
-}
-
 .photo-grid-first-two {
   display: grid;
   grid-template-columns: repeat(2, minmax(auto, auto));
   grid-gap: 4px;
   align-items: center;
   img {
-    border-radius: 8px;
+    border-radius: 12px;
+    height:100%;
   }
 }
 
@@ -16,4 +13,8 @@
 //   display: grid;
 //   grid-template-columns: 1fr;
 //   justify-items: center;
+// }
+
+// .grid-border {
+  // background-color: white;
 // }

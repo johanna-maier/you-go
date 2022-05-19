@@ -1,0 +1,19 @@
+<%# card to display single review %>
+<div class="card-review mt-4">
+  <div id="review-rating">
+    <div><% review.rating.to_i.times do  %>
+      ⭐
+    <% end %></div>
+  </div>
+  <div id="review-comment">
+    <h6> Awesome experience!</h6>
+    <p><%= review.comment %></p>
+  </div>
+</div>
+<%# <em>
+  by <%= review.user.first_name %>
+  <%# <%= link_to "(Remove review)",
+            review_path(review),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+<%# </em> %>

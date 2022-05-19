@@ -1,5 +1,5 @@
 <!-- info / title/ short description / Star rating / Add to wishlist-->
-<div class="container mt-3">
+<div class="container mt-4">
   <div id="offer-header" class="row">
     <div class="col-10">
       <p><%= @offer.tag.name.upcase %> . RATING 4.0</p>
@@ -7,8 +7,15 @@
       <h5><%= @offer.description %></h5>
     </div>
     <div class="col-2">
-      <p>Average rating</p>
-      <p>Add to Wishlist</p>
+      <div id="offer-avg-rating">
+        <span>Average rating</span>
+        <p><% 5.times do  %>
+          ⭐
+        <% end %></p>
+      </div>
+      <div id="offer-add-favorite">
+        <p><i class="fas fa-heart"></i> Add to Wishlist</p>
+      </div>
     </div>
   </div>
 
@@ -30,18 +37,32 @@
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt iste commodi reiciendis laboriosam voluptate eius nobis. Reiciendis libero quae quibusdam provident, laudantium officiis optio rem ipsum quia, iusto architecto aliquid!</p>
   </div>
 
-  <div id="offer-reviews" class="row mt-3">
+  <div id="offer-reviews" class="col-7 mt-4">
     <h4>Read what others said</h4>
+    <div id="review-container">
+      <% @offer.reviews.each do |review| %>
+        <%= render 'reviews/review_card', review: review %>
+       <% end %>
+    </div>
   </div>
 
-  <div class="offer-details-card">
-    <h2>Details</h2>
-    <ul>
-      <li><i class="fas fa-map-marker-alt"></i>Street 1, Hawaii, USA</li>
-      <li><i class="far fa-clock"></i>03 September 2022, 9am</li>
-      <li><i class="fas fa-users"></i>Up to 12 participants</li>
-      <li><i class="fas fa-euro-sign"></i>65€ per person</li>
-      <li>Hosted on Get Your Guide</li>
-    </ul>
+  <div class="card-offer-details col-4 mt-4">
+    <%= render 'offer_details_card' %>
   </div>
+
+  <div class="card-review-form col-4 mt-4">
+    <%= render 'reviews/form_review' %>
+  </div>
+
+
+
+  <div class="row justify-content-center text-center">
+    <hr  class="mb-3 mt-3">
+    <div class="col-8 image-slider">
+      <h5>See all photos here!</h5>
+      <%= render 'shared/image_carousel' %>
+    </div>
+  </div>
+
+
 </div>

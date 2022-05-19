@@ -10,8 +10,8 @@ require "faker"
 require 'pry'
 require 'pry-byebug'
 
-puts 'Deleting current reviews, bookings, favourites, offers, users, \
-tags & Ahoy events/visits'
+# puts 'Deleting current reviews, bookings, favourites, offers, users, \
+# tags & Ahoy events/visits'
 Review.destroy_all
 Booking.destroy_all
 Favourite.destroy_all
@@ -190,7 +190,7 @@ users.each_with_index do |user, index|
 end
 
 
-puts 'Seeding 50 sample offers'
+puts 'Seeding 30 sample offers'
 
 prices = [50, 33, 150, 25,30,56,40]
 capacities = [5, 15, 10, 6, 7, 8, 12]
@@ -205,7 +205,7 @@ tags.each_with_index do |tag, index_tag|
   seed_tag.save!
 
   3.times do |index|
-    puts "Seed offers (#{index_tag + 1}/#{tag.length})"
+    puts "Seed offers (#{index + 1}/#{tag.length})  - #{seed_tag.name}"
 
     address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
     seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
@@ -229,15 +229,15 @@ tags.each_with_index do |tag, index_tag|
     seed_offer.tag = seed_tag
     puts "Offer associated with tag"
     # binding.pry
-
-    img_file_name = tag[:img_files][index]
-    puts img_file_name
-    seed_offer.photos.attach(io: File.open("db/seed_photos/#{img_file_name}"), filename: img_file_name, content_type: 'image/jpg')
+    # adding 3 images per offer
+    3.times do |i|
+      img_file_name = tag[:img_files][i]
+      puts img_file_name
+      seed_offer.photos.attach(io: File.open("db/seed_photos/#{img_file_name}"), filename: img_file_name, content_type: 'image/jpg')
+    end
     puts "Photos attached to offer"
     seed_offer.save!
-
   end
-
 end
 
 

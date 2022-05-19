@@ -1,0 +1,11 @@
+// carousel - image_slider
+.carousel-inner {
+  // height: 400px;
+  background-color: whitesmoke;
+}
+.carousel-inner > .carousel-item > img {
+  width: auto;
+  margin:auto;
+  height: 500px;
+  max-height: 500px;
+}
