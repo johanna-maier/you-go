@@ -1,1 +1,25 @@
-<h1>See all offers</h1>
+<div class="d-flex justify-content-evenly align-items-center icons-container">
+  <div class="icon-box"><i class="fas fa-anchor"></i>DIVING</div>
+  <div class="icon-box"><i class="fas fa-swimmer"></i>SWIMMING</div>
+  <div class="icon-box"><i class="fas fa-water"></i>WATER SPORTS</div>
+  <div class="icon-box"><i class="fas fa-table-tennis"></i>TENNIS</div>
+  <div class="icon-box"><i class="fas fa-tram"></i>TOURS</div>
+  <div class="icon-box"><i class="fas fa-blind"></i>HIKING</div>
+  <div class="icon-box"><i class="fas fa-volleyball-ball"></i>VOLLEYBALL</div>
+  <div class="icon-box"><i class="fas fa-football-ball"></i>FOOTBALL</div>
+  <div class="icon-box"><i class="fas fa-skiing"></i>WINTER SPORTS</div>
+</div>
+<div class="btn-centered-container">
+    <button class="btn-slim">Show Map</button></div>
+</div>
+<div class="container">
+  <h2>Example row with each card taking 3 columns</h2>
+  <div class="row">
+
+    <% @offers.each do |offer| %>
+      <div class="col-3 mt-3">
+        <%= render "shared/basic_offer_card", offer: offer %>
+      </div>
+    <% end %>
+  </div>
+</div>

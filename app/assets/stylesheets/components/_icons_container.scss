@@ -1,0 +1,25 @@
+.icons-container {
+  height: 80px;
+  padding: 10px 4rem 0;
+
+  .icon-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: content-box;
+    height: 55px;
+    min-width: 80px;
+    font-size: x-small;
+
+    .fas {
+      font-size: 2rem;
+    }
+  }
+
+  .icon-box:hover {
+    border-bottom: 3px solid $blue;
+    color: $blue;
+    cursor: pointer;
+  }
+}

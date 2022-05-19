@@ -19,7 +19,7 @@
   .card-head {
       img {
         border-radius: 16px 16px 0px 0px;
-        min-height: 250px;
+        height: 250px;
         object-fit: cover;
         width: 100%;
       }
@@ -27,7 +27,6 @@
 
   .card-body {
     padding: 20px 12px;
-
     .card-body-top {
       position: relative;
       .card-body-heading {
