@@ -13,18 +13,13 @@
     <button class="btn-slim">Show Map</button></div>
 </div>
 <div class="container">
-  <div class="row ">
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
+  <h2>Example row with each card taking 3 columns</h2>
+  <div class="row">
+
+    <% @offers.each do |offer| %>
+      <div class="col-3 mt-3">
+        <%= render "shared/basic_offer_card", offer: offer %>
+      </div>
+    <% end %>
   </div>
 </div>
