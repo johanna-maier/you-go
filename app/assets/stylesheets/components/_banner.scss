@@ -1,0 +1,80 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height: 665px;
+
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.6);
+  font-size: 56px;
+  line-height: 44px;
+  position: absolute;
+  left: 5.62%;
+  top: 25.86%;
+  bottom: 67.52%;
+}
+
+.banner .search-card {
+  padding: 10px;
+  display: flex;
+  position: absolute;
+  width: 427px;
+  height: 363px;
+  left: 80px;
+  top: 360px;
+  background: rgb(255, 255, 255);
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.banner .search-card h2 {
+  font-size: 32px;
+  position: absolute;
+  width: 378px;
+  height: 78px;
+  left: 24px;
+  top: 22px;
+}
+
+.banner .search-card .form-airbnb1 {
+  position: absolute;
+  font-size: 12px;
+  width: 350px;
+  height: 15px;
+  left: 24px;
+  top: 124px;
+/* identical to box height */
+}
+
+.banner .search-card .form-airbnb2 {
+  position: absolute;
+  font-size: 12px;
+  width: 350px;
+  height: 15px;
+  left: 24px;
+  top: 204px;
+/* identical to box height */
+}
+
+.banner .search-card .form-airbnb input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-control:valid {
+  background-color:  #ffffff!important;
+  color: black!important;
+}
+
+.banner .search-card .btn {
+  position: absolute;
+  width: 146px;
+  height: 48px;
+  left: 230px;
+  top: 293px;
+}
