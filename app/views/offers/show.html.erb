@@ -1,1 +1,68 @@
-<h1>See a particular offer</h1>
+<!-- info / title/ short description / Star rating / Add to wishlist-->
+<div class="container mt-4">
+  <div id="offer-header" class="row">
+    <div class="col-10">
+      <p><%= @offer.tag.name.upcase %> . RATING 4.0</p>
+      <h1><%= @offer.title %></h1>
+      <h5><%= @offer.description %></h5>
+    </div>
+    <div class="col-2">
+      <div id="offer-avg-rating">
+        <span>Average rating</span>
+        <p><% 5.times do  %>
+          ⭐
+        <% end %></p>
+      </div>
+      <div id="offer-add-favorite">
+        <p><i class="fas fa-heart"></i> Add to Wishlist</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="offer-image-preview" class="row">
+    <%= render 'shared/photos_grid_first_two' %>
+  </div>
+
+  <div id="offer-tags" class="row mt-3">
+    <div class="col">
+        <span class='offer-tag'><%= @offer.price_per_person %>€ pp</span>
+        <span class='offer-tag'><%= @offer.tag.name.capitalize %></span>
+         <span class='offer-tag'>4.0</span>
+        <span class='offer-tag'><%= pluralize(@offer.capacity, 'person') %></span>
+      </div>
+  </div>
+
+  <div id="offer-description" class="row mt-3">
+    <h4>Read more about the experience you go to</h4>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt iste commodi reiciendis laboriosam voluptate eius nobis. Reiciendis libero quae quibusdam provident, laudantium officiis optio rem ipsum quia, iusto architecto aliquid!</p>
+  </div>
+
+  <div id="offer-reviews" class="col-7 mt-4">
+    <h4>Read what others said</h4>
+    <div id="review-container">
+      <% @offer.reviews.each do |review| %>
+        <%= render 'reviews/review_card', review: review %>
+       <% end %>
+    </div>
+  </div>
+
+  <div class="card-offer-details col-4 mt-4">
+    <%= render 'offer_details_card' %>
+  </div>
+
+  <div class="card-review-form col-4 mt-4">
+    <%= render 'reviews/form_review' %>
+  </div>
+
+
+
+  <div class="row justify-content-center text-center">
+    <hr  class="mb-3 mt-3">
+    <div class="col-8 image-slider">
+      <h5>See all photos here!</h5>
+      <%= render 'shared/image_carousel' %>
+    </div>
+  </div>
+
+
+</div>

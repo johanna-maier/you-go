@@ -1,0 +1,7 @@
+  <div class="grid-border">
+    <div class="photo-grid-first-two">
+      <% @offer.photos.first(2).each do |photo| %>
+        <%= cl_image_tag photo.key, crop: :fit, class:"d-block w-100" %>
+      <% end %>
+    </div>
+  </div>
