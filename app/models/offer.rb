@@ -2,6 +2,8 @@ class Offer < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :tag, optional: true # TODO: allow null reference in schema
   has_many :bookings
+  has_many_attached :photos
+
 
   validates :title, presence: true
   validates :description, presence: true
