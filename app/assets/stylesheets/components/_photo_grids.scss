@@ -3,10 +3,13 @@
   grid-template-columns: repeat(2, minmax(auto, auto));
   grid-gap: 4px;
   align-items: center;
+
   img {
     border-radius: 12px;
     height:100%;
   }
+
+
 }
 
 // .photo-grid-one-photo {
@@ -15,6 +18,21 @@
 //   justify-items: center;
 // }
 
-// .grid-border {
+.grid-border {
   // background-color: white;
-// }
+  position: relative;
+  button {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    background-color: rgba(225,225,225,0.25);
+
+    &:hover {
+      color: #ffffff;
+      background-color: rgba(225,225,225,0.5);
+      border: 2px solid #ffffff;
+    }
+
+
+  }
+}

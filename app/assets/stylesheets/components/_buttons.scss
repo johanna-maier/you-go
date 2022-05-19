@@ -1,0 +1,32 @@
+.btn-slim {
+  color: $primary;
+  border: 2px solid $primary;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 10px 32px;
+  text-align: center;
+
+  &:hover {
+  background-color: $primary;
+  color: #FFFFFF;
+  }
+}
+
+
+.btn-slim-white {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 10px 32px;
+  text-align: center;
+
+    &:hover {
+      background-color: $primary;
+      color: $primary;
+    }
+  }
