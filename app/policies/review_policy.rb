@@ -9,8 +9,4 @@ class ReviewPolicy < ApplicationPolicy
   def create?
     return true
   end
-
-  # def new?
-  #   create?
-  # end
 end

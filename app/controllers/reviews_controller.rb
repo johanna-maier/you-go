@@ -5,12 +5,21 @@ class ReviewsController < ApplicationController
     @review.offer = @offer
     @review.user = current_user
     authorize @review
-    if @review.save
-      redirect_to offer_path(@offer)
-    else
-      render 'offers/show'
-    end
+    # if @review.save
+    #   redirect_to offer_path(@offer)
+    # else
+    #   render 'offers/show'
+    # end
 
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to offer_path(@offer) } # default response
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render "offers/show" }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
+    end
   end
 
   private

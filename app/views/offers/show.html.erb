@@ -1,5 +1,5 @@
 <!-- info / title/ short description / Star rating / Add to wishlist-->
-<div class="container mt-4">
+<div class="container mt-4" data-controller="insert-review">
   <div id="offer-header" class="row">
     <div class="col-10">
       <p><%= @offer.tag.name.upcase %> . RATING 4.0</p>
@@ -39,26 +39,24 @@
 
   <div id="offer-reviews" class="col-7 mt-4">
     <h4>Read what others said</h4>
-    <div id="review-container">
+    <div id="review-container" data-insert-review-target="list">
       <% @offer.reviews.each do |review| %>
         <%= render 'reviews/review_card', review: review %>
        <% end %>
     </div>
   </div>
 
+  <div class="card-review-form col-4 mt-4">
+    <%= render 'reviews/form_review', offer: @offer, review: @review %>
+  </div>
+
   <div class="card-offer-details col-4 mt-4">
     <%= render 'offers/offer_details_card' %>
   </div>
 
-  <div class="card-review-form col-4 mt-4">
-    <%= render 'reviews/form_review' %>
-  </div>
-
-
-
   <div class="row justify-content-center text-center">
     <hr  class="mb-3 mt-3">
-    <div class="col-8 image-slider">
+    <div class="col-12 col-lg-8 image-slider">
       <h5>See all photos here!</h5>
       <%= render 'shared/image_carousel' %>
     </div>
