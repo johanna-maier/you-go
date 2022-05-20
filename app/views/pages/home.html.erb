@@ -34,18 +34,11 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top mt-5">
   <h2>Top experiences near you</h2>
-    <div class="col-12 col-lg-5 col-xl-3 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-12 col-lg-5 col-xl-3 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-12 col-lg-5 col-xl-3 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-     <div class="col-12 col-lg-5 col-xl-3 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
+    <% @offers.first(4).each do |offer| %>
+      <div class="col-12 col-lg-5 col-xl-3 mt-3">
+        <%= render 'shared/basic_offer_card', offer: offer %>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -61,23 +54,11 @@
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Recommendations for you</h2>
 
-    <div class="col-12 col-lg-5 col-xl-2 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-12 col-lg-5 col-xl-2 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-12 col-lg-5 col-xl-2 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-12 col-lg-5 col-xl-2 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-     <div class="col-12 col-lg-5 col-xl-2 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-     <div class="col-12 col-lg-5 col-xl-2 mt-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
+    <% @offers.first(6).each do |offer| %>
+      <div class="col-12 col-lg-5 col-xl-2 mt-3">
+        <%= render 'shared/basic_offer_card', offer: offer %>
+      </div>
+    <% end %>
+
   </div>
 </div>
