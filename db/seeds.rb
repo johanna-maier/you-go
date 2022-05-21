@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "faker"
-require 'pry'
-require 'pry-byebug'
 
 # puts 'Deleting current reviews, bookings, favourites, offers, users, \
 # tags & Ahoy events/visits'
@@ -228,7 +226,6 @@ tags.each_with_index do |tag, index_tag|
     puts "New offer created"
     seed_offer.tag = seed_tag
     puts "Offer associated with tag"
-    # binding.pry
     # adding 3 images per offer
     3.times do |i|
       img_file_name = tag[:img_files][i]

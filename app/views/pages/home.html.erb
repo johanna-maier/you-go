@@ -2,48 +2,63 @@
   <h1>You go [kayaking] </h1>
     <div class="search-card">
      <h2>Look for your favorite sport experience</h2>
-     <form>
+     <form action="/offers" method="get">
       <div class="form-airbnb1">
         <label for="InputCity"><small>YOUR CITY</small></label>
-        <input type="city" class="form-control" id="InputCity" placeholder="Where do you want to go?">
+        <input name="city" type="city" class="form-control" id="InputCity" placeholder="Where do you want to go?">
       </div>
      <div class="form-airbnb2">
         <label for="InputSport"><small>YOUR SPORT</small></label>
-        <input type="city" class="form-control" id="InputSport" placeholder="What is your sport?">
+        <input name="query" type="query" class="form-control" id="InputSport" placeholder="What is your sport?">
      </div>
       <button type="submit" class="btn btn-slim">Search now</button>
      </form>
     </div>
 </div>
 
-<div class="container">
-  <div class="row ">
-  <h2>Example row with each card taking 3 columns</h2>
-
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center align-items-top">
+  <h2>Explore by category</h2>
+    <div class="col-12 col-lg-5 col-xl-4 mt-3">
+      <%= render 'shared/category_card' %>
     </div>
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
+    <div class="col-12 col-lg-5 col-xl-4 mt-3">
+      <%= render 'shared/category_card' %>
     </div>
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-3">
-      <%= render 'shared/basic_offer_card' %>
+    <div class="col-12 col-lg-5 col-xl-4 mt-3">
+      <%= render 'shared/category_card' %>
     </div>
   </div>
+</div>
 
-  <div class="row">
-  <h2>Example row with each card taking 4 columns</h2>
-    <div class="col-4">
-      <%= render 'shared/basic_offer_card' %>
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center align-items-top mt-5">
+  <h2>Top experiences near you</h2>
+    <% @offers.first(4).each do |offer| %>
+      <div class="col-12 col-lg-5 col-xl-3 mt-3">
+        <%= render 'shared/basic_offer_card', offer: offer %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center align-items-top">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Woman_kayaking_on_a_turquoise_lake_%2851125937521%29.jpg/2560px-Woman_kayaking_on_a_turquoise_lake_%2851125937521%29.jpg)">
+    <h1>YOU GO KAYAKING</h1>
     </div>
-    <div class="col-4">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
-    <div class="col-4">
-      <%= render 'shared/basic_offer_card' %>
-    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center align-items-top">
+  <h2>Recommendations for you</h2>
+
+    <% @offers.first(6).each do |offer| %>
+      <div class="col-12 col-lg-5 col-xl-2 mt-3">
+        <%= render 'shared/basic_offer_card', offer: offer %>
+      </div>
+    <% end %>
+
   </div>
 </div>
