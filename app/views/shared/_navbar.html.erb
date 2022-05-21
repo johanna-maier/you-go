@@ -4,6 +4,20 @@
       <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
+
+    <form class="d-flex" action="/offers" method="get">
+      <div>
+        <input name="city" type="city" class="form-control" id="input-city-navbar" placeholder="Where do you want to go?">
+      </div>
+      <div>
+          <input name="query" type="query" class="form-control" id="input-sport-navbar" placeholder="What is your sport?">
+      </div>
+
+      <button type="submit" class="btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
