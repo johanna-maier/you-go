@@ -17,11 +17,10 @@
   background-color: transparent;
 
   &:hover {
-  background-color: $primary;
-  color: #FFFFFF;
+    background-color: $primary;
+    color: #ffffff;
   }
 }
-
 
 .btn-slim-white {
   color: #ffffff;
@@ -33,8 +32,8 @@
   padding: 10px 32px;
   text-align: center;
 
-    &:hover {
-      background-color: $primary;
-      color: $primary;
-    }
+  &:hover {
+    background-color: $primary;
+    color: $primary;
   }
+}

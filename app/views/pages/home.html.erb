@@ -3,14 +3,14 @@
   <h1>You go [kayaking] </h1>
     <div class="search-card">
      <h2>Look for your favorite sport experience</h2>
-     <form>
+     <form action="/offers" method="get">
       <div class="form-airbnb1">
         <label for="InputCity"><small>YOUR CITY</small></label>
-        <input type="city" class="form-control" id="InputCity" placeholder="Where do you want to go?">
+        <input name="city" type="city" class="form-control" id="InputCity" placeholder="Where do you want to go?">
       </div>
      <div class="form-airbnb2">
         <label for="InputSport"><small>YOUR SPORT</small></label>
-        <input type="city" class="form-control" id="InputSport" placeholder="What is your sport?">
+        <input name="query" type="query" class="form-control" id="InputSport" placeholder="What is your sport?">
      </div>
       <button type="submit" class="btn btn-slim">Search now</button>
      </form>
