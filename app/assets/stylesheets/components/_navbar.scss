@@ -1,6 +1,31 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+
+  .search-navbar {
+    align-items: center;
+  }
+  #input-city-navbar {
+    border: 1px solid black;
+    border-radius: 8px 0px 0px 8px;
+    font-size: 12px;
+    text-align: center;
+    width: 200px;
+  }
+
+  #input-sport-navbar {
+    border: 1px solid black;
+    border-left: 0px;
+    border-radius: 0px 8px 8px 0px;
+    font-size: 12px;
+    text-align: center;
+    width: 200px;
+  }
+
+  .fa-search {
+    font-size: 1.5rem;
+    display: flex;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,24 +36,18 @@
   width: 40px;
 }
 
-#input-city-navbar {
-  border: 1px solid black;
-  border-radius: 8px 0px 0px 8px;
-  font-size: 12px;
-  text-align: center;
-  width: 200px;
-}
-
-#input-sport-navbar {
-  border: 1px solid black;
-  border-left: 0px;
-  border-radius: 0px 8px 8px 0px;
-  font-size: 12px;
-  text-align: center;
-  width: 200px;
-}
-
-.fa-search {
-  font-size: 1.5rem;
-  display: flex;
+// Homepage navbar - transparent
+.navbar-home {
+  position: absolute;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  .nav-link {
+    color: white;
+    // font-weight: bold;
+  }
+  // hide search bozes on homepage
+  #input-city-navbar, #input-sport-navbar, .fa-search{
+    display: none;
+  }
 }
