@@ -1,6 +1,6 @@
 <%= link_to offer_path(offer), class: "text-decoration-none" do %>
   <div class="card-container">
-        <span class="card-favourites-inactive">💔</span>
+        <span class="card-favourites-inactive" data-value=<%= offer.id %>>💔</span>
     <div class="card-head">
       <%# display 1st Image %>
       <% if offer.photos.attached? %>
