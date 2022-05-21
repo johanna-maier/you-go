@@ -1,4 +1,5 @@
 <%# <div class="navbar navbar-expand-sm navbar-light navbar-lewagon"> %>
+
 <div class="navbar navbar-expand-sm navbar-lewagon <%= yield(:navbar_class) %>">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
@@ -6,7 +7,7 @@
     <% end %>
 
 
-    <form class="d-flex" action="/offers" method="get">
+    <form class="d-flex search-navbar" action="/offers" method="get">
       <div>
         <input name="city" type="city" class="form-control" id="input-city-navbar" placeholder="Where do you want to go?">
       </div>
