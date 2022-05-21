@@ -4,7 +4,14 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @offers = policy_scope(Offer)
+    if params[:query].present?
+      @offers = policy_scope(Offer).global_search(params[:query])
+      # Add .near(params[:city], km) once Geocoder is read for city-specific search
+      # Check if we can use long or latitute
+    else
+      @offers = policy_scope(Offer)
+    end
+
   end
 
   def show

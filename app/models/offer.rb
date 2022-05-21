@@ -13,4 +13,15 @@ class Offer < ApplicationRecord
   validates :capacity, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :offer_date, presence: true
   validates :offer_time, presence: true
+
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [ :title, :description ],
+  associated_against: {
+    tag: [ :name, :category ]
+  },
+  using: {
+      tsearch: { prefix: true }
+  }
 end
