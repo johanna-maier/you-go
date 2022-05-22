@@ -8,18 +8,18 @@
   #input-city-navbar {
     border: 1px solid black;
     border-radius: 8px 0px 0px 8px;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
-    width: 200px;
+    width: 300px;
   }
 
   #input-sport-navbar {
     border: 1px solid black;
     border-left: 0px;
     border-radius: 0px 8px 8px 0px;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
-    width: 200px;
+    width: 300px;
   }
 
   .fa-search {
@@ -33,7 +33,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  height: 20px;
 }
 
 // Homepage navbar - transparent
@@ -47,7 +47,9 @@
     // font-weight: bold;
   }
   // hide search bozes on homepage
-  #input-city-navbar, #input-sport-navbar, .fa-search{
+  #input-city-navbar,
+  #input-sport-navbar,
+  .fa-search {
     display: none;
   }
 }
