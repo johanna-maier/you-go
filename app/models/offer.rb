@@ -24,4 +24,10 @@ class Offer < ApplicationRecord
   using: {
       tsearch: { prefix: true }
   }
+
+  def avg_rating
+    avg = reviews.average(:rating)
+    puts ",,,,,,,,,,,,,,,,,,, #{avg}"
+    return avg
+  end
 end

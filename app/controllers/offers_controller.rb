@@ -11,7 +11,6 @@ class OffersController < ApplicationController
     else
       @offers = policy_scope(Offer)
     end
-
   end
 
   def show

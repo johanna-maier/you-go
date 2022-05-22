@@ -1,6 +1,24 @@
-// #offer-header{
-//   justify-content: space-between;
-// }
+#offer-header{
+  #tagline{ //h6
+    font-size: 10px;
+  }
+  #title{ //h1
+    font-size: 36px;
+  }
+  #show{
+    font-size: 18px;
+  }
+}
+
+#offer-description, #offer-reviews{
+  h3 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
 .card-offer-details {
   border: 1px solid $blue;
   border-radius: 8px;
@@ -9,8 +27,8 @@
   h2,h3,i{
     color: $blue;
   }
-
   i {
+    color: $orange;
     margin-right: 15px;
   }
 }
@@ -36,6 +54,9 @@
     display: flex;
     align-items: center;
     padding: 10px;
+    i {
+      color: #E5C100;
+    }
   }
 
   #review-comment{
