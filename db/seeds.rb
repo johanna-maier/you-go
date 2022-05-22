@@ -8,6 +8,7 @@
 
 require "faker"
 
+
 # puts 'Deleting current reviews, bookings, favourites, offers, users, \
 # tags & Ahoy events/visits'
 Review.destroy_all
@@ -171,21 +172,21 @@ users = [
     }
 ]
 
-users.each_with_index do |user, index|
-  puts "Seed users (#{index + 1}/#{users.length})"
+# users.each_with_index do |user, index|
+#   puts "Seed users (#{index + 1}/#{users.length})"
 
-  seed_user = User.new(
-    first_name: user[:first_name],
-    last_name: user[:last_name],
-    description: user[:description],
-    gender: user[:gender],
-    date_of_birth: user[:date_of_birth],
-    email: user[:email],
-    password: user[:password]
-  )
-  # seed_user.avatar_photo.attach(io: File.open("app/assets/images/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
-  seed_user.save!
-end
+#   seed_user = User.new(
+#     first_name: user[:first_name],
+#     last_name: user[:last_name],
+#     description: user[:description],
+#     gender: user[:gender],
+#     date_of_birth: user[:date_of_birth],
+#     email: user[:email],
+#     password: user[:password]
+#   )
+#   # seed_user.avatar_photo.attach(io: File.open("app/assets/images/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
+#   seed_user.save!
+# end
 
 
 puts 'Seeding 30 sample offers'
@@ -202,40 +203,135 @@ tags.each_with_index do |tag, index_tag|
   )
   seed_tag.save!
 
-  3.times do |index|
-    puts "Seed offers (#{index + 1}/#{tag.length})  - #{seed_tag.name}"
+#   3.times do |index|
+#     puts "Seed offers (#{index + 1}/#{tag.length})  - #{seed_tag.name}"
 
-    address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
-    seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
-    puts "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/"
+#     address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
+#     seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
+#     puts "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/"
 
 
-    seed_offer = Offer.new(
-      title: seed_title,
-      description: "#{Faker::GreekPhilosophers.name} | #{Faker::GreekPhilosophers.quote}",
-      price_per_person: prices.sample,
-      capacity: capacities.sample,
-      address: address_hash[:full_address],
-      latitude: address_hash[:latitude],
-      longitude: address_hash[:longitude],
-      offer_date: Faker::Date.forward(days: (1..20).to_a.sample),
-      offer_time: Faker::Time.forward(days: (1..20).to_a.sample, period: :evening),
-      is_external: true,
-      url: "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/",
-    )
-    puts "New offer created"
-    seed_offer.tag = seed_tag
-    puts "Offer associated with tag"
-    # adding 3 images per offer
-    3.times do |i|
-      img_file_name = tag[:img_files][i]
-      puts img_file_name
-      seed_offer.photos.attach(io: File.open("db/seed_photos/#{img_file_name}"), filename: img_file_name, content_type: 'image/jpg')
-    end
-    puts "Photos attached to offer"
-    seed_offer.save!
-  end
+#     seed_offer = Offer.new(
+#       title: seed_title,
+#       description: "#{Faker::GreekPhilosophers.name} | #{Faker::GreekPhilosophers.quote}",
+#       price_per_person: prices.sample,
+#       capacity: capacities.sample,
+#       address: address_hash[:full_address],
+#       latitude: address_hash[:latitude],
+#       longitude: address_hash[:longitude],
+#       offer_date: Faker::Date.forward(days: (1..20).to_a.sample),
+#       offer_time: Faker::Time.forward(days: (1..20).to_a.sample, period: :evening),
+#       is_external: true,
+#       url: "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/",
+#     )
+#     puts "New offer created"
+#     seed_offer.tag = seed_tag
+#     puts "Offer associated with tag"
+#     # adding 3 images per offer
+#     3.times do |i|
+#       img_file_name = tag[:img_files][i]
+#       puts img_file_name
+#       seed_offer.photos.attach(io: File.open("db/seed_photos/#{img_file_name}"), filename: img_file_name, content_type: 'image/jpg')
+#     end
+#     puts "Photos attached to offer"
+#     seed_offer.save!
+#   end
 end
 
 
-puts 'end of seed'
+puts 'end of initial seed'
+puts ""
+puts 'start of API seed'
+puts ""
+
+
+require 'json'
+require 'open-uri'
+require 'date'
+require 'time'
+
+Tag.all.each do |tag|
+
+  puts "Accessing Event Collector API for tag #{tag.name}"
+  event_api_url = "https://event-collector-api.herokuapp.com/meetupql?activity=#{tag.name}&lat=47.259659&lon=11.400375&radius=1000"
+  response = URI.open(event_api_url).read
+  data = JSON.parse(response)
+
+  puts "Creating new offer for each result of the tag #{tag.name}"
+
+  data["Data"].each do |data_entry|
+    title = data_entry["title"]
+
+    if data_entry["description"].blank?
+      description = "no description"
+    else
+      description = data_entry["description"]
+    end
+
+    if data_entry["fee"].zero?
+      price_per_person = 1
+    else
+      price_per_person = data_entry["fee"].to_i
+    end
+
+    if data_entry["numberOfAllowedGuests"].zero?
+      capacity = 1
+    else
+      capacity = data_entry["numberOfAllowedGuests"].to_i
+    end
+
+    if data_entry["venue"].nil?
+      address = "not provided"
+      latitude = "not provided"
+      longitude = "not provided"
+    elsif data_entry["venue"]["address"] == ""
+      address = "not provided"
+      latitude = data_entry["venue"]["lat"]
+      longitude = data_entry["venue"]["lng"]
+    else
+      address = data_entry["venue"]["address"]
+      latitude = data_entry["venue"]["lat"]
+      longitude = data_entry["venue"]["lng"]
+    end
+
+    date_time = Time.parse(data_entry["dateTime"])
+    date = date_time.strftime("%d/%m/%Y")
+    time = date_time.strftime("%H:%M")
+
+    url = data_entry["eventUrl"]
+
+    external_image_url = data_entry["imageUrl"]
+
+
+    seed_offer = Offer.new(
+      title: title,
+      description: description,
+      price_per_person: price_per_person,
+      capacity: capacity,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
+      offer_date: date,
+      offer_time: time,
+      is_external: true,
+      url: url,
+      external_image_url: external_image_url
+    )
+    puts "New offer created"
+
+
+    seed_offer.tag = tag
+    puts "Offer associated with tag"
+    # adding 3 images per offer
+    seed_offer.save!
+
+    puts "Offer saved to DB"
+    puts ""
+    puts "____"
+    p seed_offer
+    puts "____"
+    puts ""
+
+  end
+
+end
