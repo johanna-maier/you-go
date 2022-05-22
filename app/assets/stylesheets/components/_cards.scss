@@ -2,7 +2,7 @@
   width: 40 px;
   height: 50 px;
   background: rgb(255, 255, 255);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   padding: 10px;
@@ -14,10 +14,9 @@
 .card-container {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   position: relative;
-
 
   .card-favourites-inactive {
     position: absolute;
@@ -25,17 +24,15 @@
     height: 18px;
     right: 10px;
     top: 10px;
-
   }
 
-
   .card-head {
-      img {
-        border-radius: 16px 16px 0px 0px;
-        height: 250px;
-        object-fit: cover;
-        width: 100%;
-      }
+    img {
+      border-radius: 16px 16px 0px 0px;
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+    }
   }
 
   .card-body {
@@ -52,7 +49,6 @@
         line-height: 12px;
         padding: 8px 0px 8px 0px;
         text-transform: uppercase;
-
       }
 
       .card-rating {
@@ -68,13 +64,14 @@
         top: -32px;
         width: 24px;
       }
-
     }
 
     .card-body-bottom {
       align-items: flex-end;
       display: flex;
       font-size: 14px;
+      height: 35px;
+
       justify-content: space-between;
     }
   }
@@ -85,9 +82,9 @@
 .category-card {
   overflow: hidden;
   height: 87px;
-  width: 391px;
+  width: 350px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   border-radius: 4px;
@@ -118,7 +115,7 @@
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
