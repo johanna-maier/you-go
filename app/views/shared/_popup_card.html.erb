@@ -1,0 +1,14 @@
+<%= link_to offer_path(offer), class: "text-decoration-none" do %>
+  <div class="d-flex justify-content-center popup-card">
+    <%= cl_image_tag offer.photos.first.key %>
+    <div class="d-flex flex-column justify-content-between popup-card-infos">
+      <h2><%= offer.title.truncate(17, separator: ' ', ommission: ' ') %></h2>
+      <div class="d-flex justify-content-between">
+        <% unless offer.capacity.nil? %>
+        <p><b><%= offer.capacity %> people</b></p>
+        <% end %>
+        <p><b><%= sprintf('%.0f', offer.price_per_person) %> €/person </b></p>
+      </div>
+    </div>
+  </div>
+<% end %>
