@@ -31,3 +31,14 @@
     }
   }
 }
+
+.photo-grid-one-photo {
+  display: grid;
+  grid-template-columns: 1fr;
+  // grid-template-columns: repeat(2, minmax(auto, auto));
+  justify-items: center;
+
+  // img {
+  //   height: 400px;
+  // }
+}

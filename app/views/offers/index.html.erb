@@ -27,7 +27,7 @@
     </h2>
 
     <div class="row">
-      <% @offers.each do |offer| %>
+      <% @offers.first(48).each do |offer| %>
         <div class="col-3 mt-3">
           <%= render "shared/basic_offer_card", offer: offer %>
         </div>
