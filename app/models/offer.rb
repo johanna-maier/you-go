@@ -26,8 +26,6 @@ class Offer < ApplicationRecord
   }
 
   def avg_rating
-    avg = reviews.average(:rating)
-    puts ",,,,,,,,,,,,,,,,,,, #{avg}"
-    return avg
+    reviews.average(:rating)
   end
 end

@@ -9,9 +9,13 @@
     <div class="col-2">
       <div id="offer-avg-rating">
         <span>Average rating</span>
-        <p><% 5.times do  %>
-          ⭐
-        <% end %></p>
+        <p><% @offer.avg_rating.to_i.times do  %>
+            <i class="fas fa-star"></i>
+           <% end %>
+           <% (5 - @offer.avg_rating.to_i).times do  %>
+            <i class="far fa-star"></i>
+           <% end %>
+        </p>
       </div>
       <div id="offer-add-favorite">
         <p><i class="fas fa-heart"></i> Add to Wishlist</p>
@@ -45,11 +49,16 @@
 
     <div id="offer-reviews" class="row col col-md-10 mt-4"> <%# col-7 %>
       <h3>Read what others said</h3>
-      <div id="review-container" data-insert-review-target="list">
-        <% @offer.reviews.each do |review| %>
-          <%= render 'reviews/review_card', review: review %>
-        <% end %>
-      </div>
+      <% if @offer.reviews.count.positive? %>
+        <div id="review-container" data-insert-review-target="list">
+          <% @offer.reviews.each do |review| %>
+            <%= render 'reviews/review_card', review: review %>
+          <% end %>
+        </div>
+      <% else %>
+      <%# TODO text to be finalised %>
+        <p><em> There are no reviews yet. </em></p>
+      <% end %>
     </div>
 
     <div class="row justify-content-center mb-3 mt-5">

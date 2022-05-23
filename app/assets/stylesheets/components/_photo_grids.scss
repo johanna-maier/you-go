@@ -3,7 +3,7 @@
   grid-template-columns: repeat(2, minmax(auto, auto));
   grid-gap: 4px;
   align-items: center;
-  height: 440px;
+  height: fit-content;
   max-height: 440px;
   align-content: center; //object-position on image doesn't work
   overflow: hidden;
