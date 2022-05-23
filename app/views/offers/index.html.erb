@@ -1,38 +1,37 @@
-<div class="sticky-container">
-  <div class="d-flex justify-content-evenly align-items-center icons-container">
-    <a class="no-link-style" href="/offers?query=diving"><div class="icon-box"><i class="fas fa-anchor"></i>DIVING</div></a>
-    <a class="no-link-style" href="/offers?query=swimming"><div class="icon-box"><i class="fas fa-swimmer"></i>SWIMMING</div></a>
-    <a class="no-link-style" href="/offers?query=watersports"><div class="icon-box"><i class="fas fa-water"></i>WATER SPORTS</div></a>
-    <a class="no-link-style" href="/offers?query=tennis"><div class="icon-box"><i class="fas fa-table-tennis"></i>TENNIS</div></a>
-    <a class="no-link-style" href="/offers?query=tours"><div class="icon-box"><i class="fas fa-tram"></i>TOURS</div></a>
-    <a class="no-link-style" href="/offers?query=hiking"><div class="icon-box"><i class="fas fa-blind"></i>HIKING</div></a>
-    <a class="no-link-style" href="/offers?query=volleyball"><div class="icon-box"><i class="fas fa-volleyball-ball"></i>VOLLEYBALL</div></a>
-    <a class="no-link-style" href="/offers?query=football"><div class="icon-box"><i class="fas fa-football-ball"></i>FOOTBALL</div></a>
-    <a class="no-link-style" href="/offers?query=wintersports"><div class="icon-box"><i class="fas fa-skiing"></i>WINTER SPORTS</div></a>
+<div class="d-flex justify-content-evenly align-items-center icons-container">
+  <a class="no-link-style" href="/offers?query=diving"><div class="icon-box"><i class="fas fa-anchor"></i>DIVING</div></a>
+  <a class="no-link-style" href="/offers?query=swimming"><div class="icon-box"><i class="fas fa-swimmer"></i>SWIMMING</div></a>
+  <a class="no-link-style" href="/offers?query=watersports"><div class="icon-box"><i class="fas fa-water"></i>WATER SPORTS</div></a>
+  <a class="no-link-style" href="/offers?query=tennis"><div class="icon-box"><i class="fas fa-table-tennis"></i>TENNIS</div></a>
+  <a class="no-link-style" href="/offers?query=tours"><div class="icon-box"><i class="fas fa-tram"></i>TOURS</div></a>
+  <a class="no-link-style" href="/offers?query=hiking"><div class="icon-box"><i class="fas fa-blind"></i>HIKING</div></a>
+  <a class="no-link-style" href="/offers?query=volleyball"><div class="icon-box"><i class="fas fa-volleyball-ball"></i>VOLLEYBALL</div></a>
+  <a class="no-link-style" href="/offers?query=football"><div class="icon-box"><i class="fas fa-football-ball"></i>FOOTBALL</div></a>
+  <a class="no-link-style" href="/offers?query=wintersports"><div class="icon-box"><i class="fas fa-skiing"></i>WINTER SPORTS</div></a>
+</div>
+<div class="index-container">
+  <div class="container cards">
+    <% if @offers.empty? %>
+      <h2 class="warning">There seem to be no offers for <%= "#{params[:query].capitalize}" %>.<br><br><b>Go for a different experience instead!</b></h2>
+    <% else %>
+      <h2>
+        <% if params[:city].present? %>
+          in <%= params[:city].capitalize %>
+        <% end %>
+      </h2>
+      <div class="row">
+        <% @offers.each do |offer| %>
+          <div class="col-6 mt-3">
+            <%= render "shared/basic_offer_card", offer: offer %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  <div class="btn-centered-container">
-    <button class="btn-slim">Show Map</button>
+  <div id="map"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-<div class="container">
-  <% if @offers.empty? %>
-    <h2>Sorry, there are currently no experiences for your search for <%= "'#{params[:query]}'" %> 🥲</h2>
-  <% else %>
 
-    <h2>
-      Here are your sport experiences
-      <% if params[:city].present? %>
-        in <%= params[:city].capitalize %>
-      <% end %>
-    </h2>
-
-    <div class="row">
-      <% @offers.each do |offer| %>
-        <div class="col-3 mt-3">
-          <%= render "shared/basic_offer_card", offer: offer %>
-        </div>
-      <% end %>
-    </div>
-
-  <% end %>
-</div>

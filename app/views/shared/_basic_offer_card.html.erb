@@ -1,13 +1,13 @@
 <%= link_to offer_path(offer), class: "text-decoration-none" do %>
   <div class="card-container">
-        <span class="card-favourites-inactive">💔</span>
+    <span class="card-favourites-inactive">💔</span>
     <div class="card-head">
       <%# display 1st Image %>
       <% if offer.photos.attached? %>
         <%= cl_image_tag offer.photos.first.key %>
       <% end %>
-
     </div>
+
     <div class="card-body ">
         <div class="card-body-top">
           <div class="card-body-heading"><%= offer.title %></div>

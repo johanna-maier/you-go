@@ -1,6 +1,10 @@
 .icons-container {
+  background-color: $light-gray;
   height: 80px;
   padding: 10px 4rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   .icon-box {
     display: flex;
@@ -11,6 +15,7 @@
     height: 55px;
     min-width: 80px;
     font-size: x-small;
+    color: $icon-gray;
 
     .fas {
       font-size: 2rem;
