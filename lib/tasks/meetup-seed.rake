@@ -37,11 +37,14 @@ namespace :offerSeeds do
       data = JSON.parse(response)
 
       puts "Creating new offer for each result of the tag #{tag.name}"
-      puts "#{data["Info"]["EventCount"]} offers will be created for #{tag.name}"
+      puts "#{data["Info"]["EventCount"]} offers exist for #{tag.name}"
+      if data["Info"]["EventCount"] > 100
+        puts "Limit of 100 will be created."
+      end
 
       sleep(3)
 
-      data["Data"].each do |data_entry|
+      data["Data"].first(100).each do |data_entry|
         title = data_entry["title"]
 
         if data_entry["description"].blank?
@@ -113,7 +116,11 @@ namespace :offerSeeds do
       end
 
       puts ""
-      puts "#{data["Info"]["EventCount"]} offers were created for #{tag.name}"
+      if data["Info"]["EventCount"] > 100
+        puts "Limit of 100 offers was created."
+      else
+        puts "#{data["Info"]["EventCount"]} offers were created for #{tag.name}"
+      end
 
     end
     # end of seed API logic

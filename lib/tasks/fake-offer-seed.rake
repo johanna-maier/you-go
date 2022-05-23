@@ -28,8 +28,6 @@ namespace :offerSeeds do
 
         address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
         seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
-        puts "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/"
-
 
         seed_offer = Offer.new(
           title: seed_title,

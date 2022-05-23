@@ -34,7 +34,7 @@
 
 
   <div id="offer-reviews" class="col-7 mt-4">
-    <% if @offer.photos.attached? == false %>
+    <% if @offer.is_external == true %>
       <%= render 'shared/photos_grid_one_photo' %>
     <% end  %>
 
