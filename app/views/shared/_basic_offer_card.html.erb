@@ -7,15 +7,16 @@
         <%= cl_image_tag offer.photos.first.key %>
       <% end %>
     </div>
-    <div class="card-body">
-      <div class="card-body-top">
-        <div class="card-body-heading"><%= offer.title %></div>
-        <div class="card-rating">5</div>
-      </div>
-      <div class="card-body-bottom">
-        <div><%= offer.address %></div>
-        <div><%= sprintf('%.0f', offer.price_per_person) %>€/person</div>
-      </div>
+
+    <div class="card-body ">
+        <div class="card-body-top">
+          <div class="card-body-heading"><%= offer.title %></div>
+          <div class="card-rating">5</div>
+        </div>
+        <div class="card-body-bottom">
+          <div>Location</div>
+          <div><%= sprintf('%.0f', offer.price_per_person) %>€/person</div>
+        </div>
     </div>
   </div>
 <% end %>
