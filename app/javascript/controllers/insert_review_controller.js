@@ -11,7 +11,7 @@ export default class extends Controller {
   sendReview(event) {
     event.preventDefault();
     const url = this.formTarget.action;
-    console.log(url);
+    //console.log(url);
 
     fetch(url, {
       method: "POST",
