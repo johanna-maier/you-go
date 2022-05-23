@@ -2,6 +2,8 @@ class OffersController < ApplicationController
   before_action :set_offer
   skip_before_action :set_offer, only: :index
   skip_before_action :authenticate_user!, only: %i[index show]
+  # geocode_by :address
+  # after_validation :geocode # if longitude and latitude are NOT present
 
   def index
     if params[:query].present?
@@ -10,6 +12,16 @@ class OffersController < ApplicationController
       # Check if we can use long or latitute
     else
       @offers = policy_scope(Offer)
+    end
+
+    # Markers for Map on Index page
+    @markers = @offers.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { offer: offer }),
+        image_url: helpers.asset_url("map_marker")
+      }
     end
   end
 
