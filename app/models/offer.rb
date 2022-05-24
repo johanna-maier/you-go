@@ -10,7 +10,7 @@ class Offer < ApplicationRecord
   validates :description, presence: true
   validates :address, presence: true, length: { minimum: 6 }
   validates :price_per_person, numericality: { only_integer: true}, allow_nil: true
-  validates :capacity, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  validates :capacity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validates :offer_date, presence: true
   validates :offer_time, presence: true
 
