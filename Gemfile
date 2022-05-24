@@ -81,3 +81,6 @@ gem 'faker'
 
 # Adding PG Search
 gem 'pg_search', '~> 2.3.0'
+
+# Open URI to connect to event collector API
+gem 'open-uri'
