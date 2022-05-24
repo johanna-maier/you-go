@@ -3,8 +3,10 @@
     <span class="card-favourites-inactive">💔</span>
     <div class="card-head">
       <%# display 1st Image %>
-      <% if offer.photos.attached? %>
+      <% if offer.is_external == false %>
         <%= cl_image_tag offer.photos.first.key %>
+      <% else %>
+        <%= image_tag offer.external_image_url %>
       <% end %>
     </div>
 
