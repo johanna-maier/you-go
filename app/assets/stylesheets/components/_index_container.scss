@@ -1,0 +1,21 @@
+.index-container {
+  display: flex;
+  flex-direction: row;
+
+  .cards {
+    width: 50vw;
+    flex-grow: 1;
+  }
+
+  .warning {
+    margin-top: 10rem;
+    text-align: center;
+  }
+
+  #map {
+    height: 90.75vh;
+    width: 50vw;
+    position: sticky;
+    top: 80px;
+  }
+}

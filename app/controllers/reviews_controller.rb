@@ -5,11 +5,6 @@ class ReviewsController < ApplicationController
     @review.offer = @offer
     @review.user = current_user
     authorize @review
-    # if @review.save
-    #   redirect_to offer_path(@offer)
-    # else
-    #   render 'offers/show'
-    # end
 
     respond_to do |format|
       if @review.save

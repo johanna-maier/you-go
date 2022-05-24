@@ -2,7 +2,7 @@ namespace :offerSeeds do
   desc "Seeding current events from Event Collector API"
   task fake: :environment do
     puts ""
-    puts 'Seeding 30 sample offers'
+    puts 'Seeding 10 sample offers'
     puts ""
 
     prices = [50, 33, 150, 25,30,56,40]
@@ -22,9 +22,7 @@ namespace :offerSeeds do
     }
 
     Tag.all.each do |tag|
-
-      3.times do |index|
-        puts "Seed offers (#{index + 1}/#{Tag.count})  - #{tag.name}"
+        puts "Seed offer for #{tag.name}"
 
         address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
         seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
@@ -55,7 +53,7 @@ namespace :offerSeeds do
         puts ""
 
         seed_offer.save!
-      end
+
     end
     # closing the namespace
     puts "All fake offers seeded"

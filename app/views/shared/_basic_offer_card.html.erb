@@ -1,6 +1,7 @@
 <%= link_to offer_path(offer), class: "text-decoration-none" do %>
   <div class="card-container">
-        <span class="card-favourites-inactive">💔</span>
+    <span class="card-favourites-inactive">💔</span>
+
     <div class="card-head">
       <%# display 1st Image %>
       <% if offer.photos.attached? %>
@@ -8,15 +9,15 @@
       <% else %>
         <%= image_tag offer.external_image_url %>
       <% end %>
-
     </div>
+
     <div class="card-body ">
         <div class="card-body-top">
           <div class="card-body-heading"><%= offer.title %></div>
           <div class="card-rating">5</div>
         </div>
         <div class="card-body-bottom">
-          <div><%= offer.address %></div>
+          <div>Location</div>
           <div><%= sprintf('%.0f', offer.price_per_person) %>€/person</div>
         </div>
     </div>

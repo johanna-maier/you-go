@@ -1,0 +1,24 @@
+.popup-card {
+  height: 100px;
+  width: 300px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .popup-card-infos {
+    height: 100px;
+    width: 180px;
+    padding: 16px 16px 0;
+  }
+}

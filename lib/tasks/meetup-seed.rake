@@ -38,13 +38,13 @@ namespace :offerSeeds do
 
       puts "Creating new offer for each result of the tag #{tag.name}"
       puts "#{data["Info"]["EventCount"]} offers exist for #{tag.name}"
-      if data["Info"]["EventCount"] > 100
-        puts "Limit of 100 will be created."
+      if data["Info"]["EventCount"] > 20
+        puts "Limit of 20 will be created."
       end
 
       sleep(3)
 
-      data["Data"].first(100).each do |data_entry|
+      data["Data"].first(20).each do |data_entry|
         title = data_entry["title"]
 
         if data_entry["description"].blank?
@@ -116,8 +116,8 @@ namespace :offerSeeds do
       end
 
       puts ""
-      if data["Info"]["EventCount"] > 100
-        puts "Limit of 100 offers was created."
+      if data["Info"]["EventCount"] > 20
+        puts "Limit of 20 offers was created."
       else
         puts "#{data["Info"]["EventCount"]} offers were created for #{tag.name}"
       end
