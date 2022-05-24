@@ -1,14 +1,18 @@
 <%# parent div is important! %>
 <div>
   <h3>Rate your Experience</h3>
-  <%= simple_form_for([ offer, review ], # change this from @varible to variable
-                      data: {
-                        insert_review_target: "form",
-                        action: "submit->insert-review#sendReview"
-                      }) do |f| %>
-    <%= f.input :title, label: 'TITLE', placeholder: 'Give a title to your review' %>
-    <%= f.input :comment, label: 'DESCRIPTION', placeholder: 'Share details about your experience'%>
-    <%= f.input :rating, input_html: { min: '1', max: '5'}, label: 'RATING FROM 1-5', placeholder: 'Rate your experience from 1 to 5' %>
-    <%= f.submit "Submit review", class: 'btn btn-slim' %>
+  <% if user_signed_in? %>
+    <%= simple_form_for([ offer, review ], # change this from @varible to variable
+                        data: {
+                          insert_review_target: "form",
+                          action: "submit->insert-review#sendReview"
+                        }) do |f| %>
+      <%= f.input :title, label: 'TITLE', placeholder: 'Give a title to your review' %>
+      <%= f.input :comment, label: 'DESCRIPTION', placeholder: 'Share details about your experience'%>
+      <%= f.input :rating, input_html: { min: '1', max: '5'}, label: 'RATING FROM 1-5', placeholder: 'Rate your experience from 1 to 5' %>
+      <%= f.submit "Submit review", class: 'btn btn-slim' %>
+    <% end %>
+  <% else %>
+    <p> You must be logged in to leave a review. </p>
   <% end %>
 </div>

@@ -1,7 +1,6 @@
-  <div id="carouselExampleControls" class="carousel slide carousel-dark" data-bs-ride="carousel">
+  <div id="carouselExampleControls" class="carousel slide carousel-dark mt-4" data-bs-ride="carousel">
     <div class="carousel-inner">
       <% @offer.photos.each_with_index do |photo, index| %>
-        <%= puts "#{index}" %>
         <% if index == 0 %>
           <% style="carousel-item active"%>
         <% else %>

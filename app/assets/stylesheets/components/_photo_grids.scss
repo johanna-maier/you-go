@@ -3,9 +3,15 @@
   grid-template-columns: repeat(2, minmax(auto, auto));
   grid-gap: 4px;
   align-items: center;
+  height: fit-content;
+  max-height: 440px;
+  align-content: center; //object-position on image doesn't work
+  overflow: hidden;
+  border-radius: 12px;
 
   img {
-    border-radius: 12px;
+    // border-radius: 12px;
+    object-fit: cover;
     height: 100%;
   }
 }

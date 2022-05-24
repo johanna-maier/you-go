@@ -1,9 +1,11 @@
 <div>
-  <h2>Details</h2>
-  <p><i class="fas fa-map-marker-alt"></i> Street 1, Hawaii, USA</p>
-  <p><i class="far fa-clock"></i> 03 September 2022, 9am</p>
-  <p><i class="fas fa-users"></i> Up to 12 participants</p>
-  <p><i class="fas fa-euro-sign"></i> 65€ per person</p>
-  <p><i class="fas fa-link"></i> Hosted on Get Your Guide</p>
+  <h3>Details</h3>
+  <p><i class="fas fa-map-marker-alt"></i> <%= @offer.address %></p>
+  <p><i class="far fa-clock"></i>  <% @offer.offer_date.strftime("%A, %d %B %Y, %I:%M %P") %>  </p>
+  <p><i class="fas fa-users"></i> Up to <%= @offer.capacity %> participants</p>
+  <p><i class="fas fa-euro-sign"></i> <%= @offer.price_per_person %> € per person</p>
+  <% if @offer.is_external %>
+    <p><i class="fas fa-link"></i> Hosted on Meetup</p>
+  <% end %>
   <%= link_to 'Book now', root_path, class: 'btn btn-slim' %>
 </div>

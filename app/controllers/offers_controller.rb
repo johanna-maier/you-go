@@ -13,6 +13,7 @@ class OffersController < ApplicationController
     else
       @offers = policy_scope(Offer)
     end
+
     # Markers for Map on Index page
     @markers = @offers.map do |offer|
       {

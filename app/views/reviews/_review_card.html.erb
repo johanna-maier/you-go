@@ -1,9 +1,10 @@
 <%# card to display single review %>
 <div class="card-review mt-4">
   <div id="review-rating">
-    <div><% review.rating.to_i.times do  %>
-      ⭐
-    <% end %></div>
+    <div>
+      <% review.rating.to_i.times {%> <i class="fas fa-star"></i> <%}%>
+      <% (5-review.rating).to_i.times {%> <i class="far fa-star"></i> <%}%>
+    </div>
   </div>
   <div id="review-comment">
     <h6><%= review.title %></h6>
