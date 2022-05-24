@@ -6,6 +6,8 @@
       <%# display 1st Image %>
       <% if offer.photos.attached? %>
         <%= cl_image_tag offer.photos.first.key %>
+      <% else %>
+        <%= image_tag offer.external_image_url %>
       <% end %>
     </div>
 

@@ -8,8 +8,10 @@
 
 require "faker"
 
-# puts 'Deleting current reviews, bookings, favourites, offers, users, \
-# tags & Ahoy events/visits'
+puts ""
+puts 'Deleting current reviews, bookings, favourites, offers, users, tags & Ahoy events/visits'
+puts ""
+
 Review.destroy_all
 Booking.destroy_all
 Favourite.destroy_all
@@ -18,62 +20,6 @@ Tag.destroy_all
 Ahoy::Event.destroy_all
 Ahoy::Visit.destroy_all
 User.destroy_all
-
-puts 'Creating 10 new tags'
-
-tags = [
-    {
-      name: 'baseball',
-      category: 'ballsports',
-      img_files: ['baseball1.jpg','baseball2.jpg','baseball3.jpg']
-    },
-    {
-      name: 'basketball',
-      category: 'basket',
-      img_files: ['basket1.jpg','basket2.jpg','basket3.jpg']
-    },
-    {
-      name: 'bouldering',
-      category: 'climbing',
-      img_files: ['bouldering1.jpg','bouldering2.jpg','bouldering3.jpg']
-    },
-    {
-      name: 'kayaking',
-      category: 'watersports',
-      img_files: ['kayak1.jpg','kayak2.jpg','kayak3.jpg']
-    },
-    {
-      name: 'muay-thai',
-      category: 'combat sport',
-      img_files: ['muay-thai1.jpg','muay-thai2.jpg','muay-thai3.jpg']
-    },
-    {
-      name: 'soccer',
-      category: 'ballsports',
-      img_files: ['soccer1.jpg','soccer2.jpg','soccer3.jpg']
-    },
-    {
-      name: 'surfing',
-      category: 'watersports',
-      img_files: ['surfing1.jpg','surfing2.jpg','surfing3.jpg']
-    },
-    {
-      name: 'swimming',
-      category: 'watersports',
-      img_files: ['swimming1.jpg','swimming2.jpg','swimming3.jpg']
-    },
-    {
-      name: 'tennis',
-      category: 'ballsports',
-      img_files: ['tennis1.jpg','tennis2.jpg','tennis3.jpg']
-    },
-    {
-      name: 'volleyball',
-      category: 'ballsports',
-      img_files: ['volleyball1.jpg','volleyball2.jpg','volleyball3.jpg']
-    }
-]
-
 
 puts 'Seeding 9 sample users'
 
@@ -187,55 +133,63 @@ users.each_with_index do |user, index|
   seed_user.save!
 end
 
+puts ""
+puts 'Creating 10 new tags'
+puts ""
 
-puts 'Seeding 30 sample offers'
+tags = [
+    {
+      name: 'baseball',
+      category: 'ballsports'
+    },
+    {
+      name: 'basketball',
+      category: 'basket'
+    },
+    {
+      name: 'bouldering',
+      category: 'climbing'
+    },
+    {
+      name: 'kayaking',
+      category: 'watersports'
+    },
+    {
+      name: 'muay-thai',
+      category: 'combat sport'
+    },
+    {
+      name: 'soccer',
+      category: 'ballsports'
+    },
+    {
+      name: 'surfing',
+      category: 'watersports'
+    },
+    {
+      name: 'swimming',
+      category: 'watersports'
+    },
+    {
+      name: 'tennis',
+      category: 'ballsports'
+    },
+    {
+      name: 'volleyball',
+      category: 'ballsports'
+    }
+]
 
-prices = [50, 33, 150, 25,30,56,40]
-capacities = [5, 15, 10, 6, 7, 8, 12]
-
-tags.each_with_index do |tag, index_tag|
-  puts "Seed tags with categories (#{index_tag + 1}/#{tags.length})"
-
+tags.each_with_index do |tag, index|
+  puts "Seed tags with categories (#{index + 1}/#{tags.length})"
   seed_tag = Tag.new(
     name: tag[:name],
     category: tag[:category]
   )
+
   seed_tag.save!
-
-  3.times do |index|
-    puts "Seed offers (#{index + 1}/#{tag.length})  - #{seed_tag.name}"
-
-    address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
-    seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
-    puts "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/"
-
-
-    seed_offer = Offer.new(
-      title: seed_title,
-      description: "#{Faker::GreekPhilosophers.name} | #{Faker::GreekPhilosophers.quote}",
-      price_per_person: prices.sample,
-      capacity: capacities.sample,
-      address: address_hash[:full_address],
-      latitude: address_hash[:latitude],
-      longitude: address_hash[:longitude],
-      offer_date: Faker::Date.forward(days: (1..20).to_a.sample),
-      offer_time: Faker::Time.forward(days: (1..20).to_a.sample, period: :evening),
-      is_external: true,
-      url: "https://www.meetup.com/#{seed_title.parameterize(separator: '-')}/",
-    )
-    puts "New offer created"
-    seed_offer.tag = seed_tag
-    puts "Offer associated with tag"
-    # adding 3 images per offer
-    3.times do |i|
-      img_file_name = tag[:img_files][i]
-      puts img_file_name
-      seed_offer.photos.attach(io: File.open("db/seed_photos/#{img_file_name}"), filename: img_file_name, content_type: 'image/jpg')
-    end
-    puts "Photos attached to offer"
-    seed_offer.save!
-  end
 end
 
-
-puts 'end of seed'
+puts ""
+puts 'end of initial seed'
+puts ""
