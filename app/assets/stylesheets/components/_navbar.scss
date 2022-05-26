@@ -1,10 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   .search-navbar {
     align-items: center;
   }
+
   #input-city-navbar {
     border: 1px solid black;
     border-radius: 8px 0px 0px 8px;
@@ -24,7 +28,14 @@
 
   .fa-search {
     font-size: 1.5rem;
-    display: flex;
+    color: $icon-gray;
+  }
+
+  .far {
+    display: inline-block;
+    margin: 0 0.5rem;
+    color: $inactive-gray;
+    font-size: 1.85rem;
   }
 }
 
@@ -38,10 +49,10 @@
 
 // Homepage navbar - transparent
 .navbar-home {
-  position: absolute;
   width: 100%;
   background: transparent;
   box-shadow: none;
+
   .nav-link {
     color: white;
     // font-weight: bold;
