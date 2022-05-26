@@ -14,7 +14,8 @@ puts ""
 
 Review.destroy_all
 Booking.destroy_all
-Favourite.destroy_all
+# Favourite.destroy_all
+Like.destroy_all
 Offer.destroy_all
 Tag.destroy_all
 Ahoy::Event.destroy_all
@@ -129,7 +130,7 @@ users.each_with_index do |user, index|
     email: user[:email],
     password: user[:password]
   )
-  seed_user.avatar_photo.attach(io: File.open("db/seed_images/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
+  seed_user.avatar_photo.attach(io: File.open("db/seed_photos/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
   seed_user.save!
 end
 
