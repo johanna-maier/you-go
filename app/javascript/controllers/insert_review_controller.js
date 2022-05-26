@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "form", "list" ]
+  static targets = [ "form", "list", "message" ]
 
   connect() {
     // console.log('insert-review-controller connected!');
@@ -22,7 +22,8 @@ export default class extends Controller {
     .then((data) => {
       console.log(data);
       if (data.review) { // if review was added successfully
-        this.listTarget.insertAdjacentHTML("beforeend", data.review)
+        this.listTarget.insertAdjacentHTML("beforeend", data.review);
+        this.messageTarget.classList.add('d-none');
       }
       // replace form (new or prev one with errors).  Impotant! replacing parent div
       this.formTarget.parentElement.outerHTML = data.form
