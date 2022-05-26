@@ -40,7 +40,13 @@
 
   <div id="offer-tags" class="row mt-4">
     <div class="col">
-        <span class='offer-tag'><%= @offer.price_per_person %>€ pp</span>
+
+        <% if @offer.price_per_person == 0 %>
+          <span class='offer-tag'>free</span>
+        <% else %>
+          <span class='offer-tag'><%= @offer.price_per_person %>€ pp</span>
+        <% end %>
+
         <span class='offer-tag'><%= @offer.tag.name.capitalize %></span>
         <% if @offer.avg_rating %>
           <span class='offer-tag'><%= @offer.avg_rating %></span>
@@ -55,7 +61,7 @@
     <div class="col col-md-8">
       <div id="offer-description" class="row mt-5">
         <h3>Read more about the experience you're going to</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt iste commodi reiciendis laboriosam voluptate eius nobis. Reiciendis libero quae quibusdam provident, laudantium officiis optio rem ipsum quia, iusto architecto aliquid!</p>
+        <p><%= @offer.description %></p>
       </div>
 
       <div id="offer-reviews" class="row col col-md-10 mt-4"> <%# col-7 %>

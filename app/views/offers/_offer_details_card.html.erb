@@ -1,11 +1,19 @@
 <div>
   <h3>Details</h3>
-  <p><i class="fas fa-map-marker-alt"></i> <%= @offer.address %></p>
-  <p><i class="far fa-clock"></i>  <% @offer.offer_date.strftime("%A, %d %B %Y, %I:%M %P") %>  </p>
-  <p><i class="fas fa-users"></i> Up to <%= @offer.capacity %> participants</p>
-  <p><i class="fas fa-euro-sign"></i> <%= @offer.price_per_person %> € per person</p>
-  <% if @offer.is_external %>
-    <p><i class="fas fa-link"></i> Hosted on Meetup</p>
+  <p><i class="fas fa-map-marker-alt"></i>&ensp;&nbsp;<%=  @offer.address %></p>
+  <p><i class="far fa-clock"></i>&ensp;<%= @offer.offer_date.strftime("%A, %d %B %Y") %> at <%= @offer.offer_time.strftime("%I:%M %P") %> </p>
+  <p><i class="fas fa-users"></i>&nbsp;Up to <%= @offer.capacity %> participants</p>
+  <% if @offer.price_per_person == 0 %>
+    <p><i class="fas fa-euro-sign"></i>&emsp;free </p>
+  <% else %>
+    <p><i class="fas fa-euro-sign"></i>&emsp;<%= @offer.price_per_person %> € per person</p>
   <% end %>
-  <%= link_to 'Book now', root_path, class: 'btn btn-slim' %>
+
+  <% if @offer.is_external %>
+    <p><i class="fas fa-link"></i>&ensp;Hosted on Meetup</p>
+  <% end %>
+  <% if @offer.is_external %>
+    <%= link_to 'Go to Meetup', @offer.url, class: 'btn btn-slim', target: '_blank' %>
+  <% end %>
+
 </div>
