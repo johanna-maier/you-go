@@ -20,7 +20,7 @@
         <% end %>
       </h2>
       <div class="row">
-        <% @offers.each do |offer| %>
+        <% @offers.first(48).each do |offer| %>
           <div class="col-6 mt-3">
             <%= render "shared/basic_offer_card", offer: offer %>
           </div>
@@ -34,4 +34,3 @@
     data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-

@@ -19,12 +19,12 @@
   border-radius: 16px;
   position: relative;
 
-  .card-favourites-inactive {
+  .far {
     position: absolute;
-    width: 20px;
-    height: 18px;
-    right: 10px;
-    top: 10px;
+    right: 15px;
+    top: 15px;
+    color: $light-gray;
+    font-size: 24px;
   }
 
   .card-head {
