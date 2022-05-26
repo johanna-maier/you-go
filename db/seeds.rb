@@ -111,7 +111,7 @@ users = [
       description: "Hi, my name is Killian! I want to go on my next sporting adventure.",
       email: 'killian@gmail.com',
       password: '123456',
-      img_file: 'killian-profile.jpg',
+      img_file: 'kilian-profile.jpg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
     }
@@ -129,7 +129,7 @@ users.each_with_index do |user, index|
     email: user[:email],
     password: user[:password]
   )
-  # seed_user.avatar_photo.attach(io: File.open("app/assets/images/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
+  seed_user.avatar_photo.attach(io: File.open("db/seed_images/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
   seed_user.save!
 end
 
