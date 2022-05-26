@@ -1,4 +1,5 @@
 .navbar-lewagon {
+  height: 60px;
   justify-content: space-between;
   background: white;
   position: sticky;
@@ -52,6 +53,7 @@
   width: 100%;
   background: transparent;
   box-shadow: none;
+  position: relative;
 
   .nav-link {
     color: white;
