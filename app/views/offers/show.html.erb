@@ -60,16 +60,16 @@
 
       <div id="offer-reviews" class="row col col-md-10 mt-4"> <%# col-7 %>
         <h3>Read what others said</h3>
-        <% if @offer.reviews.count.positive? %>
-          <div id="review-container" data-insert-review-target="list">
+
+        <div id="review-container" data-insert-review-target="list">
+          <% if @offer.reviews.count.positive? %>
             <% @offer.reviews.each do |review| %>
               <%= render 'reviews/review_card', review: review %>
             <% end %>
-          </div>
-        <% else %>
-        <%# TODO text to be finalised %>
-          <p><em> There are no reviews yet. </em></p>
-        <% end %>
+          <% else %>
+            <p data-insert-review-target="message"><em> There are no reviews yet. </em></p>
+          <% end %>
+        </div>
       </div>
 
     <% if @offer.photos.attached? %>
