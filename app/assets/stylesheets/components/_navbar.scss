@@ -5,6 +5,11 @@
   top: 0;
   z-index: 1;
 
+  img {
+    border: 1px $primary solid;
+    padding: 2px;
+  }
+
   .search-navbar {
     align-items: center;
   }
@@ -34,7 +39,7 @@
   .far {
     display: inline-block;
     margin: 0 0.5rem;
-    color: $inactive-gray;
+    color: $black;
     font-size: 1.85rem;
   }
 }
