@@ -33,7 +33,8 @@ users = [
       img_file: 'johanna-profile.jpg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
-      img_files: ['basket1.jpg','basket2.jpg','basket3.jpg']
+      img_files: ['basket1.jpg','basket2.jpg','basket3.jpg'],
+      location: 'Munich'
     },
     {
       first_name: 'Anjali',
@@ -43,7 +44,8 @@ users = [
       password: '123456',
       img_file: 'anjali-profile.jpg',
       gender: 'female',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Berlin'
     },
     {
       first_name: 'Alexandra',
@@ -53,7 +55,8 @@ users = [
       password: '123456',
       img_file: 'alexandra-profile.jpg',
       gender: 'female',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Berlin'
     },
     {
       first_name: 'Ieva',
@@ -63,7 +66,8 @@ users = [
       password: '123456',
       img_file: 'ieva-profile.jpg',
       gender: 'female',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Hamburg'
     },
     {
       first_name: 'Daniel',
@@ -73,7 +77,8 @@ users = [
       password: '123456',
       img_file: 'daniel-profile.jpg',
       gender: 'male',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Munich'
     },
     {
       first_name: 'Julian',
@@ -83,7 +88,8 @@ users = [
       password: '123456',
       img_file: 'julian-profile.jpg',
       gender: 'male',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Hamburg'
     },
     {
       first_name: 'Shreetama',
@@ -93,7 +99,8 @@ users = [
       password: '123456',
       img_file: 'shreetama-profile.jpg',
       gender: 'female',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Cologne'
     },
     {
       first_name: 'Andrew',
@@ -103,7 +110,8 @@ users = [
       password: '123456',
       img_file: 'andrew-profile.jpg',
       gender: 'male',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Cologne'
     },
     {
       first_name: 'Killian',
@@ -113,7 +121,8 @@ users = [
       password: '123456',
       img_file: 'kilian-profile.jpg',
       gender: 'male',
-      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y")
+      date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
+      location: 'Stuttgart'
     }
 ]
 
@@ -127,64 +136,201 @@ users.each_with_index do |user, index|
     gender: user[:gender],
     date_of_birth: user[:date_of_birth],
     email: user[:email],
-    password: user[:password]
+    password: user[:password],
+    location: user[:location]
   )
   seed_user.avatar_photo.attach(io: File.open("db/seed_photos/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
   seed_user.save!
 end
 
 puts ""
-puts 'Creating 10 new tags'
+puts 'Creating 36 new tags'
 puts ""
 
 tags = [
-    {
-      name: 'baseball',
-      category: 'ballsports'
-    },
-    {
-      name: 'basketball',
-      category: 'basket'
-    },
-    {
-      name: 'bouldering',
-      category: 'climbing'
-    },
-    {
-      name: 'kayaking',
-      category: 'watersports'
-    },
-    {
-      name: 'muay-thai',
-      category: 'combat sport'
-    },
-    {
-      name: 'soccer',
-      category: 'ballsports'
-    },
-    {
-      name: 'surfing',
-      category: 'watersports'
-    },
-    {
-      name: 'swimming',
-      category: 'watersports'
-    },
-    {
-      name: 'tennis',
-      category: 'ballsports'
-    },
-    {
-      name: 'volleyball',
-      category: 'ballsports'
-    }
+          {
+              name: 'ballsports',
+              category: 'ballsports',
+              icon: '<i class="fas fa-volleyball-ball"></i>'
+          },
+          {
+              name: 'baseball',
+              category: 'ballsports',
+              icon: '<i class="fas fa-baseball"></i>'
+          },
+          {
+              name: 'basketball',
+              category: 'ballsports',
+              icon: '<i class="fas fa-basketball-hoop"></i>'
+          },
+          {
+              name: 'bowling',
+              category: 'ballsports',
+              icon: '<i class="fas fa-bowling-ball"></i>'
+          },
+          {
+              name: 'football',
+              category: 'ballsports',
+              icon: '<i class="fas fa-futbol"></i>'
+          },
+          {
+              name: 'volleyball',
+              category: 'ballsports',
+              icon: '<i class="fas fa-volleyball-ball"></i>'
+          },
+          {
+              name: 'biking',
+              category: 'biking',
+              icon: '<i class="fas fa-biking"></i>'
+          },
+          {
+              name: 'mountain biking',
+              category: 'biking',
+              icon: '<i class="fas fa-biking-mountain"></i>'
+          },
+          {
+              name: 'bouldering',
+              category: 'climbing',
+              icon: '<i class="fad fa-hand-rock"></i>'
+          },
+          {
+              name: 'climbing',
+              category: 'climbing',
+              icon: '<i class="fad fa-hand-rock"></i>'
+          },
+          {
+              name: 'muay thai',
+              category: 'combat sports',
+              icon: '<i class="fas fa-boxing-glove"></i>'
+          },
+          {
+              name: 'combat sports',
+              category: 'combat sports',
+              icon: '<i class="fas fa-boxing-glove"></i>'
+          },
+          {
+              name: 'karate',
+              category: 'combat sports',
+              icon: '<i class="fa-solid fa-uniform-martial-arts"></i>'
+          },
+          {
+              name: 'salsa',
+              category: 'dancing',
+              icon: '<i class="fas fa-music"></i>'
+          },
+          {
+              name: 'dancing',
+              category: 'dancing',
+              icon: '<i class="fas fa-music"></i>'
+          },
+          {
+              name: 'hiking',
+              category: 'hiking',
+              icon: '<i class="fas fa-hiking"></i>'
+          },
+          {
+              name: 'badminton',
+              category: 'racket sports',
+              icon: '<i class="fa-solid fa-badminton"></i>'
+          },
+          {
+              name: 'racket sports',
+              category: 'racket sports',
+              icon: '<i class="fas fa-racquet"></i>'
+          },
+          {
+              name: 'tennis',
+              category: 'racket sports',
+              icon: '<i class="fas fa-racquet"></i>'
+          },
+          {
+              name: 'running',
+              category: 'running',
+              icon: '<i class="fas fa-running"></i>'
+          },
+          {
+              name: 'running',
+              category: 'running',
+              icon: '<i class="fas fa-running"></i>'
+          },
+          {
+              name: 'skating',
+              category: 'skating',
+              icon: '<i class="fas fa-skating"></i>'
+          },
+          {
+              name: 'fitness',
+              category: 'strength sports',
+              icon: '<i class="fas fa-dumbbell"></i>'
+          },
+          {
+              name: 'canoe',
+              category: 'watersports',
+              icon: '<i class="fa-solid fa-water"></i>'
+          },
+          {
+              name: 'fishing',
+              category: 'watersports',
+              icon: '<i class="fa-solid fa-fishing-rod"></i>'
+          },
+          {
+              name: 'kayaking',
+              category: 'watersports',
+              icon: '<i class="fa-solid fa-water"></i>'
+          },
+          {
+              name: 'sailing',
+              category: 'watersports',
+              icon: '<i class="fa-solid fa-sailboat"></i>'
+          },
+          {
+              name: 'sup',
+              category: 'watersports',
+              icon: '<i class="fa-solid fa-water"></i>'
+          },
+          {
+              name: 'surfing',
+              category: 'watersports',
+              icon: '<i class="fa-solid fa-water"></i>'
+          },
+          {
+              name: 'watersports',
+              category: 'watersports',
+              icon: '<i class="fas fa-water"></i>'
+          },
+          {
+              name: 'cross country skiing',
+              category: 'wintersports',
+              icon: '<i class="fas fa-skiing-nordic"></i>'
+          },
+          {
+              name: 'skiing',
+              category: 'wintersports',
+              icon: '<i class="fas fa-skiing"></i>'
+          },
+          {
+              name: 'snowboarding',
+              category: 'wintersports',
+              icon: '<i class="fas fa-snowboarding"></i>'
+          },
+          {
+              name: 'wintersports',
+              category: 'wintersports',
+              icon: '<i class="fa-solid fa-snowflake"></i>'
+          },
+          {
+              name: 'yoga',
+              category: 'yoga',
+              icon: '<i class="fa-solid fa-hands-praying"></i>'
+          }
 ]
 
 tags.each_with_index do |tag, index|
   puts "Seed tags with categories (#{index + 1}/#{tags.length})"
   seed_tag = Tag.new(
     name: tag[:name],
-    category: tag[:category]
+    category: tag[:category],
+    icon: tag[:icon]
   )
 
   seed_tag.save!

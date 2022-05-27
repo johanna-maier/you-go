@@ -8,7 +8,7 @@ class Offer < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :address, presence: true, length: { minimum: 6 }
+  validates :address, presence: true, length: { minimum: 1 } # Meetup data had address with 4 letters
   validates :price_per_person, numericality: { only_integer: true}, allow_nil: true
   validates :capacity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
   validates :offer_date, presence: true
