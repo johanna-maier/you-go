@@ -9,13 +9,13 @@
 require "faker"
 
 puts ""
-puts 'Deleting current reviews, bookings, favourites, offers, users, tags & Ahoy events/visits'
+puts 'Deleting current reviews, bookings, favourites, users, tags & Ahoy events/visits'
 puts ""
 
 Review.destroy_all
 Booking.destroy_all
 Favourite.destroy_all
-Offer.destroy_all
+# Offer.destroy_all # on-hold to avoid long reseeding
 Tag.destroy_all
 Ahoy::Event.destroy_all
 Ahoy::Visit.destroy_all
@@ -126,6 +126,29 @@ users = [
     }
 ]
 
+coordinates = {
+  "Berlin": {
+    latitude: 52.520008,
+    longitude: 13.404954
+  },
+  "Munich": {
+    latitude: 48.135124,
+    longitude: 11.581981
+  },
+  "Hamburg": {
+    latitude: 53.551086,
+    longitude: 9.993682
+  },
+  "Cologne": {
+    latitude: 50.937531,
+    longitude: 6.960279
+  },
+  "Stuttgart": {
+    latitude: 48.775845,
+    longitude: 9.182932
+  }
+}
+
 users.each_with_index do |user, index|
   puts "Seed users (#{index + 1}/#{users.length})"
 
@@ -137,7 +160,9 @@ users.each_with_index do |user, index|
     date_of_birth: user[:date_of_birth],
     email: user[:email],
     password: user[:password],
-    location: user[:location]
+    location: user[:location],
+    latitude: coordinates[user[:location].to_sym][:latitude],
+    longitude: coordinates[user[:location].to_sym][:longitude]
   )
   seed_user.avatar_photo.attach(io: File.open("db/seed_photos/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
   seed_user.save!
