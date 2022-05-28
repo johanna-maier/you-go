@@ -21,8 +21,9 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Explore by category</h2>
-  <% @tags.first(3).each do |tag| %>
-  <div class="col-12 col-lg-5 col-xl-4 mt-3 ">
+
+  <% Tag.all.sample(4).each do |tag| %>
+  <div class="col-12 col-lg-5 col-xl-3 mt-3 ">
       <%= render 'shared/category_card', tag: tag %>
     </div>
   <% end %>
