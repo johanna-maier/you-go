@@ -19,13 +19,29 @@
   border-radius: 16px;
   position: relative;
 
-  .far {
+  .card-favourites-inactive {
     position: absolute;
     right: 15px;
     top: 15px;
     color: $light-gray;
     font-size: 24px;
   }
+  .card-favourites-active {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: orangered; // TODO change this
+    font-size: 24px;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.7);
+  }
+
+  // .far {
+  //   position: absolute;
+  //   right: 15px;
+  //   top: 15px;
+  //   color: $light-gray;
+  //   font-size: 24px;
+  // }
 
   .card-head {
     img {
