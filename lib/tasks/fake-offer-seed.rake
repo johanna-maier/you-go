@@ -1,5 +1,5 @@
 namespace :offerSeeds do
-  desc "Seeding current events from Event Collector API"
+  desc "Seeding fake events representing offers created on platform."
   task fake: :environment do
     puts ""
     puts 'Seeding 10 sample offers'
@@ -12,8 +12,7 @@ namespace :offerSeeds do
       'baseball': {
         tag_images: ['baseball1.jpg','baseball2.jpg','baseball3.jpg'],
         title: "Berlin Skylarks Baseball and Softball Training",
-        description: "We are the Berlin Skylarks, the baseball and softball division of the TiB 1848 e.V. We are open to anyone who wants to play baseball and softball in the heart of Berlin, regardless of age, nationality, gender or previous playing experience. All you have to do is write us a quick message and come to one of our practices.
-We have teams at every level of competition, so there are no tryouts or anything similar – you just drop by and we will find a place for you.",
+        description: "We are the Berlin Skylarks, the baseball and softball division of the TiB 1848 e.V. We are open to anyone who wants to play baseball and softball in the heart of Berlin, regardless of age, nationality, gender or previous playing experience. All you have to do is write us a quick message and come to one of our practices. We have teams at every level of competition, so there are no tryouts or anything similar – you just drop by and we will find a place for you.",
         address: "Rathausstraße 7, 10178 Berlin",
         longitude: 13.410720,
         latitude: 52.519710
@@ -38,14 +37,12 @@ We have teams at every level of competition, so there are no tryouts or anything
       'kayaking': {
         tag_images: ['kayak1.jpg','kayak2.jpg','kayak3.jpg'],
         title: "Kajak Berlin Tours",
-        description: "Enjoy the stunning waterscape of the legendary Landwehrkanal and the Spree River! Discover an unexpected oasis in the middle of the city caused by a switch of your perspective and the kind of movement. A REAL DAYDREAM!
-
-With the best equipment – comfortable kayaks, life vests, spray decks – and professionally guided in small groups we provide you an unique and safe experience.",
+        description: "Enjoy the stunning waterscape of the legendary Landwehrkanal and the Spree River! Discover an unexpected oasis in the middle of the city caused by a switch of your perspective and the kind of movement. A REAL DAYDREAM! With the best equipment – comfortable kayaks, life vests, spray decks – and professionally guided in small groups we provide you an unique and safe experience.",
         address: "Kayak-Truck vis-á-vis Cafe A.Horn, Carl-Herz-Ufer 9, 10961 Berlin",
         longitude: 52.495747,
         latitude: 13.405571
       },
-      'muay-thai': {
+      'muay thai': {
         tag_images: ['muay-thai1.jpg','muay-thai2.jpg','muay-thai3.jpg'],
         title: "Berlin Gym Mitte",
         description: "The Berlin Gym offers you a special selection of different martial arts styles at two locations (Friedrichshain & Mitte): Whether Kyokushin Karate, Boxing, K1 or Muay Thai - the professional trainers of the Berlin Gym help you to learn the different techniques or to develop them further. It doesn't matter if you are a beginner or already experienced ///Es will be trained modern, according to the respective requirements of the trainees and varied. The training is varied and will gradually lead to success./The club is characterized above all by its unique training atmosphere, which is often praised by visitors.",
@@ -53,14 +50,10 @@ With the best equipment – comfortable kayaks, life vests, spray decks – and 
         longitude: 52.516270,
         latitude: 13.410610
       },
-      'soccer': {
+      'football': {
         tag_images: ['soccer1.jpg','soccer2.jpg','soccer3.jpg'],
         title: "KICKERWorld Berlin",
-        description: "Berlin's most modern hall for indoor soccer!
-        Our unique, blue artificial turf of the latest generation offers optimal conditions for an incomparable playing experience.
-        The 3 soccer courts extend over an area of 30*15 meters each and are separated from each other by a professional barrier system. *
-        The beach court in our outdoor area is perfect for a thrilling game of beach soccer or volleyball in summer.
-        And for those who long for a refreshing drink or a snack after their sporting activities, we welcome you at our beach bar in the garden or in our restaurant, depending on the weather.",
+        description: "Berlin's most modern hall for indoor soccer! Our unique, blue artificial turf of the latest generation offers optimal conditions for an incomparable playing experience. The 3 soccer courts extend over an area of 30*15 meters each and are separated from each other by a professional barrier system. *  The beach court in our outdoor area is perfect for a thrilling game of beach soccer or volleyball in summer. And for those who long for a refreshing drink or a snack after their sporting activities, we welcome you at our beach bar in the garden or in our restaurant, depending on the weather.",
         address: "Kleine Eiswerderstraße 1, 13599 Berlin",
         longitude: 52.5490074,
         latitude: 13.226816
@@ -68,32 +61,15 @@ With the best equipment – comfortable kayaks, life vests, spray decks – and 
       'surfing': {
         tag_images: ['surfing1.jpg','surfing2.jpg','surfing3.jpg'],
         title: "Wellenwerk Berlin",
-        description: "Welcome to Germany’s first Deus Temple “The Fountain of Eternal Effervescence”.
-
-Behind the large panoramic windows facing the wave area, every cocktail at the Deus Fountain Bar is a special treat. In the Deus Restaurant, you can enjoy innovative cuisine with regional and seasonal products.
-
-Germany’s first Deus Ex Machina shop also lives inside our Deus Temple. From boardshorts, wetsuits to jackets and t-shirts, here you will find everything you need for a casual look in everyday life or on the water whilst surfing.
-
-You can find more information about our restaurant concept, the surf shop & the surfboard repair shop here.",
+        description: "Welcome to Germany’s first Deus Temple “The Fountain of Eternal Effervescence”. Behind the large panoramic windows facing the wave area, every cocktail at the Deus Fountain Bar is a special treat. In the Deus Restaurant, you can enjoy innovative cuisine with regional and seasonal products. Germany’s first Deus Ex Machina shop also lives inside our Deus Temple. From boardshorts, wetsuits to jackets and t-shirts, here you will find everything you need for a casual look in everyday life or on the water whilst surfing. You can find more information about our restaurant concept, the surf shop & the surfboard repair shop here.",
         address: "Landsberger Allee 270, 10367 Berlin",
         longitude: 52.5334217,
         latitude: 13.48107
       },
-      'swimming': {
-        tag_images: ['swimming1.jpg','swimming2.jpg','swimming3.jpg'],
-        title: "Wellenbad am Spreewaldplatz",
-        description: "This pool’s distinguishing feature is that it is Berlin’s only(!) public swimming pool with artificial waves. Every half an hour, the bell rings and Kreuzberg becomes the Atlantic coast for a short while. Athletic swimmers might get frustrated quickly by this always well-attended pool. For everyone else there’s lots offer: additional baby, children’s, and non-swimmer pools, water animals to play with, a slide, waves, and an outside area. But beware — the complex will soon close for renovations. Before then, you should throw yourself into those waves at least once.",
-        address: "Wiener Straße 59H, 10999 Berlin",
-        longitude: 52.4980015,
-        latitude: 13.4322837
-      },
       'tennis': {
         tag_images: ['tennis1.jpg','tennis2.jpg','tennis3.jpg'],
         title: "Match ball in the capital",
-        description: "Match ball in the capital
-Even in Berlin you can stand on court. Its outdoor tennis courts are ideal for a summer match, and even in the colder months of the year, tennis fans don’t have to keep their rackets still. Berlin offers a range of options for playing tennis, with all of its different clubs, facilities and indoor courts.
-
-So you can pursue your sport regardless of the season as there is nothing in the way of you playing a match on Berlin’s tennis courts! Various tournaments and championships also regularly attract tennis fans to the edge of the court.",
+        description: "Match ball in the capital Even in Berlin you can stand on court. Its outdoor tennis courts are ideal for a summer match, and even in the colder months of the year, tennis fans don’t have to keep their rackets still. Berlin offers a range of options for playing tennis, with all of its different clubs, facilities and indoor courts. So you can pursue your sport regardless of the season as there is nothing in the way of you playing a match on Berlin’s tennis courts! Various tournaments and championships also regularly attract tennis fans to the edge of the court.",
         address: "Paradestraße 28-32, 12101 Berlin",
         longitude: 52.4782131,
         latitude: 13.384269
@@ -101,12 +77,7 @@ So you can pursue your sport regardless of the season as there is nothing in the
       'volleyball': {
         tag_images: ['volleyball1.jpg','volleyball2.jpg','volleyball3.jpg'],
         title: "Beach Mitte",
-        description: "On the right a coctail bar, on the left chilly sunbathing areas, in front a long desert with over 50 beach volleyball courts and in the back the TV tower can be seen. Beach Mitte has the most beach volleyball courts in Berlin and is accordingly a hotspot for every volleyball player. You can already feel that when you walk into the facility. Here you will meet all kinds of players, from a beginner to a professional who has played world tour several times.
-
-In Beach Mitte you can also play in the evening when it gets dark. For this purpose there are floodlights all over the facility.
-
-Beach Mitte is known for its beautiful beach bar and a climbing park. The beach bar can also be used by players in the summer, for example to have a cool drink after an intense sports session. The beach bar has over 400 seats.
-",
+        description: "On the right a coctail bar, on the left chilly sunbathing areas, in front a long desert with over 50 beach volleyball courts and in the back the TV tower can be seen. Beach Mitte has the most beach volleyball courts in Berlin and is accordingly a hotspot for every volleyball player. You can already feel that when you walk into the facility. Here you will meet all kinds of players, from a beginner to a professional who has played world tour several times. In Beach Mitte you can also play in the evening when it gets dark. For this purpose there are floodlights all over the facility. Beach Mitte is known for its beautiful beach bar and a climbing park. The beach bar can also be used by players in the summer, for example to have a cool drink after an intense sports session. The beach bar has over 400 seats.",
         address: "Caroline-Michaelis-Straße 8, 10115 Berlin",
         longitude: 52.5342628,
         latitude: 13.3838729
@@ -115,11 +86,9 @@ Beach Mitte is known for its beautiful beach bar and a climbing park. The beach 
 
 
 
-    Tag.all.each do |tag|
+    tags.each do |key, value|
+        tag = Tag.find_by_name(key.to_sym)
         puts "Seed offer for #{tag.name}"
-
-        address_hash = Faker::Address.full_address_as_hash(:longitude, :latitude, :full_address)
-        seed_title = [ Faker::Esport.event, Faker::Sports::Football.competition].sample
 
         seed_offer = Offer.new(
           title: tags[tag.name.to_sym][:title],
