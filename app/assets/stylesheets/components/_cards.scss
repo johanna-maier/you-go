@@ -21,19 +21,18 @@
 
   .card-favourites-inactive {
     position: absolute;
-    width: 20px;
-    height: 18px;
-    right: 10px;
-    top: 10px;
+    right: 15px;
+    top: 15px;
     color: $light-gray;
+    font-size: 24px;
   }
   .card-favourites-active {
     position: absolute;
-    width: 20px;
-    height: 18px;
-    right: 10px;
-    top: 10px;
+    right: 15px;
+    top: 15px;
     color: orangered; // TODO change this
+    font-size: 24px;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.7);
   }
 
   // .far {

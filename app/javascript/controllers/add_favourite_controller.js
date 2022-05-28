@@ -7,7 +7,6 @@ export default class extends Controller {
 
   connect() {
     // console.log('add-favourite-controller connected!');
-    // console.log (this.heartTarget);
   }
 
   addHeart(event) {
@@ -22,7 +21,7 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if(data.success == 'true') {
           // 'like' successfully added, show active (red) heart icon
           this.heartTarget.outerHTML = data.icon
@@ -42,7 +41,7 @@ export default class extends Controller {
     })
       .then(response => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if(data.success == 'true') {
           // 'like' successfully removed, show inactive (grey) heart icon
           this.heartTarget.outerHTML = data.icon
