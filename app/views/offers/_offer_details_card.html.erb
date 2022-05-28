@@ -14,6 +14,12 @@
   <% end %>
   <% if @offer.is_external %>
     <%= link_to 'Go to Meetup', @offer.url, class: 'btn btn-slim', target: '_blank' %>
+  <% else %>
+    <%= link_to 'Book now', "#", class: 'btn btn-slim', "data-bs-toggle" => "modal", "data-bs-target" => "#exampleModal"%>
   <% end %>
+
+<!-- Partial for Bootstrap modal with Booking Form -->
+<%= render 'shared/booking_popup', offer: @offer, booking: @booking  %>
+
 
 </div>

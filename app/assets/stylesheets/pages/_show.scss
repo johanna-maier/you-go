@@ -86,3 +86,38 @@
     font-size: 18px;
   }
 }
+
+.modal-content {
+  border-radius: 24px;
+
+  .modal-title {
+    color: $primary;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  #booking-form {
+    padding: 12px 48px 48px 48px;
+
+    #offer-info {
+      margin-bottom: 36px;
+    }
+
+    .form-label {
+      color: $primary;
+      display: flex;
+      font-size: 12px;
+      font-weight: bolder;
+      justify-content: space-between;
+      line-height: 12px;
+      padding: 8px 0px 8px 0px;
+      text-transform: uppercase;
+    }
+  }
+
+  #btn-booking {
+    color: white;
+    margin-top: 32px;
+    text-align: center;
+  }
+}

@@ -1,11 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_offer
 
-  def new
-    @booking = Booking.new
-    authorize @booking
-  end
-
   def create
     @booking = Booking.new(booking_params)
     @booking.offer = @offer
@@ -24,7 +19,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:participants, :message)
+    params.require(:booking).permit(:number_of_participants, :message)
   end
 
   def set_offer
