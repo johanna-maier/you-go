@@ -5,6 +5,13 @@
 .sidebar {
   color: $white;
   background-color: $primary;
+  display: flex;
+  justify-content: center;
+  img {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  font-weight: lighter;
 }
 
 .card-profile{
@@ -27,5 +34,33 @@
   h2{
     color: $primary;
   }
-  margin: 0px 15px;
+  margin: 0px 25px;
+  label {
+    font-size:x-small;
+  }
+  input{
+    border-radius: 8px;
+  }
+}
+
+.card-sport-category{
+  border: 1px solid $inactive-gray;
+  border-radius: 8px;
+  width: 136px;
+  height: 110px;
+  color: $primary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  i{
+    font-size: 40px;
+  }
+}
+
+#your-sport{
+  p{
+    line-height: 2;
+  }
 }
