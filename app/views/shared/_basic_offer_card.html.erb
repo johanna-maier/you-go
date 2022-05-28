@@ -1,6 +1,12 @@
 <%= link_to offer_path(offer), class: "text-decoration-none" do %>
-  <div class="card-container">
-    <i class="far fa-heart"></i>
+  <div class="card-container" data-controller="add-favourite">
+    <%# <i class="far fa-heart"></i> %>
+    <% like = user_signed_in? ? current_user.likes.find_by(offer: offer.id) : nil %>
+    <% if like %>
+      <%= render 'likes/red_icon', offer: offer, like: like %>
+    <% else %>
+      <%=  render 'likes/grey_icon', offer: offer %>
+    <% end %>
 
     <div class="card-head">
       <%# display 1st Image %>

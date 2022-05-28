@@ -9,13 +9,16 @@
 require "faker"
 
 puts ""
-puts 'Deleting current reviews, bookings, favourites, users, tags & Ahoy events/visits'
+puts 'Deleting current reviews, bookings, users, tags & Ahoy events/visits'
 puts ""
 
 Review.destroy_all
 Booking.destroy_all
-Favourite.destroy_all
+
 # Offer.destroy_all # on-hold to avoid long reseeding
+# Favourite.destroy_all
+Like.destroy_all
+Offer.destroy_all
 Tag.destroy_all
 Ahoy::Event.destroy_all
 Ahoy::Visit.destroy_all
