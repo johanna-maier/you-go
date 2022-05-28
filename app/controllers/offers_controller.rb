@@ -29,8 +29,11 @@ class OffersController < ApplicationController
     @review = Review.new # need this for the review form on same page
     authorize @offer
     @user = current_user
-    # Add tracking for viewing an offers showpage
-    # ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
+
+    # Add tracking for viewing an offers showpage only if user is logged in
+    if current_user
+      ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
+    end
   end
 
   private

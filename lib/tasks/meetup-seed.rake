@@ -3,22 +3,50 @@ require 'open-uri'
 require 'date'
 require 'time'
 
+coordinates = {
+  "Berlin": {
+    latitude: 52.520008,
+    longitude: 13.404954
+  },
+  "Munich": {
+    latitude: 48.135124,
+    longitude: 11.581981
+  },
+  "Hamburg": {
+    latitude: 53.551086,
+    longitude: 9.993682
+  },
+  "Cologne": {
+    latitude: 50.937531,
+    longitude: 6.960279
+  },
+  "Stuttgart": {
+    latitude: 48.775845,
+    longitude: 9.182932
+  }
+}
+
 namespace :offerSeeds do
   desc "Seeding current events from Event Collector API"
-  task meetup: :environment do
+  task :meetup, [:city, :radius] => :environment do |task, args|
 
     # starting seed API logic
-    puts 'start of API seed'
+    puts "start of API seed for city #{args.city} and radius #{args.radius}"
     puts ""
+    # Geocoder caused 500 Internal Server Errors
+    # latitude = Geocoder.search(args.city)[0].data["lat"]
+    # longitude = Geocoder.search(args.city)[0].data["lon"]
+    city = args.city
+    radius = args.radius
 
     # Array to catch all the tags that were unsuccessfully seeded.
     error_array = []
 
     Tag.all.each do |tag|
+      event_api_url = "https://event-collector-api.herokuapp.com/meetupql?activity=#{tag.name}&lat=#{coordinates[city.to_sym][:latitude]}&lon=#{coordinates[city.to_sym][:longitude]}&radius=#{radius}"
+
       puts ""
       puts "Accessing Event Collector API for tag #{tag.name}"
-      # Lat & long = center of Germany and 500km radius around.
-      event_api_url = "https://event-collector-api.herokuapp.com/meetupql?activity=#{tag.name}&lat=51.165691&lon=10.451526&radius=500"
 
       # If response is too large, seed skips to next tag and logs unsuccessful tag in error array.
       begin
@@ -44,7 +72,16 @@ namespace :offerSeeds do
 
       sleep(3)
 
+      created_count = 0
+
       data["Data"].first(20).each do |data_entry|
+        url = data_entry["eventUrl"]
+
+        if Offer.find_by_url(url).nil? == false
+          puts "Offer already in database, skipping to next offer."
+          next
+        end
+
         title = data_entry["title"]
 
         if data_entry["description"].blank?
@@ -79,10 +116,7 @@ namespace :offerSeeds do
         date = date_time.strftime("%d/%m/%Y")
         time = date_time.strftime("%H:%M")
 
-        url = data_entry["eventUrl"]
-
         external_image_url = data_entry["imageUrl"]
-        puts external_image_url
 
         seed_offer = Offer.new(
           title: title,
@@ -100,7 +134,6 @@ namespace :offerSeeds do
         )
         puts "New offer created"
 
-
         seed_offer.tag = tag
         puts "Offer associated with tag"
         # adding 3 images per offer
@@ -112,16 +145,11 @@ namespace :offerSeeds do
         p seed_offer
         puts "____"
         puts ""
-
+        created_count += 1
       end
 
       puts ""
-      if data["Info"]["EventCount"] > 20
-        puts "Limit of 20 offers was created."
-      else
-        puts "#{data["Info"]["EventCount"]} offers were created for #{tag.name}"
-      end
-
+      puts "#{created_count} offers were created for #{tag.name}"
     end
     # end of seed API logic
 
