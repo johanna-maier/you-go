@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   has_many :offers, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :favourites, dependent: :destroy
+  # has_many :favourites, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_one_attached :avatar_photo
 
   CATEGORY = ['male', 'female'].freeze

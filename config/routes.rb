@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :offers, only: %i[index show] do
     resources :reviews, only: [:create]
     resources :bookings, only: %i[new create]
+    resources :likes, only: [:create, :destroy]
   end
 
   resources :bookings, only: [:destroy]

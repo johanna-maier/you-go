@@ -5,7 +5,8 @@ class ApplicationPolicy
 
   def initialize(user, record)
     @user = user
-    @offer = record
+    # @offer = record // should be @record
+    @record = record
   end
 
   def index?
