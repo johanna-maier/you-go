@@ -21,15 +21,11 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Explore by category</h2>
-    <div class="col-12 col-lg-5 col-xl-4 mt-3 ">
-      <%= render 'shared/category_card' %>
+  <% @tags.first(3).each do |tag| %>
+  <div class="col-12 col-lg-5 col-xl-4 mt-3 ">
+      <%= render 'shared/category_card', tag: tag %>
     </div>
-    <div class="col-12 col-lg-5 col-xl-4 mt-3">
-      <%= render 'shared/category_card' %>
-    </div>
-    <div class="col-12 col-lg-5 col-xl-4 mt-3">
-      <%= render 'shared/category_card' %>
-    </div>
+  <% end %>
   </div>
 </div>
 

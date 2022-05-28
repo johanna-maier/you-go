@@ -140,43 +140,53 @@ puts ""
 tags = [
     {
       name: 'baseball',
-      category: 'ballsports'
+      category: 'ballsports',
+      img_file: 'ballsports_tag.jpg'
     },
     {
       name: 'basketball',
-      category: 'basket'
+      category: 'basket',
+      img_file: 'basket_tag.jpg'
     },
     {
       name: 'bouldering',
-      category: 'climbing'
+      category: 'climbing',
+      img_file: 'climbing_tag.jpg'
     },
     {
       name: 'kayaking',
-      category: 'watersports'
+      category: 'watersports',
+      img_file: 'watersports_tag.jpg'
     },
     {
       name: 'muay-thai',
-      category: 'combat sport'
+      category: 'combat sport',
+      img_file: 'combat_tag.jpg'
     },
     {
       name: 'soccer',
-      category: 'ballsports'
+      category: 'ballsports',
+      img_file: 'ballsports_tag.jpg'
     },
     {
       name: 'surfing',
-      category: 'watersports'
+      category: 'watersports',
+      img_file: 'watersports_tag.jpg'
     },
     {
       name: 'swimming',
-      category: 'watersports'
+      category: 'watersports',
+      img_file: 'watersports_tag.jpg'
     },
     {
       name: 'tennis',
-      category: 'ballsports'
+      category: 'ballsports',
+      img_file: 'ballsports_tag.jpg'
     },
     {
       name: 'volleyball',
-      category: 'ballsports'
+      category: 'ballsports',
+      img_file: 'ballsports_tag.jpg'
     }
 ]
 
@@ -186,7 +196,7 @@ tags.each_with_index do |tag, index|
     name: tag[:name],
     category: tag[:category]
   )
-
+  seed_tag.photo.attach(io: File.open("db/seed_photos/#{tag[:img_file]}"), filename: tag[:img_file], content_type: 'image/jpg')
   seed_tag.save!
 end
 
