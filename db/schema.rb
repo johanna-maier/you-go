@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_28_102243) do
+ActiveRecord::Schema.define(version: 2022_05_28_110424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,13 +152,14 @@ ActiveRecord::Schema.define(version: 2022_05_28_102243) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "favourites", force: :cascade do |t|
-    t.bigint "offer_id", null: false
+  create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "offer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["offer_id"], name: "index_favourites_on_offer_id"
-    t.index ["user_id"], name: "index_favourites_on_user_id"
+    t.index ["offer_id"], name: "index_likes_on_offer_id"
+    t.index ["user_id", "offer_id"], name: "index_likes_on_user_id_and_offer_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -216,6 +217,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_102243) do
     t.date "date_of_birth"
     t.string "gender"
     t.string "location"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -224,8 +227,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_102243) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "offers"
   add_foreign_key "bookings", "users"
-  add_foreign_key "favourites", "offers"
-  add_foreign_key "favourites", "users"
+  add_foreign_key "likes", "offers"
+  add_foreign_key "likes", "users"
   add_foreign_key "offers", "tags"
   add_foreign_key "offers", "users"
   add_foreign_key "reviews", "offers"

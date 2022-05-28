@@ -15,7 +15,7 @@ puts ""
 Review.destroy_all
 Booking.destroy_all
 Favourite.destroy_all
-Offer.destroy_all
+# Offer.destroy_all
 Tag.destroy_all
 Ahoy::Event.destroy_all
 Ahoy::Visit.destroy_all
