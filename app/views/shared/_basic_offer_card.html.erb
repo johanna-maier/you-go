@@ -19,12 +19,12 @@
 
     <div class="card-body ">
         <div class="card-body-top">
-          <div class="card-body-heading"><%= offer.title %></div>
+          <div class="card-body-heading"><%= offer.title.gsub(/(\.|!).*/, '').truncate(40) %></div>
           <div class="card-rating">5</div>
         </div>
         <div class="card-body-bottom">
           <div>Location</div>
-          <div><%= sprintf('%.0f', offer.price_per_person) %>€/person</div>
+          <div><strong><%= sprintf('%.0f', offer.price_per_person)%></strong><small>€/person</small></div>
         </div>
     </div>
   </div>
