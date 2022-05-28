@@ -264,7 +264,7 @@ tags = [
               name: 'dancing',
               category: 'dancing',
               icon: '<i class="fas fa-music"></i>',
-              img_file: 'hiking_tag.jpg'
+              img_file: 'dancing_tag.jpg'
           },
           {
               name: 'hiking',
