@@ -1,0 +1,31 @@
+.dashboard{
+  height: 100vh;
+}
+
+.sidebar {
+  color: $white;
+  background-color: $primary;
+}
+
+.card-profile{
+  border: 1px solid $blue;
+  border-radius: 8px;
+  padding: 15px 25px;
+  h2, i{
+    color: $primary;
+  }
+  p {
+    color: rgba(20,20,20,0.8);
+  }
+  margin: 0px 15px;
+}
+
+.card-profile-details{
+  border: 1px solid $blue;
+  border-radius: 8px;
+  padding: 15px 25px;
+  h2{
+    color: $primary;
+  }
+  margin: 0px 15px;
+}
