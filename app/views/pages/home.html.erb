@@ -23,7 +23,7 @@
   <h2>Explore by category</h2>
 
   <% Tag.all.sample(4).each do |tag| %>
-  <div class="col-12 col-lg-5 col-xl-3 mt-3 ">
+    <div class="col-3 col-lg-3 col-xl-3 mt-3 ">
       <%= render 'shared/category_card', tag: tag %>
     </div>
   <% end %>

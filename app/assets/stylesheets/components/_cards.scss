@@ -59,11 +59,14 @@
       position: relative;
       .card-body-heading {
         color: black;
-        display: flex;
+        display: block;
         font-size: 16px;
         justify-content: space-between;
         line-height: 16px;
         padding: 8px 0px 8px 0px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .card-rating {
@@ -87,7 +90,7 @@
       display: flex;
       font-size: 14px;
       height: 35px;
-      color:rgba(0, 0, 0, 0.7);
+      color: rgba(0, 0, 0, 0.7);
 
       justify-content: space-between;
     }
@@ -99,7 +102,6 @@
 .category-card {
   overflow: hidden;
   height: 87px;
-  width: 300px;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;

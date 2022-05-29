@@ -6,16 +6,23 @@ class OffersController < ApplicationController
   # after_validation :geocode # if longitude and latitude are NOT present
 
   def index
-    if params[:query].present?
-      @offers = policy_scope(Offer).global_search(params[:query])
-      # Add .near(params[:city], km) once Geocoder is read for city-specific search
-      # Check if we can use long or latitute
+    if params[:query].present? && params[:city].present? == false
+      @offers = policy_scope(Offer).global_search(params[:query]).reorder("offers.offer_date ASC")
+    elsif params[:query].present? == false && params[:city].present?
+      @offers = policy_scope(Offer).near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC")
+    elsif params[:query].present? && params[:city].present?
+      near = policy_scope(Offer).near(params[:city], 80, min_radius: 10)
+      search = policy_scope(Offer).global_search(params[:query])
+      # Open question: How to combine PG search and geocoder? Until then give back all results
+      @offers = policy_scope(Offer).reorder("offers.offer_date ASC")
+
     else
-      @offers = policy_scope(Offer)
+      @offers = policy_scope(Offer).reorder("offers.offer_date ASC")
     end
 
+    @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
     # Markers for Map on Index page
-    @markers = @offers.map do |offer|
+    @markers = @offers_with_coordinates.map do |offer|
       {
         lat: offer.latitude,
         lng: offer.longitude,
