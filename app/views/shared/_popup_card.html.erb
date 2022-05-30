@@ -9,9 +9,14 @@
       <h2><%= offer.title.truncate(17, separator: ' ', ommission: ' ') %></h2>
       <div class="d-flex justify-content-between">
         <% unless offer.capacity.nil? %>
-        <p><b><%= offer.capacity %> people</b></p>
+         <p><b><%= offer.capacity %> people</b></p>
         <% end %>
-        <p><b><%= sprintf('%.0f', offer.price_per_person) %> €/person </b></p>
+        <% if offer.price_per_person.zero? %>
+          <p><b>free</b></p>
+        <% else %>
+         <p><b><%= sprintf('%.0f', offer.price_per_person) %> €/person </b></p>
+        <% end %>
+
       </div>
     </div>
   </div>
