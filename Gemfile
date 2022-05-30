@@ -87,3 +87,7 @@ gem 'pg_search', '~> 2.3.0'
 
 # Open URI to connect to event collector API
 gem 'open-uri'
+
+# Redcarper parses Meetup markdown to HTML
+# https://web-crunch.com/posts/how-to-add-markdown-support-to-ruby-on-rails
+gem "redcarpet"
