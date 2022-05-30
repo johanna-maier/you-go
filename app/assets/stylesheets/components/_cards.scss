@@ -58,19 +58,17 @@
     .card-body-top {
       position: relative;
       .card-body-heading {
-        color: $primary;
+        color: black;
         display: flex;
-        font-size: 12px;
-        font-weight: bolder;
+        font-size: 16px;
         justify-content: space-between;
-        line-height: 12px;
+        line-height: 16px;
         padding: 8px 0px 8px 0px;
-        text-transform: uppercase;
       }
 
       .card-rating {
-        background: white;
-        border: 0.5px solid $blue;
+        background: $white;
+        border: 2px solid $yellow-star;
         border-radius: 50%;
         font-size: 14px;
         font-weight: bolder;
@@ -80,6 +78,7 @@
         text-align: center;
         top: -32px;
         width: 24px;
+        color: rgba(0, 0, 0, 0.7);
       }
     }
 
@@ -88,6 +87,7 @@
       display: flex;
       font-size: 14px;
       height: 35px;
+      color:rgba(0, 0, 0, 0.7);
 
       justify-content: space-between;
     }
@@ -116,6 +116,7 @@
 .category-card h2 {
   font-size: 16px;
   margin: 0;
+  color: black;
 }
 
 .category-card .category-card-infos {

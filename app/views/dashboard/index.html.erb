@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row dashboard">
+    <div class="col-2 sidebar">
+      <div>
+        <% if current_user.avatar_photo.attached? %>
+          <%= cl_image_tag current_user.avatar_photo.key, class: "avatar-xl"  %>
+        <% else %>
+          <%= image_tag "avatar_4.png", class: "avatar-xl" %>
+        <% end %>
+        <p><i class="fas fa-desktop"></i> Dashboard</p>
+        <hr>
+        <p><i class="fas fa-user"></i> User profile</p>
+        <p><i class="fas fa-envelope"></i> Conversations</p>
+        <p><i class="fas fa-list"></i> Bookings</p>
+        <p><i class="fas fa-heart"></i> Wishlist</p>
+      </div>
+    </div>
+    <div class="col-10">
+
+      <div id="page-profile">
+        <div class="row">
+          <div class="col-4 card-profile mt-5">
+            <h2>Profile</h2>
+            <i class="far fa-edit"></i>
+            <p><i class="fas fa-user"></i><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+            <p><i class="fas fa-map-marker-alt"></i> <%= current_user.location %> </p>
+            <p><i class="fas fa-birthday-cake"></i> <%= current_user.date_of_birth %> </p>
+            <p><i class="fas fa-venus-mars"></i> <%= current_user.gender %> </p>
+
+            <h2>Your Sports</h2>
+            <span class='offer-tag'>Kayaking</span>
+            <span class='offer-tag'>Hiking</span>
+            <span class='offer-tag'>Volleyball</span>
+            <span class='offer-tag'>Football</span>
+            <span class='offer-tag'>Bouldering</span>
+            <span class='offer-tag'>Snowboard</span>
+
+          </div>
+
+          <div class="col-6 card-profile-details mt-5">
+            <h2>Profile Details</h2>
+            <!--
+            <%= simple_form_for(current_user) do |f| %>
+              <%= f.input :first_name, label: 'FIRST NAME'%>
+              <%= f.input :last_name, label: 'LAST NAME'%>
+              <%= f.input :gender, label: 'GENDER'%>
+              <%= f.input :location, label: 'CITY'%>
+              <%= f.input :date_of_birth, label: 'DATE OF BIRTH'%>
+              <%= f.submit "Save changes", class: 'btn btn-slim'%>
+            <% end%>
+            -->
+            <h2>Choose you favorite sports here</h2>
+            <!-- TODO cards -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
