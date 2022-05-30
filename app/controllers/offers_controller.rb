@@ -23,17 +23,23 @@ class OffersController < ApplicationController
         image_url: helpers.asset_url("map_marker.png")
       }
     end
+
   end
 
   def show
     @review = Review.new # need this for the review form on same page
+    @booking = Booking.new
     authorize @offer
     @user = current_user
 
     # Add tracking for viewing an offers showpage only if user is logged in
     if current_user
       ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
+
     end
+
+
+
   end
 
   private

@@ -63,8 +63,8 @@ namespace :offerSeeds do
         title: "Wellenwerk Berlin",
         description: "Welcome to Germany’s first Deus Temple “The Fountain of Eternal Effervescence”. Behind the large panoramic windows facing the wave area, every cocktail at the Deus Fountain Bar is a special treat. In the Deus Restaurant, you can enjoy innovative cuisine with regional and seasonal products. Germany’s first Deus Ex Machina shop also lives inside our Deus Temple. From boardshorts, wetsuits to jackets and t-shirts, here you will find everything you need for a casual look in everyday life or on the water whilst surfing. You can find more information about our restaurant concept, the surf shop & the surfboard repair shop here.",
         address: "Landsberger Allee 270, 10367 Berlin",
-        longitude: 52.5334217,
-        latitude: 13.48107
+        longitude: 52.534000,
+        latitude: 13.494720
       },
       'tennis': {
         tag_images: ['tennis1.jpg','tennis2.jpg','tennis3.jpg'],

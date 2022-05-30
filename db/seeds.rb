@@ -18,7 +18,6 @@ Booking.destroy_all
 # Offer.destroy_all # on-hold to avoid long reseeding
 # Favourite.destroy_all
 Like.destroy_all
-Offer.destroy_all
 Tag.destroy_all
 Ahoy::Event.destroy_all
 Ahoy::Visit.destroy_all
@@ -289,12 +288,6 @@ tags = [
               category: 'racket sports',
               icon: '<i class="fas fa-racquet"></i>',
               img_file: 'racket_tag.jpg'
-          },
-          {
-              name: 'running',
-              category: 'running',
-              icon: '<i class="fas fa-running"></i>',
-              img_file: 'running_tag.jpg'
           },
           {
               name: 'running',
