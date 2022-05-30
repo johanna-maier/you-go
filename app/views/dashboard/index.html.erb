@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row dashboard">
+  <div class="row dashboard" data-controller="tabs">
     <div class="col-2 sidebar">
-      <div>
+      <div id="sidebar-tabs">
         <% if current_user.avatar_photo.attached? %>
           <%= cl_image_tag current_user.avatar_photo.key, class: "avatar-xl"  %>
         <% else %>
@@ -9,70 +9,26 @@
         <% end %>
         <p><i class="fas fa-desktop"></i> Dashboard</p>
         <hr>
-        <p><i class="fas fa-user"></i> User profile</p>
-        <p><i class="fas fa-envelope"></i> Conversations</p>
-        <p><i class="fas fa-list"></i> Bookings</p>
-        <p><i class="fas fa-heart"></i> Wishlist</p>
+        <p data-action="click->tabs#showProfile"><i class="fas fa-user"></i> Your profile</p>
+        <p data-action="click->tabs#showConversations"><i class="fas fa-envelope"></i> Conversations</p>
+        <p data-action="click->tabs#showBookings"><i class="fas fa-list"></i> Bookings</p>
+        <p data-action="click->tabs#showWishlist"><i class="fas fa-heart"></i> Wishlist</p>
       </div>
     </div>
     <div class="col-10">
-      <!-- Profile page -->
-      <div id="page-profile" data-controller="edit-profile">
-        <div class="row">
-          <div class="col-4 card-profile mt-5">
-            <div class="d-flex justify-content-between align-items-center">
-              <h2>Profile</h2>
-              <i class="far fa-edit" data-action="click->edit-profile#show"></i>
-            </div>
-            <p><i class="fas fa-user"></i> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
-            <p><i class="fas fa-map-marker-alt"></i> <%= current_user.location %> </p>
-            <p><i class="fas fa-birthday-cake"></i> <%= current_user.date_of_birth %> </p>
-            <p><i class="fas fa-venus-mars"></i> <%= current_user.gender %> </p>
-
-            <div id="your-sport" class="mt-5">
-              <h2>Your Sports</h2>
-              <p>
-                <span class='offer-tag'>Kayaking</span>
-                <span class='offer-tag'>Hiking</span>
-                <span class='offer-tag'>Volleyball</span>
-                <span class='offer-tag'>Football</span>
-                <span class='offer-tag'>Bouldering</span>
-                <span class='offer-tag'>Snowboard</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="col-7 card-profile-details mt-5 d-none" data-edit-profile-target="form">
-            <h2>Profile Details</h2>
-            <%# profile form %>
-            <%= simple_form_for(@user) do |f| %>
-              <div class="d-flex">
-                <%= f.input :first_name, label: 'FIRST NAME'%>
-                <%= f.input :last_name, label: 'LAST NAME'%>
-              </div>
-              <div class="d-flex">
-                <%= f.input :gender, label: 'GENDER'%>
-                <%= f.input :location, label: 'CITY'%>
-                <%= f.input :date_of_birth, label: 'DATE OF BIRTH', html5: true%>
-              </div>
-
-            <h2>Choose you favorite sports here</h2>
-            <!-- TODO cards -->
-            <div class="row">
-              <% Tag.all.each do |tag| %>
-                <div class="card-sport-category">
-                  <%# <%= tag.icon %>
-                  <i class="fas fa-volleyball-ball"></i>
-                  <span><%= tag.name %></span>
-                </div>
-              <% end %>
-            </div>
-            <%= f.submit "Save changes", class: 'btn btn-slim'%>
-            <% end%>
-          </div>
-        </div>
+      <div data-tabs-target="profile">
+        <%= render 'profile' %>
       </div>
-
+      <div class="d-none" data-tabs-target="booking">
+        <%= render 'bookings' %>
+      </div>
+      <div class="d-none" data-tabs-target="wishlist">
+        <%= render 'wishlist' %>
+      </div>
+      <div class="d-none" data-tabs-target="conversations">
+        <%= render 'conversations' %>
+      </div>
     </div>
+
   </div>
 </div>

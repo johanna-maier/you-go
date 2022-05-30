@@ -174,7 +174,7 @@ end
 puts ""
 puts 'Creating 36 new tags'
 puts ""
-
+# TODO Change icons - include free icons only
 tags = [
           {
               name: 'ballsports',
@@ -185,13 +185,13 @@ tags = [
           {
               name: 'baseball',
               category: 'ballsports',
-              icon: '<i class="fas fa-baseball"></i>',
+              icon: '<i class="fas fa-baseball-ball"></i>',
               img_file: 'ballsports_tag.jpg'
           },
           {
               name: 'basketball',
               category: 'ballsports',
-              icon: '<i class="fas fa-basketball-hoop"></i>',
+              icon: '<i class="fas fa-basketball-ball"></i>',
               img_file: 'ballsports_tag.jpg'
           },
           {
@@ -264,7 +264,7 @@ tags = [
               name: 'dancing',
               category: 'dancing',
               icon: '<i class="fas fa-music"></i>',
-              img_file: 'dancing_tag.jpg'
+              img_file: 'hiking_tag.jpg'
           },
           {
               name: 'hiking',

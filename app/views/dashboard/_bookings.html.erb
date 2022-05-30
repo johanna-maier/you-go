@@ -1,0 +1,6 @@
+<h2>Your Bookings</h2>
+<% @bookings.each do |booking| %>
+<li><%= booking.offer.title%> | €<%= booking.offer.price_per_person %> |
+ at <small><%= booking.offer.address %></small></li>
+<hr>
+<% end %>
