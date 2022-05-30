@@ -65,6 +65,7 @@ namespace :offerSeeds do
         address: "Landsberger Allee 270, 10367 Berlin",
         latitude: 52.5334217,
         longitude: 13.48107
+
       },
       'tennis': {
         tag_images: ['tennis1.jpg','tennis2.jpg','tennis3.jpg'],
