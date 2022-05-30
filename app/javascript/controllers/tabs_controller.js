@@ -11,6 +11,7 @@ export default class extends Controller {
     // console.log(event);
   }
 
+  // TODO refactor
   showWishlist() {
       this.wishlistTarget.classList.remove('d-none')
       this.profileTarget.classList.add('d-none')
