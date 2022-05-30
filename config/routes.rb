@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :bookings, only: [:destroy]
 
   resources :dashboard, only: [:index] do
-    resources :user, only: [:update] # edit
+    # resources :user, only: [:update] # edit
   end
+
+  patch 'user', to: 'dashboard#update'
 end
