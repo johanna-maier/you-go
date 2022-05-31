@@ -118,10 +118,20 @@
   margin: 0;
 }
 
+.category-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
 .category-card .category-card-infos {
   padding: 16px;
 }
 
+
+// The big card with video on the homepage
 .card-category {
   background-size: cover;
   background-position: center;

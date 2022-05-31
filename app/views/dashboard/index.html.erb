@@ -39,22 +39,29 @@
 
           <div class="col-6 card-profile-details mt-5">
             <h2>Profile Details</h2>
-            <!--
-            <%= simple_form_for(current_user) do |f| %>
-              <%= f.input :first_name, label: 'FIRST NAME'%>
-              <%= f.input :last_name, label: 'LAST NAME'%>
-              <%= f.input :gender, label: 'GENDER'%>
-              <%= f.input :location, label: 'CITY'%>
-              <%= f.input :date_of_birth, label: 'DATE OF BIRTH'%>
-              <%= f.submit "Save changes", class: 'btn btn-slim'%>
-            <% end%>
-            -->
             <h2>Choose you favorite sports here</h2>
             <!-- TODO cards -->
           </div>
         </div>
       </div>
 
+
+      <!-- Wishlist -->
+    <%# <div class="col-10"> %>
+      <div id="wishlist">
+        <div class="row">
+          <div class="col-4 list-wishlist mt-5">
+            <h2>Your wishlist</h2>
+              <% if current_user.likes.count.positive? %>
+                 <% current_user.likes.each do |like| %>
+              <%= render 'shared/wishlist_card', offer: offer, like: like %>
+            <% end %>
+          <% else %>
+            <p><em> There is nothing in your wishlist yet. </em></p>
+          <% end %>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

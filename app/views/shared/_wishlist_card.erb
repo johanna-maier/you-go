@@ -1,0 +1,13 @@
+<%= link_to offer_path(offer), class: "text-decoration-none" do %>
+  <div class="category-card">
+     <% if offer.photos.attached? %>
+        <%= cl_image_tag offer.photos.first.key %>
+      <% else %>
+        <%= image_tag offer.external_image_url %>
+      <% end %>
+    <div class="category-card-infos">
+      <h2><%= offer.title %></h2>
+      <p><%= offer.tag.name.upcase %></p>
+    </div>
+  </div>
+<% end %>
