@@ -58,19 +58,20 @@
     .card-body-top {
       position: relative;
       .card-body-heading {
-        color: $primary;
-        display: flex;
-        font-size: 12px;
-        font-weight: bolder;
+        color: black;
+        display: block;
+        font-size: 16px;
         justify-content: space-between;
-        line-height: 12px;
+        line-height: 16px;
         padding: 8px 0px 8px 0px;
-        text-transform: uppercase;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .card-rating {
-        background: white;
-        border: 0.5px solid $blue;
+        background: $white;
+        border: 2px solid $yellow-star;
         border-radius: 50%;
         font-size: 14px;
         font-weight: bolder;
@@ -80,6 +81,7 @@
         text-align: center;
         top: -32px;
         width: 24px;
+        color: rgba(0, 0, 0, 0.7);
       }
     }
 
@@ -88,6 +90,7 @@
       display: flex;
       font-size: 14px;
       height: 35px;
+      color: rgba(0, 0, 0, 0.7);
 
       justify-content: space-between;
     }
@@ -99,7 +102,6 @@
 .category-card {
   overflow: hidden;
   height: 87px;
-  width: 300px;
   background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -116,6 +118,7 @@
 .category-card h2 {
   font-size: 16px;
   margin: 0;
+  color: black;
 }
 
 .category-card p {

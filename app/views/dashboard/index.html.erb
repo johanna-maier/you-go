@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row dashboard">
+  <div class="row dashboard" data-controller="tabs">
     <div class="col-2 sidebar">
-      <div>
+      <div id="sidebar-tabs">
         <% if current_user.avatar_photo.attached? %>
           <%= cl_image_tag current_user.avatar_photo.key, class: "avatar-xl"  %>
         <% else %>
@@ -9,59 +9,27 @@
         <% end %>
         <p><i class="fas fa-desktop"></i> Dashboard</p>
         <hr>
-        <p><i class="fas fa-user"></i> User profile</p>
-        <p><i class="fas fa-envelope"></i> Conversations</p>
-        <p><i class="fas fa-list"></i> Bookings</p>
-        <p><i class="fas fa-heart"></i> Wishlist</p>
+        <p data-action="click->tabs#showProfile"><i class="fas fa-user"></i> Your profile</p>
+        <p data-action="click->tabs#showConversations"><i class="fas fa-envelope"></i> Conversations</p>
+        <p data-action="click->tabs#showBookings"><i class="fas fa-list"></i> Bookings</p>
+        <p data-action="click->tabs#showWishlist"><i class="fas fa-heart"></i> Wishlist</p>
       </div>
     </div>
     <div class="col-10">
 
-      <div id="page-profile">
-        <div class="row">
-          <div class="col-4 card-profile mt-5">
-            <h2>Profile</h2>
-            <i class="far fa-edit"></i>
-            <p><i class="fas fa-user"></i><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
-            <p><i class="fas fa-map-marker-alt"></i> <%= current_user.location %> </p>
-            <p><i class="fas fa-birthday-cake"></i> <%= current_user.date_of_birth %> </p>
-            <p><i class="fas fa-venus-mars"></i> <%= current_user.gender %> </p>
-
-            <h2>Your Sports</h2>
-            <span class='offer-tag'>Kayaking</span>
-            <span class='offer-tag'>Hiking</span>
-            <span class='offer-tag'>Volleyball</span>
-            <span class='offer-tag'>Football</span>
-            <span class='offer-tag'>Bouldering</span>
-            <span class='offer-tag'>Snowboard</span>
-
-          </div>
-
-          <div class="col-6 card-profile-details mt-5">
-            <h2>Profile Details</h2>
-            <h2>Choose you favorite sports here</h2>
-            <!-- TODO cards -->
-          </div>
-        </div>
+      <div data-tabs-target="profile">
+        <%= render 'profile' %>
       </div>
-
-
-      <!-- Wishlist -->
-    <%# <div class="col-10"> %>
-      <div id="wishlist">
-        <div class="row">
-          <div class="col-4 list-wishlist mt-5">
-            <h2>Your wishlist</h2>
-              <% if current_user.likes.count.positive? %>
-                 <% current_user.likes.each do |like| %>
-              <%= render 'shared/wishlist_card', offer: offer, like: like %>
-            <% end %>
-          <% else %>
-            <p><em> There is nothing in your wishlist yet. </em></p>
-          <% end %>
-        </div>
-        </div>
+      <div class="d-none" data-tabs-target="booking">
+        <%= render 'bookings' %>
+      </div>
+      <div class="d-none" data-tabs-target="wishlist">
+        <%= render 'wishlist' %>
+      </div>
+      <div class="d-none" data-tabs-target="conversations">
+        <%= render 'conversations' %>
       </div>
     </div>
+
   </div>
 </div>

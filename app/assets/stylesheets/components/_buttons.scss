@@ -8,13 +8,13 @@
 }
 
 .btn-slim {
-  color: $primary;
-  border: 2px solid $primary;
-  background-color: transparent;
+  background-color: $secondary;
+  color: #ffffff;
 
   &:hover {
-    background-color: $primary;
-    color: #ffffff;
+  color: $secondary;
+  border: 2px solid $secondary;
+  background-color: transparent;
   }
 }
 

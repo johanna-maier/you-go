@@ -1,0 +1,46 @@
+
+<!-- Bootstrap Modal with Booking Form -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="booking-form">
+        <h2 class="modal-title" id="exampleModalLabel">Book this experience now</h2>
+        <% if user_signed_in? %>
+          <div id="offer-info">
+            <p><i class="fas fa-map-marker-alt"></i>&ensp;&nbsp;<%=  @offer.address %></p>
+            <p><i class="far fa-clock"></i>&ensp;<%= @offer.offer_date.strftime("%A, %d %B %Y") %> at <%= @offer.offer_time.strftime("%I:%M %P") %> </p>
+            <p><i class="fas fa-users"></i>&nbsp;Up to <%= @offer.capacity %> participants</p>
+            <% if @offer.price_per_person == 0 %>
+              <p><i class="fas fa-euro-sign"></i>&emsp;free </p>
+            <% else %>
+              <p><i class="fas fa-euro-sign"></i>&emsp;<%= @offer.price_per_person %> € per person</p>
+            <% end %>
+          </div>
+
+            <%= simple_form_for [offer, booking] do |f| %>
+              <%= f.error_notification %>
+              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+              <div class="form-inputs">
+                <%= f.input :number_of_participants, as: :integer, input_html: { min: '1', max: "#{@offer.capacity}", step: '1' },
+                    placeholder: 'How many participants are you?' %>
+                <%= f.input :message, as: :text, placeholder: 'Do you have a message for the organizer?' %>
+              </div>
+
+              <div class="form-actions" id="btn-booking">
+                <%= f.button :submit, "Book now", class: "btn btn-secondary" %>
+              </div>
+            <% end %>
+        <% else %>
+          <p>Please sign in to book.</p>
+        <% end %>
+      </div>
+      <%# <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div> %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<h2>Your Wishlist</h2>
+<% @likes.each do |like| %>
+<li><%= like.offer.title%> | €<%= like.offer.price_per_person %> | <%= like.offer.address %></li>
+<hr>
+<% end %>

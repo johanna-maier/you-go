@@ -6,16 +6,17 @@ class OffersController < ApplicationController
   # after_validation :geocode # if longitude and latitude are NOT present
 
   def index
-    if params[:query].present?
-      @offers = policy_scope(Offer).global_search(params[:query])
-      # Add .near(params[:city], km) once Geocoder is read for city-specific search
-      # Check if we can use long or latitute
+    @offers = policy_scope(Offer).reorder("offers.offer_date ASC")
+    if params[:city].present? & params[:query].present?
+      @offers = policy_scope(Offer).near(params[:city], 80, min_radius: 10).global_search(params[:query]).reorder("offers.offer_date ASC")
     else
-      @offers = policy_scope(Offer)
+      @offers = policy_scope(Offer).near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC") if params[:city].present?
+      @offers = policy_scope(Offer).global_search(params[:query]).reorder("offers.offer_date ASC") if params[:query].present?
     end
 
+    @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
     # Markers for Map on Index page
-    @markers = @offers.map do |offer|
+    @markers = @offers_with_coordinates.map do |offer|
       {
         lat: offer.latitude,
         lng: offer.longitude,
@@ -23,17 +24,23 @@ class OffersController < ApplicationController
         image_url: helpers.asset_url("map_marker.png")
       }
     end
+
   end
 
   def show
     @review = Review.new # need this for the review form on same page
+    @booking = Booking.new
     authorize @offer
     @user = current_user
 
     # Add tracking for viewing an offers showpage only if user is logged in
     if current_user
       ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
+
     end
+
+
+
   end
 
   private

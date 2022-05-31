@@ -10,10 +10,8 @@ class LikesController < ApplicationController
 
       respond_to do |format|
         if @like.save
-          # puts "record created!"
           format.json # Follow the classic Rails flow and look for a create.json view
         else
-          # puts "record creation failed!"
           format.json # Follow the classic Rails flow and look for a create.json view
         end
       end
@@ -28,10 +26,8 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like.destroy
-        # puts "record destroyed successfuly!"
         format.json # look for a destroy.json view
       else
-        # puts "record destroyed failed"
         format.json # look for a destroy.json view
       end
     end

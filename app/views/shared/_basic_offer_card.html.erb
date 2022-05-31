@@ -19,12 +19,22 @@
 
     <div class="card-body ">
         <div class="card-body-top">
-          <div class="card-body-heading"><%= offer.title %></div>
+          <div class="card-body-heading"><%= offer.title.gsub(/(\.|!).*/, '').truncate(40) %></div>
           <div class="card-rating">5</div>
         </div>
         <div class="card-body-bottom">
-          <div>Location</div>
-          <div><%= sprintf('%.0f', offer.price_per_person) %>€/person</div>
+          <%# Geocoder displaying city based on long lat - might be very slow? %>
+          <%#  <div><%= Geocoder.search("#{offer.latitude}, #{offer.longitude}").first.city %> <%# </div> %>
+          <%# Date included for now, also to test sorting by date. %>
+          <div><%= offer.offer_date.strftime("%a, %d.%m.%y") %></div>
+
+        <% if offer.price_per_person.zero? %>
+         <div><strong>free</strong></div>
+        <% else %>
+         <div><strong><%= sprintf('%.0f', offer.price_per_person)%></strong><small>€/person</small></div>
+        <% end %>
+
+
         </div>
     </div>
   </div>

@@ -100,8 +100,8 @@ namespace :offerSeeds do
 
         if data_entry["venue"].nil?
           address = "no address provided"
-          latitude = "no latitude"
-          longitude = "no longitude"
+          latitude = nil
+          longitude = nil
         elsif data_entry["venue"]["address"] == ""
           address = "no address provided"
           latitude = data_entry["venue"]["lat"]
