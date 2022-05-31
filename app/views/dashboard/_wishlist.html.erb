@@ -1,5 +1,25 @@
-<h2>Your Wishlist</h2>
-<% @likes.each do |like| %>
-<li><%= like.offer.title%> | €<%= like.offer.price_per_person %> | <%= like.offer.address %></li>
-<hr>
-<% end %>
+<div id="page-wishlist" data-controller="show-offer">
+  <div class="row">
+    <div class="col-4 card-profile mt-5">
+      <div class="d-flex flex-column" data-action="click->show-offer#show">
+         <h2>Your Wishlist</h2>
+         <% if @likes.present? %>
+           <% @likes.each do |like| %>
+             <%= render 'shared/wishlist_card', offer: @offer, like: like %>
+            <% end %>
+          <% else %>
+            <p><em> There is nothing in your wishlist yet. </em></p>
+          <% end %>
+        </div>
+    </div>
+
+    <div class="d-none col-7 card-profile mt-5" data-show-offer-target="details">
+      <div class="d-flex flex-column">
+          <h2>Details</h2>
+
+
+
+        </div>
+      </div>
+  </div>
+</div>

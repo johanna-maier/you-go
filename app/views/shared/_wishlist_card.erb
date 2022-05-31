@@ -1,13 +1,14 @@
-<%= link_to offer_path(offer), class: "text-decoration-none" do %>
+ <%# <%= link_to offer_path(like.offer), class: "text-decoration-none" do %>
   <div class="category-card">
-     <% if offer.photos.attached? %>
-        <%= cl_image_tag offer.photos.first.key %>
+     <% if like.offer.photos.attached? %>
+        <%= cl_image_tag like.offer.photos.first.key %>
       <% else %>
-        <%= image_tag offer.external_image_url %>
+        <%= image_tag like.offer.external_image_url %>
       <% end %>
     <div class="category-card-infos">
-      <h2><%= offer.title %></h2>
-      <p><%= offer.tag.name.upcase %></p>
-    </div>
+      <h2><%= like.offer.title.gsub(/(\.|!).*/, '').truncate(27) %></h2>
+      <p><strong><%= like.offer.price_per_person %></strong>€/person</p>
+      <p><%= like.offer.address.gsub(/(\.|!).*/, '').truncate(60) %></p>
   </div>
-<% end %>
+  </div>
+<%# <% end %>
