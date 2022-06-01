@@ -91,3 +91,8 @@ gem 'open-uri'
 # Redcarper parses Meetup markdown to HTML
 # https://web-crunch.com/posts/how-to-add-markdown-support-to-ruby-on-rails
 gem "redcarpet"
+
+# Tranlation GEM to save descriptions in English for data team
+gem 'google-translate'
+
+gem "google-cloud-translate", "~> 3.2"

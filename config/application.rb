@@ -1,4 +1,5 @@
 require_relative "boot"
+require "google/cloud/translate"
 
 require "rails/all"
 
