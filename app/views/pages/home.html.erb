@@ -61,3 +61,46 @@
 
   </div>
 </div>
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center align-items-top">
+    <div id="recommendations-container" class="d-flex justify-content-between">
+
+      <div class="recommendation ">
+        <div class="svg-number">
+          <%= show_svg('top-1.svg') %>
+        </div>
+        <div class="recommended-offer ">
+          <%= render 'shared/basic_offer_card', offer: Offer.first %>
+        </div>
+      </div>
+      <div class="recommendation ">
+        <div class="svg-number">
+          <%= show_svg('top-2.svg') %>
+        </div>
+        <div class="recommended-offer ">
+          <%= render 'shared/basic_offer_card', offer: Offer.first %>
+        </div>
+      </div>
+      <div class="recommendation ">
+        <div class="svg-number">
+          <%= show_svg('top-3.svg') %>
+        </div>
+        <div class="recommended-offer ">
+          <%= render 'shared/basic_offer_card', offer: Offer.first %>
+        </div>
+      </div>
+      <div class="recommendation ">
+        <div class="svg-number">
+          <%= show_svg('top-4.svg') %>
+        </div>
+        <div class="recommended-offer ">
+          <%= render 'shared/basic_offer_card', offer: Offer.first %>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
