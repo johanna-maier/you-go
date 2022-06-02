@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_receiver
   before_action :find_conversation!
+  skip_before_action :find_conversation!, only: :new
 
   def new
     @message = current_user.messages.build
