@@ -28,16 +28,13 @@
         .<br><br><b>Go for a different experience instead!</b>
       </h2>
     <% end %>
-
-      <div class="row">
-        <% @offers.first(48).each do |offer| %>
-          <div class="col-6 mt-3">
-            <%= render "shared/basic_offer_card", offer: offer %>
-          </div>
-        <% end %>
-      </div>
-
-
+    <div class="row">
+      <% @offers.first(48).each do |offer| %>
+        <div class="col-6 mt-3">
+          <%= render "shared/basic_offer_card", offer: offer %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div id="map"
     data-controller="mapbox"

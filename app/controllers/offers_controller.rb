@@ -44,9 +44,6 @@ class OffersController < ApplicationController
       ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
 
     end
-
-
-
   end
 
   private

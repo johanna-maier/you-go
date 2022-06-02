@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :offers, only: %i[index show] do
     resources :reviews, only: [:create]
     resources :bookings, only: [:create]
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
   end
 
   resources :bookings, only: [:destroy]
@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   end
 
   patch 'user', to: 'dashboard#update'
+
+  resources :conversations, only: %i[index show] do
+    resources :messages, only: %i[new create]
+  end
 end
