@@ -42,14 +42,6 @@ namespace :offerSeeds do
         latitude: 52.495747,
         longitude: 13.405571
       },
-      'muay thai': {
-        tag_images: ['muay-thai1.jpg','muay-thai2.jpg','muay-thai3.jpg'],
-        title: "Berlin Gym Mitte",
-        description: "The Berlin Gym offers you a special selection of different martial arts styles at two locations (Friedrichshain & Mitte): Whether Kyokushin Karate, Boxing, K1 or Muay Thai - the professional trainers of the Berlin Gym help you to learn the different techniques or to develop them further. It doesn't matter if you are a beginner or already experienced ///Es will be trained modern, according to the respective requirements of the trainees and varied. The training is varied and will gradually lead to success./The club is characterized above all by its unique training atmosphere, which is often praised by visitors.",
-        address: "Philippstraße 13, 10115 Berlin",
-        latitude: 52.516270,
-        longitude: 13.410610
-      },
       'football': {
         tag_images: ['soccer1.jpg','soccer2.jpg','soccer3.jpg'],
         title: "KICKERWorld Berlin",
@@ -103,6 +95,12 @@ namespace :offerSeeds do
           offer_time: Faker::Time.forward(days: (1..20).to_a.sample, period: :evening),
           is_external: false
         )
+
+        if Offer.find_by_title(title).nil? == false
+          puts "Offer already in database, skipping to next offer."
+          next
+        end
+
         puts "New offer created"
         seed_offer.tag = tag
         puts "Offer associated with tag"
@@ -118,7 +116,9 @@ namespace :offerSeeds do
         puts "Photos attached to offer"
         puts ""
 
-        seed_offer.save!
+
+
+       seed_offer.save!
 
     end
     # closing the namespace

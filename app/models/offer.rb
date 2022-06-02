@@ -1,7 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :tag, optional: true # TODO: allow null reference in schema
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many_attached :photos
 
@@ -19,13 +19,22 @@ class Offer < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :title, :description ],
-  associated_against: {
-    tag: [ :name, :category ]
-  },
-  using: {
-      tsearch: { prefix: true }
-  }
+    against: [ :title, :description ],
+    associated_against: {
+      tag: [ :name, :category ]
+    },
+    using: {
+        tsearch: { prefix: true }
+    }
+
+    pg_search_scope :category_search,
+     against: [],
+    associated_against: {
+      tag: [:name, :category ]
+    },
+    using: {
+        tsearch: { prefix: true }
+    }
 
   def avg_rating
     reviews.average(:rating)

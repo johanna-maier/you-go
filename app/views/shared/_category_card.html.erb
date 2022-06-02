@@ -1,4 +1,4 @@
-<%= link_to "/offers?query=#{tag.category}", class: "text-decoration-none" do %>
+<%= link_to "/offers?category=#{tag.category}", class: "text-decoration-none" do %>
 <%# Hard coded link to watersports category for now %>
   <div class="category-card">
      <%= cl_image_tag tag.photo.key %>

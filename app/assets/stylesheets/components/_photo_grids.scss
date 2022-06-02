@@ -42,7 +42,7 @@
   display: grid;
   grid-template-columns: 1fr;
   // grid-template-columns: repeat(2, minmax(auto, auto));
-  justify-items: center;
+  justify-items: flex-start;
 
   // img {
   //   height: 400px;
