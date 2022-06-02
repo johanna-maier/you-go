@@ -12,9 +12,9 @@
   color: #ffffff;
 
   &:hover {
-  color: $secondary;
-  border: 2px solid $secondary;
-  background-color: transparent;
+    color: $secondary;
+    border: 2px solid $secondary;
+    background-color: transparent;
   }
 }
 
@@ -25,5 +25,16 @@
   &:hover {
     background-color: $primary;
     color: $primary;
+  }
+}
+
+.btn-slim-secondary {
+  background-color: transparent;
+  border: 2px solid $primary;
+  color: $primary;
+
+  &:hover {
+    background-color: $primary;
+    color: #ffffff;
   }
 }

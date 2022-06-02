@@ -7,11 +7,15 @@ class OffersController < ApplicationController
 
   def index
     @offers = policy_scope(Offer).reorder("offers.offer_date ASC")
-    if params[:city].present? & params[:query].present?
+    if params[:city].present? && params[:query].present?
       @offers = policy_scope(Offer).near(params[:city], 80, min_radius: 10).global_search(params[:query]).reorder("offers.offer_date ASC")
     else
       @offers = policy_scope(Offer).near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC") if params[:city].present?
       @offers = policy_scope(Offer).global_search(params[:query]).reorder("offers.offer_date ASC") if params[:query].present?
+    end
+
+    if params[:category].present?
+      @offers = policy_scope(Offer).category_search(params[:category]).reorder("offers.offer_date ASC")
     end
 
     @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
