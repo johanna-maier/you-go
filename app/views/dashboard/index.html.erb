@@ -9,23 +9,23 @@
         <% end %>
         <p><i class="fas fa-desktop"></i> Dashboard</p>
         <hr>
-        <p data-action="click->tabs#showProfile"><i class="fas fa-user"></i> Your profile</p>
-        <p data-action="click->tabs#showConversations"><i class="fas fa-envelope"></i> Conversations</p>
-        <p data-action="click->tabs#showBookings"><i class="fas fa-list"></i> Bookings</p>
-        <p data-action="click->tabs#showWishlist"><i class="fas fa-heart"></i> Wishlist</p>
+        <p data-action="click->tabs#showTab" data-link="profile"><i class="fas fa-user"></i> Your profile</p>
+        <p data-action="click->tabs#showTab" data-link="conversations"><i class="fas fa-envelope"></i> Conversations</p>
+        <p data-action="click->tabs#showTab" data-link="bookings"><i class="fas fa-list"></i> Bookings</p>
+        <p data-action="click->tabs#showTab" data-link="wishlist" data-id="w"><i class="fas fa-heart"></i> Wishlist</p>
       </div>
     </div>
     <div class="col-10">
-      <div data-tabs-target="profile">
+      <div id="profile" class="active" data-tabs-target="tab">
         <%= render 'profile' %>
       </div>
-      <div class="d-none" data-tabs-target="booking">
+      <div id="bookings" class="d-none" data-tabs-target="tab">
         <%= render 'bookings' %>
       </div>
-      <div class="d-none" data-tabs-target="wishlist">
+      <div id="wishlist" class="d-none" data-tabs-target="tab">
         <%= render 'wishlist' %>
       </div>
-      <div class="d-none" data-tabs-target="conversations">
+      <div id="conversations" class="d-none" data-tabs-target="tab">
         <%= render 'conversations' %>
       </div>
     </div>
