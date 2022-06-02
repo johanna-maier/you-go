@@ -1,5 +1,5 @@
- <%# <%= link_to offer_path(like.offer), class: "text-decoration-none" do %>
-  <div class="category-card">
+ <%= link_to dashboard_index_path(offer_id: like.offer_id, page: 'wishlist'), class: "text-decoration-none" do %>
+  <div class="<%= 'border border-primary' if like.offer == selected_offer %> category-card">
      <% if like.offer.photos.attached? %>
         <%= cl_image_tag like.offer.photos.first.key %>
       <% else %>
@@ -11,4 +11,4 @@
       <p><%= like.offer.address.gsub(/(\.|!).*/, '').truncate(60) %></p>
   </div>
   </div>
-<%# <% end %>
+<% end %>

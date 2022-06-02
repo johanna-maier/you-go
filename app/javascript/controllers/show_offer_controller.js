@@ -9,6 +9,6 @@ export default class extends Controller {
 
   show(){
     // console.log("show form");
-    this.detailsTarget.classList.remove("d-none");
+    // this.detailsTarget.classList.remove("d-none");
   }
 }
