@@ -32,7 +32,6 @@ namespace :offerSeeds do
         address: "Stresemannstraße 72, 10963 Berlin",
         latitude: 52.549310,
         longitude: 13.384420
-
       },
       'kayaking': {
         tag_images: ['kayak1.jpg','kayak2.jpg','kayak3.jpg'],
@@ -93,7 +92,8 @@ namespace :offerSeeds do
           longitude: tags[tag.name.to_sym][:longitude],
           offer_date: Faker::Date.forward(days: (1..20).to_a.sample),
           offer_time: Faker::Time.forward(days: (1..20).to_a.sample, period: :evening),
-          is_external: false
+          is_external: false,
+          user_id: 31
         )
 
         if Offer.find_by_title(title).nil? == false
