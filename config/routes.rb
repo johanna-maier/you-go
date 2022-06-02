@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
   patch 'user', to: 'dashboard#update'
 
-  resources :conversations, only: %i[index show] do
-    resources :messages, only: %i[new create]
-  end
+  resources :conversations, only: %i[index show]
+  resources :messages, only: %i[new create]
 end
