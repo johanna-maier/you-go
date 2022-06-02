@@ -9,16 +9,15 @@
 require "faker"
 
 puts ""
-puts 'Deleting current tags. Everything else will only be created if no duplicate exits.'
+puts 'Deleting all entries.'
 puts ""
 
-# Review.destroy_all
-# Booking.destroy_all
-# Offer.destroy_all # on-hold to avoid long reseeding
-# Favourite.destroy_all
-# Like.destroy_all
+Review.destroy_all
+Booking.destroy_all
+Offer.destroy_all # on-hold to avoid long reseeding
+Like.destroy_all
 Tag.destroy_all
-
+# User.destroy_all
 
 puts 'Seeding 9 sample users'
 
