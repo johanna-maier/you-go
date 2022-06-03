@@ -9,19 +9,15 @@
 require "faker"
 
 puts ""
-puts 'Deleting current reviews, bookings, users, tags & Ahoy events/visits'
+puts 'Deleting all entries.'
 puts ""
 
 Review.destroy_all
 Booking.destroy_all
-
-# Offer.destroy_all # on-hold to avoid long reseeding
-# Favourite.destroy_all
+Offer.destroy_all # on-hold to avoid long reseeding
 Like.destroy_all
 Tag.destroy_all
-Ahoy::Event.destroy_all
-Ahoy::Visit.destroy_all
-User.destroy_all
+# User.destroy_all
 
 puts 'Seeding 9 sample users'
 
@@ -154,6 +150,11 @@ coordinates = {
 users.each_with_index do |user, index|
   puts "Seed users (#{index + 1}/#{users.length})"
 
+  if User.find_by_email(user[:email]).nil? == false
+    puts "User already in database, skipping to next user."
+    next
+  end
+
   seed_user = User.new(
     first_name: user[:first_name],
     last_name: user[:last_name],
@@ -168,6 +169,7 @@ users.each_with_index do |user, index|
   )
   seed_user.avatar_photo.attach(io: File.open("db/seed_photos/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
   seed_user.save!
+
 end
 
 puts ""
@@ -214,43 +216,25 @@ tags = [
           {
               name: 'biking',
               category: 'biking',
-              icon: '<i class="fas fa-biking"></i>',
-              img_file: 'biking_tag.jpg'
-          },
-          {
-              name: 'mountain biking',
-              category: 'biking',
-              icon: '<i class="fas fa-biking-mountain"></i>',
+              icon: '<i class="fas fa-bicycle"></i>',
               img_file: 'biking_tag.jpg'
           },
           {
               name: 'bouldering',
               category: 'climbing',
-              icon: '<i class="fad fa-hand-rock"></i>',
+              icon: '<i class="fas fa-hand-rock"></i>',
               img_file: 'climbing_tag.jpg'
           },
           {
               name: 'climbing',
               category: 'climbing',
-              icon: '<i class="fad fa-hand-rock"></i>',
+              icon: '<i class="fas fa-hand-rock"></i>',
               img_file: 'climbing_tag.jpg'
-          },
-          {
-              name: 'muay thai',
-              category: 'combat sports',
-              icon: '<i class="fas fa-boxing-glove"></i>',
-              img_file: 'combat_tag.jpg'
-          },
-          {
-              name: 'combat sports',
-              category: 'combat sports',
-              icon: '<i class="fas fa-boxing-glove"></i>',
-              img_file: 'combat_tag.jpg'
           },
           {
               name: 'karate',
               category: 'combat sports',
-              icon: '<i class="fa-solid fa-uniform-martial-arts"></i>',
+              icon: '<i class="fas fa-hand-paper"></i>',
               img_file: 'combat_tag.jpg'
           },
           {
@@ -272,21 +256,15 @@ tags = [
               img_file: 'hiking_tag.jpg'
           },
           {
-              name: 'badminton',
-              category: 'racket sports',
-              icon: '<i class="fa-solid fa-badminton"></i>',
-              img_file: 'racket_tag.jpg'
-          },
-          {
               name: 'racket sports',
               category: 'racket sports',
-              icon: '<i class="fas fa-racquet"></i>',
+              icon: '<i class="fas fa-table-tennis"></i>',
               img_file: 'racket_tag.jpg'
           },
           {
-              name: 'tennis',
+              name: 'table tennis',
               category: 'racket sports',
-              icon: '<i class="fas fa-racquet"></i>',
+              icon: '<i class="fas fa-table-tennis"></i>',
               img_file: 'racket_tag.jpg'
           },
           {
@@ -303,44 +281,44 @@ tags = [
           },
           {
               name: 'fitness',
-              category: 'strength sports',
+              category: 'fitness',
               icon: '<i class="fas fa-dumbbell"></i>',
               img_file: 'fitness_tag.jpg'
           },
           {
               name: 'canoe',
               category: 'watersports',
-              icon: '<i class="fa-solid fa-water"></i>',
+              icon: '<i class="fas fa-water"></i>',
               img_file: 'watersports_tag.jpg'
           },
           {
               name: 'fishing',
               category: 'watersports',
-              icon: '<i class="fa-solid fa-fishing-rod"></i>',
+              icon: '<i class="fas fa-fish"></i>',
               img_file: 'watersports_tag.jpg'
           },
           {
               name: 'kayaking',
               category: 'watersports',
-              icon: '<i class="fa-solid fa-water"></i>',
+              icon: '<i class="fas fa-water"></i>',
               img_file: 'watersports_tag.jpg'
           },
           {
               name: 'sailing',
               category: 'watersports',
-              icon: '<i class="fa-solid fa-sailboat"></i>',
+              icon: '<i class="fas fa-anchor"></i>',
               img_file: 'watersports_tag.jpg'
           },
           {
-              name: 'sup',
+              name: 'SUP',
               category: 'watersports',
-              icon: '<i class="fa-solid fa-water"></i>',
+              icon: '<i class="fas fa-water"></i>',
               img_file: 'watersports_tag.jpg'
           },
           {
               name: 'surfing',
               category: 'watersports',
-              icon: '<i class="fa-solid fa-water"></i>',
+              icon: '<i class="fas fa-water"></i>',
               img_file: 'watersports_tag.jpg'
           },
           {
@@ -348,12 +326,6 @@ tags = [
               category: 'watersports',
               icon: '<i class="fas fa-water"></i>',
               img_file: 'watersports_tag.jpg'
-          },
-          {
-              name: 'cross country skiing',
-              category: 'wintersports',
-              icon: '<i class="fas fa-skiing-nordic"></i>',
-              img_file: 'wintersports_tag.jpg'
           },
           {
               name: 'skiing',
@@ -370,13 +342,13 @@ tags = [
           {
               name: 'wintersports',
               category: 'wintersports',
-              icon: '<i class="fa-solid fa-snowflake"></i>',
+              icon: '<i class="fas fa-snowflake"></i>',
               img_file: 'wintersports_tag.jpg'
           },
           {
               name: 'yoga',
               category: 'yoga',
-              icon: '<i class="fa-solid fa-hands-praying"></i>',
+              icon: '<i class="fas fa-praying-hands"></i>',
               img_file: 'yoga_tag.jpg'
           }
 ]
