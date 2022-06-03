@@ -81,7 +81,7 @@
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Upcoming highlights</h2>
-    <% @offers.where(offer_date: Date.today..1.day.from_now).first(6).each do |offer| %>
+    <% @offers.where(offer_date: Date.today..1.day.from_now).sample(6).each do |offer| %>
       <div class="col-12 col-lg-5 col-xl-2 mt-3">
         <%= render 'shared/basic_offer_card', offer: offer %>
       </div>

@@ -5,6 +5,11 @@ class DashboardController < ApplicationController
     @likes = current_user.likes # Like.where(user: current_user)
     # @conversations = policy_scope(Conversation).where(author_id: current_user.id).order('updated_at DESC')
     @conversations = policy_scope(Conversation).participating(current_user).order('updated_at DESC')
+    if params[:conversation_id]
+      @conversation = Conversation.find(params[:conversation_id])
+    else
+      @conversation = @conversations.first
+    end
 
     # authorize all objects?
     @user = current_user
