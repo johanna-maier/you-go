@@ -75,16 +75,9 @@
   i{
     font-size: 40px;
   }
-  &:hover{
+  &:hover i{
     color: $primary;
   }
-  // .active {
-  //   color: inherit;
-  //   border-color: $primary;
-  //   i {
-  //     color: $primary;
-  //   }
-  // }
 }
 .clickable.active {
   color: inherit;

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YOUGO</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= favicon_link_tag asset_path('yougo-favicon.png') %>
+
+  </head>
+
+  <body>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+
+    <div class="container-fluid">
+      <div class="row dashboard" data-controller="tabs">
+        <div class="col-2 sidebar">
+          <div id="sidebar-tabs">
+            <% if current_user.avatar_photo.attached? %>
+              <%= cl_image_tag current_user.avatar_photo.key, class: "avatar-xl"  %>
+            <% else %>
+              <%= image_tag "avatar_4.png", class: "avatar-xl" %>
+            <% end %>
+            <p><i class="fas fa-desktop"></i> Dashboard</p>
+            <hr>
+            <p data-action="click->tabs#showProfile"><i class="fas fa-user"></i> Your profile</p>
+            <p data-action="click->tabs#showConversations"><i class="fas fa-envelope"></i> Conversations</p>
+            <p data-action="click->tabs#showBookings"><i class="fas fa-list"></i> Bookings</p>
+            <p data-action="click->tabs#showWishlist"><i class="fas fa-heart"></i> Wishlist</p>
+          </div>
+        </div>
+        <div class="col-10" id="tab_content">
+          <%= yield :tab_content %>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
