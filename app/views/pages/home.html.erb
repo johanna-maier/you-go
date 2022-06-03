@@ -1,7 +1,15 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
-<div class="banner" style="background-image: url(<%= image_path("banner-woman-kayaking.jpg")%>);">
-  <h1>You go [kayaking] </h1>
+<div class="banner" style="background-image: url(<%= video_path "YouGo.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>);">
+
+  <div class="flex">
+  <h1>
+    <span id="sentence" class="sentence">YOU GO [</span>
+
+    <span id="word"></span>
+    <span class="blink">|</span>
+  </h1>
+</div>
     <div class="search-card">
      <h2>Look for your favorite sport experience</h2>
      <form action="/offers" method="get">
