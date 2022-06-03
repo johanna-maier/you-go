@@ -58,14 +58,6 @@ namespace :offerSeeds do
         longitude: 13.48107
 
       },
-      'tennis': {
-        tag_images: ['tennis1.jpg','tennis2.jpg','tennis3.jpg'],
-        title: "Match ball in the capital",
-        description: "Match ball in the capital Even in Berlin you can stand on court. Its outdoor tennis courts are ideal for a summer match, and even in the colder months of the year, tennis fans don’t have to keep their rackets still. Berlin offers a range of options for playing tennis, with all of its different clubs, facilities and indoor courts. So you can pursue your sport regardless of the season as there is nothing in the way of you playing a match on Berlin’s tennis courts! Various tournaments and championships also regularly attract tennis fans to the edge of the court.",
-        address: "Paradestraße 28-32, 12101 Berlin",
-        latitude: 52.4782131,
-        longitude: 13.384269
-      },
       'volleyball': {
         tag_images: ['volleyball1.jpg','volleyball2.jpg','volleyball3.jpg'],
         title: "Beach Mitte",
@@ -96,7 +88,7 @@ namespace :offerSeeds do
           user_id: 31
         )
 
-        if Offer.find_by_title(title).nil? == false
+        if Offer.find_by_title(seed_offer.title).nil? == false
           puts "Offer already in database, skipping to next offer."
           next
         end
