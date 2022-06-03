@@ -84,8 +84,7 @@ namespace :offerSeeds do
           longitude: tags[tag.name.to_sym][:longitude],
           offer_date: Faker::Date.forward(days: (1..20).to_a.sample),
           offer_time: Faker::Time.forward(days: (1..20).to_a.sample, period: :evening),
-          is_external: false,
-          user_id: 31
+          is_external: false
         )
 
         if Offer.find_by_title(seed_offer.title).nil? == false
@@ -95,6 +94,7 @@ namespace :offerSeeds do
 
         puts "New offer created"
         seed_offer.tag = tag
+        seed_offer.user = User.first
         puts "Offer associated with tag"
 
         puts tags[tag.name.to_sym]
