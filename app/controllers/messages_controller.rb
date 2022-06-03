@@ -10,7 +10,8 @@ class MessagesController < ApplicationController
 
   # For Testing the offer is simply set to 562. That last bit will need to be removed afterwards!!!
   def create
-    @conversation ||= Conversation.create(author_id: current_user.id, receiver_id: @receiver.id, offer_id: 562)
+    @conversation ||= Conversation.new(author_id: current_user.id, receiver_id: @receiver.id, offer_id: 562)
+    @conversation.save! unless @conversation.save
     @message = current_user.messages.build(message_params)
     @message.conversation_id = @conversation.id
     @message.save!
@@ -28,13 +29,13 @@ class MessagesController < ApplicationController
   end
 
   def find_conversation!
-    @conversation = Conversation.find(params[:conversation_id])
-    redirect_to conversations_path and return unless @conversation&.participates?(current_user)
+    @conversation = Conversation.find(params[:conversation_id]) unless params[:conversation_id].nil?
+    # redirect_to conversations_path and return unless @conversation&.participates?(current_user)
   end
 
   def set_receiver
     # For Testing just set to one user: DANIEL
-    @receiver = User.find(32)
+    @receiver = User.find(33)
     # After connecting to Offers, the code below will replace the preset above and will need to be TESTED!!!
     # @offer = Offer.find(params[:id])
     # @receiver = @offer.user
