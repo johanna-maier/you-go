@@ -15,6 +15,7 @@ class OffersController < ApplicationController
       @offers = @offers_in_future.global_search(params[:query]).reorder("offers.offer_date ASC") if params[:query].present?
     end
 
+
     if params[:category].present?
       @offers = @offers_in_future.category_search(params[:category]).reorder("offers.offer_date ASC")
     end
