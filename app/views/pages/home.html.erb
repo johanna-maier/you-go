@@ -38,16 +38,36 @@
   </div>
 </div>
 
-<div class="container mt-5">
-  <div class="row d-flex justify-content-center align-items-top mt-5">
-  <h2>Top experiences near you</h2>
-    <% @offers.first(4).each do |offer| %>
-      <div class="col-12 col-lg-5 col-xl-3 mt-3">
-        <%= render 'shared/basic_offer_card', offer: offer %>
-      </div>
-    <% end %>
+<% if current_user.present? %>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top">
+    <h2>Recommended for you</h2>
+      <%= render 'shared/recommendation-box' %>
+    </div>
   </div>
-</div>
+
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top mt-5">
+    <h2>Top experiences in <%= current_user.location %></h2>
+      <% @offers.near(current_user.location, 30, min_radius: 10).first(4).each do |offer| %>
+        <div class="col-12 col-lg-5 col-xl-3 mt-3">
+          <%= render 'shared/basic_offer_card', offer: offer %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top mt-5">
+    <h2>Top experiences</h2>
+      <% @offers.sample(4).each do |offer| %>
+        <div class="col-12 col-lg-5 col-xl-3 mt-3">
+          <%= render 'shared/basic_offer_card', offer: offer %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
@@ -59,13 +79,11 @@
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
-  <h2>Recommendations for you</h2>
-
-    <% @offers.first(6).each do |offer| %>
+  <h2>Upcoming highlights</h2>
+    <% @offers.where(offer_date: Date.today..1.day.from_now).first(6).each do |offer| %>
       <div class="col-12 col-lg-5 col-xl-2 mt-3">
         <%= render 'shared/basic_offer_card', offer: offer %>
       </div>
     <% end %>
-
   </div>
 </div>

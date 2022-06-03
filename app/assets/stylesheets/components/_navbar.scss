@@ -7,8 +7,12 @@
   z-index: 1;
 
   .avatar {
-    border: 1px $primary solid;
+    border: 1.5px $primary solid;
     padding: 2px;
+  }
+
+  .profile-photo {
+    border: none;
   }
 
   .search-navbar {
