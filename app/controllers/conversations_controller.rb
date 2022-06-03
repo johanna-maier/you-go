@@ -3,11 +3,12 @@ class ConversationsController < ApplicationController
   before_action :check_participating!, except: [:index]
 
   def index
-    @conversations = Conversation.participating(current_user).order('updated_at DESC')
+    @conversations = policy_scope(Conversation).participating(current_user).order('updated_at DESC')
   end
 
   def show
     @message = Message.new
+    authorize @conversation
   end
 
   def new
@@ -23,9 +24,9 @@ class ConversationsController < ApplicationController
       @receiver = User.find(params[:receiver_id])
       redirect_to conversations_path and return unless @receiver
 
-      @conversation = Conversation.between(current_user, @receiver.id)[0]
+      @conversation = Conversation.between(current_user.id, @receiver.id)[0]
     else
-      @conversation = Conversation.find(params[:conversation_id])
+      @conversation = Conversation.find(params[:id])
       redirect_to conversations_path and return unless @conversation&.participates?(current_user)
     end
   end

@@ -1,0 +1,17 @@
+<h1>Your conversations</h1>
+
+<div id="conversations">
+  <% @conversations.each do |conversation| %>
+    <!-- This part was in a partial before, but it didn't work. Only when I put it here. -->
+    <div>
+      In conversation with <%= conversation.with(current_user).first_name %>
+      <br>
+      <em><%= conversation.messages.last.content.truncate(50) %></em>
+      <br>
+      <%= link_to 'View conversation', conversation_path(conversation) %>
+      <hr>
+    </div>
+  <% end %>
+</div>
+
+<%= current_user.first_name %> | <%= link_to 'send a new message', new_message_path(receiver_id: current_user.id) %>
