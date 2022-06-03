@@ -11,39 +11,41 @@ export default class extends Controller {
     // console.log("show form");
     this.formTarget.classList.toggle("d-none");
 
-    // ----temp
-    console.log(this.prefsTarget);
-    const prefs = []
-    this.cardTargets.forEach((element) => {
-      if(element.classList.contains('active')) {
-        console.log(element.id);
-        prefs.push(element.id);
-      }
+    // ----for testing
+    // // console.log(this.prefsTarget);
+    // const prefs = []
+    // this.cardTargets.forEach((element) => {
+    //   if(element.classList.contains('active')) {
+    //     // console.log(element.id);
+    //     prefs.push(element.id);
+    //   }
 
-    });
-    console.log(prefs);
-    //------
+    // });
+    // console.log(prefs);
+    // console.log(this.prefsTarget.value)
+    // this.prefsTarget.value = prefs;
+    // //------
   }
 
-  send(){
+  send(event){
     console.log("submit form");
-    this.formTarget.classList.add("d-none");
 
     //save user prefs
     const prefs = [];
     this.cardTargets.forEach((element) => {
       if(element.classList.contains('active')) {
-        console.log(element.id)
-        prefs.push(element.id)
+        prefs.push(element.id);
       }
     });
-    console.log(prefs);
-    // do default action
+    // console.log(prefs);
+    this.prefsTarget.value = prefs;
+
+    // hide form and continue with default action
+    this.formTarget.classList.add("d-none");
   }
 
   // for sports category selection
   toggleActiveClass(event) {
-    console.log(`clicked... ${event.currentTarget}`);
     event.currentTarget.classList.toggle('active');
   };
 }

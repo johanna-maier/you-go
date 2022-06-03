@@ -16,20 +16,19 @@ export default class extends Controller {
   }
 
   showTab(event){
-    console.log(`show tab ${event.currentTarget.dataset.link}`);
+    console.log(event.currentTarget)
+    // console.log(`show tab ${event.currentTarget.dataset.link}`);
     this.hideAll();
     this.show(event.currentTarget.dataset.link);
   }
 
   show(tab_name) {
-    // console.log(this.element);
     // console.log(this.element.querySelector(`#${tab_name}`));
     const tabElement = this.element.querySelector(`#${tab_name}`);
     tabElement.classList.remove('d-none');
   }
 
   disconnect(){
-    // console.log('disconnect');
     this.hideAll();
   }
 
@@ -38,8 +37,4 @@ export default class extends Controller {
       element.classList.add('d-none');
     });
   }
-
-
-
-
 }
