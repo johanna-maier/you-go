@@ -1,0 +1,14 @@
+<h1>Coversation with <%= @conversation.with(current_user).first_name %></h1>
+
+<div id="conversation-main">
+  <div id="conversation-body">
+    <%= render @conversation.messages %>
+  </div>
+
+  <%= form_for @message do |f| %>
+    <%= hidden_field_tag 'conversation_id', @conversation.id %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+</div>

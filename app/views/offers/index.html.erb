@@ -1,18 +1,8 @@
 <div class="d-flex justify-content-evenly align-items-center icons-container">
- <!-- Automise Tags? Did not work yet.
   <% Tag.all.sample(10).each do |tag| %>
-    <%= "<a class='no-link-style' href='/offers?query=diving'><div class='icon-box'>#{tag.icon}#{tag.name}</div></a>" %>
+    <a class='no-link-style' href='/offers?category=<%= tag.name %>'><div class='icon-box'><%=raw tag.icon %><%= tag.name.upcase %></div></a>
   <% end %>
-  -->
-  <a class="no-link-style" href="/offers?query=diving"><div class="icon-box"><i class="fas fa-anchor"></i>DIVING</div></a>
-  <a class="no-link-style" href="/offers?query=swimming"><div class="icon-box"><i class="fas fa-swimmer"></i>SWIMMING</div></a>
-  <a class="no-link-style" href="/offers?query=watersports"><div class="icon-box"><i class="fas fa-water"></i>WATER SPORTS</div></a>
-  <a class="no-link-style" href="/offers?query=tennis"><div class="icon-box"><i class="fas fa-table-tennis"></i>TENNIS</div></a>
-  <a class="no-link-style" href="/offers?query=tours"><div class="icon-box"><i class="fas fa-tram"></i>TOURS</div></a>
-  <a class="no-link-style" href="/offers?query=hiking"><div class="icon-box"><i class="fas fa-blind"></i>HIKING</div></a>
-  <a class="no-link-style" href="/offers?query=volleyball"><div class="icon-box"><i class="fas fa-volleyball-ball"></i>VOLLEYBALL</div></a>
-  <a class="no-link-style" href="/offers?query=football"><div class="icon-box"><i class="fas fa-football-ball"></i>FOOTBALL</div></a>
-  <a class="no-link-style" href="/offers?query=wintersports"><div class="icon-box"><i class="fas fa-skiing"></i>WINTER SPORTS</div></a>
+
 </div>
 <div class="index-container">
   <div class="container cards">
@@ -28,16 +18,13 @@
         .<br><br><b>Go for a different experience instead!</b>
       </h2>
     <% end %>
-
-      <div class="row">
-        <% @offers.first(48).each do |offer| %>
-          <div class="col-6 mt-3">
-            <%= render "shared/basic_offer_card", offer: offer %>
-          </div>
-        <% end %>
-      </div>
-
-
+    <div class="row">
+      <% @offers.first(48).each do |offer| %>
+        <div class="col-6 mt-3">
+          <%= render "shared/basic_offer_card", offer: offer %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div id="map"
     data-controller="mapbox"

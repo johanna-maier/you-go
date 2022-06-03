@@ -107,10 +107,12 @@
   display: flex;
   align-items: center;
   border-radius: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .category-card img {
-  height: 100%;
+  height: 87px;
   width: 120px;
   object-fit: cover;
 }
@@ -121,10 +123,24 @@
   color: black;
 }
 
-.category-card .category-card-infos {
-  padding: 16px;
+.category-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
 }
 
+.category-card .category-card-infos {
+  padding: 16px;
+  h2{
+    color:black;
+  }
+
+}
+
+
+// The big card with video on the homepage
 .card-category {
   background-size: cover;
   background-position: center;

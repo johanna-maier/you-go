@@ -1,0 +1,35 @@
+#map {
+  min-height: 90vh;
+}
+
+.mapboxgl-popup {
+  min-width: 300px;
+}
+
+.mapboxgl-popup-content {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+
+  a:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.mapboxgl-popup-close-button {
+  display: block;
+  margin-top: 5px;
+  font-size: 2.2rem;
+  color: $inactive-gray;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: $icon-gray
+  }
+}

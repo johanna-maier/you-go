@@ -52,7 +52,10 @@
         <% if @offer.avg_rating %>
           <span class='offer-tag'><%= @offer.avg_rating %></span>
         <% end %>
-        <span class='offer-tag'><%= pluralize(@offer.capacity, 'person') %></span>
+        <% if @offer.capacity != nil %>
+          <span class='offer-tag'><%= pluralize(@offer.capacity, 'person') %></span>
+        <% end %>
+
     </div>
   </div>
 

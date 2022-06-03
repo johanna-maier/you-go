@@ -1,7 +1,15 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
-<div class="banner" style="background-image: url(<%= image_path("banner-woman-kayaking.jpg")%>);">
-  <h1>You go [kayaking] </h1>
+<div class="banner" style="background-image: url(<%= video_path "YouGo.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "home_video" %>);">
+
+  <div class="flex">
+  <h1>
+    <span id="sentence" class="sentence">YOU GO [</span>
+
+    <span id="word"></span>
+    <span class="blink">|</span>
+  </h1>
+</div>
     <div class="search-card">
      <h2>Look for your favorite sport experience</h2>
      <form action="/offers" method="get">
@@ -30,16 +38,36 @@
   </div>
 </div>
 
-<div class="container mt-5">
-  <div class="row d-flex justify-content-center align-items-top mt-5">
-  <h2>Top experiences near you</h2>
-    <% @offers.first(4).each do |offer| %>
-      <div class="col-12 col-lg-5 col-xl-3 mt-3">
-        <%= render 'shared/basic_offer_card', offer: offer %>
-      </div>
-    <% end %>
+<% if current_user.present? %>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top">
+    <h2>Recommended for you</h2>
+      <%= render 'shared/recommendation-box' %>
+    </div>
   </div>
-</div>
+
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top mt-5">
+    <h2>Top experiences in <%= current_user.location %></h2>
+      <% @offers.near(current_user.location, 30, min_radius: 10).first(4).each do |offer| %>
+        <div class="col-12 col-lg-5 col-xl-3 mt-3">
+          <%= render 'shared/basic_offer_card', offer: offer %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top mt-5">
+    <h2>Top experiences</h2>
+      <% @offers.sample(4).each do |offer| %>
+        <div class="col-12 col-lg-5 col-xl-3 mt-3">
+          <%= render 'shared/basic_offer_card', offer: offer %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
@@ -51,13 +79,11 @@
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
-  <h2>Recommendations for you</h2>
-
-    <% @offers.first(6).each do |offer| %>
+  <h2>Upcoming highlights</h2>
+    <% @offers.where(offer_date: Date.today..1.day.from_now).first(6).each do |offer| %>
       <div class="col-12 col-lg-5 col-xl-2 mt-3">
         <%= render 'shared/basic_offer_card', offer: offer %>
       </div>
     <% end %>
-
   </div>
 </div>

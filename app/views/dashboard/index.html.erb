@@ -16,16 +16,16 @@
       </div>
     </div>
     <div class="col-10">
-      <div id="profile" class="active" data-tabs-target="tab">
+      <div id="profile" class="<%= 'd-none' unless @page =='profile'%>" data-tabs-target="tab">
         <%= render 'profile' %>
       </div>
-      <div id="bookings" class="d-none" data-tabs-target="tab">
+      <div id="bookings" class="<%= 'd-none' unless @page =='bookings'%>" data-tabs-target="tab">
         <%= render 'bookings' %>
       </div>
-      <div id="wishlist" class="d-none" data-tabs-target="tab">
+      <div id="wishlist" class="<%= 'd-none' unless @page =='wishlist'%>" data-tabs-target="tab">
         <%= render 'wishlist' %>
       </div>
-      <div id="conversations" class="d-none" data-tabs-target="tab">
+      <div id="conversations" class="<%= 'd-none' unless @page =='conversations'%>" data-tabs-target="tab">
         <%= render 'conversations' %>
       </div>
     </div>
