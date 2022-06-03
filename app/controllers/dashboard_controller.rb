@@ -3,6 +3,9 @@ class DashboardController < ApplicationController
   def index
     @bookings = Booking.where(user: current_user)
     @likes = current_user.likes # Like.where(user: current_user)
+    # @conversations = policy_scope(Conversation).where(author_id: current_user.id).order('updated_at DESC')
+    @conversations = policy_scope(Conversation).participating(current_user).order('updated_at DESC')
+
     # authorize all objects?
     @user = current_user
     @offers = policy_scope(Offer)

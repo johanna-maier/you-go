@@ -1,1 +1,21 @@
-<h1>Messages</h1>
+<h1>Your messages</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-4 card-profile mt-5">
+      <div class="d-flex flex-column">
+         <h2>Your Conversations</h2>
+         <% if @conversations.present? %>
+            <%  @conversations.each do |conversation| %>
+              <ul>
+                <li>Conversation from <%= conversation.author_id %> about <%= conversation.offer_id %> </li>
+              </ul>
+            <% end %>
+          <% else %>
+            <p><em> You did not start any conversations yet. </em></p>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
