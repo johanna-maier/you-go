@@ -1,0 +1,13 @@
+<div id="conversations">
+  <% @conversations.each do |conversation| %>
+    <!-- This part was in a partial before, but it didn't work. Only when I put it here. -->
+    <div>
+      In conversation with <strong><%= conversation.with(current_user).first_name %></strong>
+      <br>
+      <em><%= conversation.messages.last.content.truncate(50) %></em>
+      <br>
+      <%= link_to 'View conversation', conversation_path(conversation) %>
+      <hr>
+    </div>
+  <% end %>
+</div>
