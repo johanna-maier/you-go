@@ -241,6 +241,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_145210) do
     t.string "location"
     t.float "latitude"
     t.float "longitude"
+    t.integer "preferences", default: [], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
