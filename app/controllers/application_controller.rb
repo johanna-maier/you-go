@@ -26,4 +26,10 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+
+# Rails image_url helper requires you setup your host to generate the absolute url needed to load your images from the external world (Facebook, Twitter, ...).
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
