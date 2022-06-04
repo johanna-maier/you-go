@@ -3,7 +3,7 @@
     <div class="col-4 card-profile mt-5">
       <div class="d-flex justify-content-between align-items-center">
         <h2>Profile</h2>
-        <i class="far fa-edit" data-action="click->edit-profile#show"></i>
+        <i class="far fa-edit edit-icon" data-action="click->edit-profile#show" ></i>
       </div>
       <p><i class="fas fa-user"></i> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
       <p><i class="fas fa-map-marker-alt"></i> <%= current_user.location %> </p>

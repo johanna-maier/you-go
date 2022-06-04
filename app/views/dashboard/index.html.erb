@@ -7,12 +7,12 @@
         <% else %>
           <%= image_tag "avatar_4.png", class: "avatar-xl" %>
         <% end %>
-        <p><i class="fas fa-desktop"></i> Dashboard</p>
+        <p><i class="fas fa-desktop"></i> &nbsp;&nbsp;Dashboard</p>
         <hr>
-        <p data-action="click->tabs#showTab" data-link="profile" class="active"><i class="fas fa-user"></i> Your profile</p>
-        <p data-action="click->tabs#showTab" data-link="conversations"><i class="fas fa-envelope"></i> Conversations</p>
-        <p data-action="click->tabs#showTab" data-link="bookings"><i class="fas fa-list"></i> Bookings</p>
-        <p data-action="click->tabs#showTab" data-link="wishlist" ><i class="fas fa-heart"></i> Wishlist</p>
+        <p class="sidebar-menu-item" data-action="click->tabs#showProfile"><i class="fas fa-user"></i> &nbsp;&nbsp;Your profile</p>
+        <p class="sidebar-menu-item" data-action="click->tabs#showConversations"><i class="fas fa-envelope"></i> &nbsp;&nbsp;Conversations</p>
+        <p class="sidebar-menu-item" data-action="click->tabs#showBookings"><i class="fas fa-list"></i> &nbsp;&nbsp;Bookings</p>
+        <p class="sidebar-menu-item" data-action="click->tabs#showWishlist"><i class="fas fa-heart"></i> &nbsp;&nbsp;Wishlist</p>
       </div>
     </div>
     <div class="col-10">
