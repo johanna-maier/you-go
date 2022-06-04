@@ -22,10 +22,16 @@ export default class extends Controller {
     this.show(event.currentTarget.dataset.link);
   }
 
+
   show(tab_name) {
     // console.log(this.element.querySelector(`#${tab_name}`));
     const tabElement = this.element.querySelector(`#${tab_name}`);
     tabElement.classList.remove('d-none');
+    if(tab_name == 'wishlist') {
+      document.querySelector('#wishlist-card').click()
+    }else if(tab_name == 'bookings') {
+      document.querySelector('#booking-card').click()
+    }
   }
 
   disconnect(){
