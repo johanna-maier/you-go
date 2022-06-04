@@ -1,0 +1,17 @@
+ <%= link_to dashboard_index_path(conversation_id: conversation.id, page: 'conversations'), class: "text-decoration-none" do %>
+ <%# <%= 'border border-primary' if like.offer == selected_offer %>
+
+   <div class="<%= 'border border-primary' if conversation == selected_conversation %> category-card conversation-card">
+    <div class="category-card-initials">
+     <%= conversation.offer.user.first_name[0] %>
+     <%= conversation.offer.user.last_name[0] %>
+    </div>
+    <div class="conversation-card-infos">
+      <p>Conversation with
+        <%= conversation.offer.user.first_name %>
+        about
+        <%= conversation.offer.title %>
+      </p>
+    </div>
+  </div>
+ <% end %>
