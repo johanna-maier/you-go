@@ -19,6 +19,7 @@ class DashboardController < ApplicationController
     else
      @offer = @likes.first.offer
     end
+
     if params[:page]
       @page = params[:page]
     else

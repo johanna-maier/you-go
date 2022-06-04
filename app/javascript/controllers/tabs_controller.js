@@ -17,6 +17,8 @@ export default class extends Controller {
       this.profileTarget.classList.add('d-none')
       this.bookingTarget.classList.add('d-none')
       this.conversationsTarget.classList.add('d-none')
+      document.querySelector('#wishlist-card').click()
+
   }
 
   showBookings() {
@@ -24,6 +26,7 @@ export default class extends Controller {
     this.profileTarget.classList.add('d-none')
     this.bookingTarget.classList.remove('d-none')
     this.conversationsTarget.classList.add('d-none')
+    document.querySelector('#booking-card').click()
   }
 
   showProfile() {

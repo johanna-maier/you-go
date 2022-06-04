@@ -1,0 +1,18 @@
+<div>
+<h2><%= @offer.title %></h2>
+<br>
+<%= @offer.description %>
+  <div class="col col-md-6">
+      <div class="card-offer-details mt-4 row">
+        <h3>Details</h3>
+        <p><i class="fas fa-map-marker-alt"></i>&ensp;&nbsp;<%=  @offer.address %></p>
+        <p><i class="far fa-clock"></i>&ensp;<%= @offer.offer_date.strftime("%A, %d %B %Y") %> at <%= @offer.offer_time.strftime("%I:%M %P") %> </p>
+        <p><i class="fas fa-users"></i>&nbsp;Up to <%= @offer.capacity %> participants</p>
+        <% if @offer.price_per_person == 0 %>
+          <p><i class="fas fa-euro-sign"></i>&emsp;free </p>
+        <% else %>
+          <p><i class="fas fa-euro-sign"></i>&emsp;<%= @offer.price_per_person %> € per person</p>
+       <% end %>
+    </div>
+  </div>
+</div>
