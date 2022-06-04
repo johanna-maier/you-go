@@ -5,12 +5,21 @@
   padding: 150px 0;
   height: 700px;
   z-index: 0;
+  position: relative;
+
+  .hero-background-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
 }
 
 .banner h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 2px 3px rgba(0,0,0,0.6);
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
   font-size: 56px;
   line-height: 44px;
   position: absolute;
@@ -26,7 +35,7 @@
   width: 427px;
   height: 363px;
   left: 80px;
-  top: 325px;
+  bottom: 0px;
   background: rgb(255, 255, 255);
   align-items: center;
   margin-top: 10px;
@@ -49,7 +58,7 @@
   height: 15px;
   left: 24px;
   top: 124px;
-/* identical to box height */
+  /* identical to box height */
 }
 
 .banner .search-card .form-airbnb2 {
@@ -59,7 +68,7 @@
   height: 15px;
   left: 24px;
   top: 204px;
-/* identical to box height */
+  /* identical to box height */
 }
 
 .banner .search-card .form-airbnb input {
@@ -68,8 +77,8 @@
 }
 
 .form-control:valid {
-  background-color:  #ffffff!important;
-  color: black!important;
+  background-color: #ffffff !important;
+  color: black !important;
 }
 
 .banner .search-card .btn {

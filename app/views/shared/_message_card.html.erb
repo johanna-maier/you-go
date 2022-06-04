@@ -1,0 +1,25 @@
+<div class="message-card d-flex">
+  <div class="user-icon">
+
+    <% if message.user.avatar_photo.attached? %>
+      <%= cl_image_tag current_user.avatar_photo.key, class: "avatar-large" %>
+    <% else %>
+      <div class="message-card-initials">
+        <%= message.user.first_name[0] %>
+        <%= message.user.last_name[0] %>
+      </div>
+    <% end %>
+
+  </div>
+
+
+  <div class="message-details">
+    <div class="message-header d-flex justify-content-between">
+      <p><b><%= message.user.first_name %></b></p>
+      <p><%= message.created_at.strftime("%d.%m.%y - %H:%M") %></p>
+    </div>
+    <div class="message-content">
+      <p><%= message.content %></p>
+    </div>
+  </div>
+</div>
