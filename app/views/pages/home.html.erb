@@ -70,13 +70,15 @@
   </div>
 <% end %>
 
-<div class="container mt-5">
-  <div class="row d-flex justify-content-center align-items-top">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path("banner-woman-kayaking.jpg")%>)">
-    <h1>YOU GO KAYAKING</h1>
+<%= link_to "/offers?category=kayaking", class: "text-decoration-none" do %>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path("banner-woman-kayaking.jpg")%>)">
+      <h1>YOU GO KAYAKING</h1>
+      </div>
     </div>
   </div>
-</div>
+<% end  %>
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">

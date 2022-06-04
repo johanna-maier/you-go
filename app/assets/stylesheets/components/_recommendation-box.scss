@@ -9,7 +9,6 @@
   position: relative; // imperative for the overlapping to work
   grid-template-columns: repeat(24, 1fr);
   width: 33%;
-  margin-left: 8px;
 
   // &:first-child {
   //   width: 20%;
@@ -27,7 +26,7 @@
 
 .svg-number {
   grid-row: 1;
-  grid-column: 1 / span 6;
+  grid-column: 2 / span 6;
   padding-top: 10%; // slightly arbitrary, keeps proportion once resized
   height: 200px;
 }
