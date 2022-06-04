@@ -8,8 +8,8 @@
   display: grid;
   position: relative; // imperative for the overlapping to work
   grid-template-columns: repeat(24, 1fr);
-  margin: 8px;
   width: 33%;
+  margin-left: 8px;
 
   // &:first-child {
   //   width: 20%;
