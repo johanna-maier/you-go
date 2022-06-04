@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
   end
 
   def new
-    redirect_to conversation_path(@conversation) and return if @conversation
+    redirect_to "/dashboard?conversation_id=#{@conversation.id}&page=conversations" and return if @conversation
 
     @message = current_user.messages.build
   end
@@ -22,16 +22,16 @@ class ConversationsController < ApplicationController
   def set_conversation
     if params[:receiver_id]
       @receiver = User.find(params[:receiver_id])
-      redirect_to conversations_path and return unless @receiver
+      redirect_to "/dashboard?page=conversations" and return unless @receiver
 
       @conversation = Conversation.between(current_user.id, @receiver.id)[0]
     else
       @conversation = Conversation.find(params[:id])
-      redirect_to conversations_path and return unless @conversation&.participates?(current_user)
+      redirect_to "/dashboard?page=conversations" and return unless @conversation&.participates?(current_user)
     end
   end
 
   def check_participating!
-    redirect_to conversations_path unless @conversation&.participates?(current_user)
+    redirect_to "/dashboard?page=conversations" unless @conversation&.participates?(current_user)
   end
 end

@@ -3,12 +3,12 @@
 
    <div class="<%= 'border border-primary' if conversation == selected_conversation %> category-card conversation-card">
     <div class="category-card-initials">
-     <%= conversation.offer.user.first_name[0] %>
-     <%= conversation.offer.user.last_name[0] %>
+     <%= conversation.with(current_user).first_name[0] %>
+     <%= conversation.with(current_user).last_name[0] %>
     </div>
     <div class="conversation-card-infos">
       <p>Conversation with
-        <%= conversation.offer.user.first_name %>
+        <%= conversation.with(current_user).first_name %>
         about
         <%= conversation.offer.title %>
       </p>

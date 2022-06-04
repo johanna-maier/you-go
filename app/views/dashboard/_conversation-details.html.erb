@@ -1,12 +1,13 @@
-<div>
-  <h2>
-    Conversation with
-    <%= conversation.offer.user.first_name %>
-    about
-    <%= conversation.offer.title %>
-  </h2>
-  <% @conversation.messages.each do |message| %>
-    <%= render 'shared/message_card', message: message %>
-  <% end %>
-  <br>
-</div>
+<% if @conversation %>
+  <div>
+    <h2>Conversation with <%= conversation.with(current_user).first_name %>
+        about <%= conversation.offer.title %>
+    </h2>
+    <%= render 'conversations/message_form' %>
+    <br>
+    <% @conversation.messages.each do |message| %>
+      <%= render 'shared/message_card', message: message %>
+    <% end %>
+    <br>
+  </div>
+<% end %>
