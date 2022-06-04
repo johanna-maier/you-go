@@ -13,11 +13,14 @@ class PagesController < ApplicationController
         data = JSON.parse(response)
 
         @recommended_offers = []
+        offer_id = Offer.first.id
+
 
         data.first(4).each_with_index do |recommendation, index|
           # recommended_offer = Offer.find(recommendation)
           # Temporary till we can work with real user IDs + offers that are in DB
-          recommended_offer = Offer.find(index + 2)
+          offer_id += index
+          recommended_offer = Offer.find(offer_id)
           @recommended_offers << recommended_offer
         end
       rescue OpenURI::HTTPError => e

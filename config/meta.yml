@@ -1,0 +1,5 @@
+meta_product_name: "YouGO"
+meta_title: "YouGO - Find your next sporting adventure!"
+meta_description: "YouGO collects sport experience from all over the web and curates them in one plattform."
+meta_image: "banner-woman-kayaking.jpg" # should exist in `app/assets/images/`
+twitter_account: "@JohMaier" # required for Twitter Cards
