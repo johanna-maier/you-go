@@ -3,8 +3,8 @@
   height: 80px;
   padding: 10px 4rem 0;
   position: sticky;
-  top: 0;
-  z-index: 1;
+  top: 60px; //0; // to fit below navbar
+  z-index: 0;//1; // to go behind navbar
 
   .icon-box {
     display: flex;

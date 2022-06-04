@@ -3,6 +3,8 @@ class DashboardController < ApplicationController
   def index
     @bookings = Booking.where(user: current_user)
     @likes = current_user.likes # Like.where(user: current_user)
+    @booking = Booking.new # for booking on wishlist screen
+
     # @conversations = policy_scope(Conversation).where(author_id: current_user.id).order('updated_at DESC')
     @conversations = policy_scope(Conversation).participating(current_user).order('updated_at DESC')
     if params[:conversation_id]
@@ -11,13 +13,13 @@ class DashboardController < ApplicationController
       @conversation = @conversations.first
     end
 
-    # authorize all objects?
-    @user = current_user
+    @user = current_user #  for profile screen
     @offers = policy_scope(Offer)
+
     if params[:offer_id]
       @offer = Offer.find(params[:offer_id])
     else
-     @offer = @likes.first.offer
+      @offer = @likes.first.offer
     end
 
     if params[:page]

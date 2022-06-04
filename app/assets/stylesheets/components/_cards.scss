@@ -98,7 +98,9 @@
 }
 
 // Category cards
-
+// #wishlist-card {
+//   margin-bottom: 16px;
+// }
 .category-card {
   overflow: hidden;
   height: 87px;
@@ -108,7 +110,7 @@
   align-items: center;
   border-radius: 4px;
   margin-top: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 16px; //4px; // more spacing for booking and wishlist screen
 }
 
 .category-card img {
