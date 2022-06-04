@@ -12,12 +12,12 @@
         <% end %>
       </div>
     </div>
-  <% if @conversation %>
-    <div class="col-7 card-profile mt-5">
-      <div class="d-flex flex-column">
-        <%= render 'conversation-details', conversation: @conversation %>
+    <% if @conversation %>
+      <div class="col-7 card-profile mt-5">
+        <div class="d-flex flex-column">
+          <%= render 'conversation-details', conversation: @conversation %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
