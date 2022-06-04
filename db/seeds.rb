@@ -28,10 +28,10 @@ users = [
       description: "Hi, my name is Johanna! I want to go on my next sporting adventure.",
       email: 'johanna@gmail.com',
       password: '123456',
-      img_file: 'johanna-profile.jpg',
+      img_file: 'johanna-profile.jpeg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
-      img_files: ['basket1.jpg','basket2.jpg','basket3.jpg'],
+      img_files: ['basket1.jpeg','basket2.jpeg','basket3.jpeg'],
       location: 'Munich'
     },
     {
@@ -40,7 +40,7 @@ users = [
       description: "Hi, my name is Anjali! I want to go on my next sporting adventure.",
       email: 'anjali@gmail.com',
       password: '123456',
-      img_file: 'anjali-profile.jpg',
+      img_file: 'anjali-profile.jpeg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Berlin'
@@ -51,7 +51,7 @@ users = [
       description: "Hi, my name is Alexandra! I want to go on my next sporting adventure.",
       email: 'alexandra@gmail.com',
       password: '123456',
-      img_file: 'alexandra-profile.jpg',
+      img_file: 'alexandra-profile.jpeg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Berlin'
@@ -62,7 +62,7 @@ users = [
       description: "Hi, my name is Ieva! I want to go on my next sporting adventure.",
       email: 'ieva@gmail.com',
       password: '123456',
-      img_file: 'ieva-profile.jpg',
+      img_file: 'ieva-profile.jpeg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Hamburg'
@@ -73,7 +73,7 @@ users = [
       description: "Hi, my name is Daniel! I want to go on my next sporting adventure.",
       email: 'daniel@gmail.com',
       password: '123456',
-      img_file: 'daniel-profile.jpg',
+      img_file: 'daniel-profile.jpeg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Munich'
@@ -84,7 +84,7 @@ users = [
       description: "Hi, my name is Julian! I want to go on my next sporting adventure.",
       email: 'julian@gmail.com',
       password: '123456',
-      img_file: 'julian-profile.jpg',
+      img_file: 'julian-profile.jpeg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Hamburg'
@@ -95,7 +95,7 @@ users = [
       description: "Hi, my name is Shreetama! I want to go on my next sporting adventure.",
       email: 'shreetama@gmail.com',
       password: '123456',
-      img_file: 'shreetama-profile.jpg',
+      img_file: 'shreetama-profile.jpeg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Cologne'
@@ -106,7 +106,7 @@ users = [
       description: "Hi, my name is Andrew! I want to go on my next sporting adventure.",
       email: 'andrew@gmail.com',
       password: '123456',
-      img_file: 'andrew-profile.jpg',
+      img_file: 'andrew-profile.jpeg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Cologne'
@@ -117,7 +117,7 @@ users = [
       description: "Hi, my name is Killian! I want to go on my next sporting adventure.",
       email: 'killian@gmail.com',
       password: '123456',
-      img_file: 'kilian-profile.jpg',
+      img_file: 'kilian-profile.jpeg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Stuttgart'
@@ -167,7 +167,7 @@ users.each_with_index do |user, index|
     latitude: coordinates[user[:location].to_sym][:latitude],
     longitude: coordinates[user[:location].to_sym][:longitude]
   )
-  seed_user.avatar_photo.attach(io: File.open("db/seed_photos/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpg')
+  seed_user.avatar_photo.attach(io: File.open("db/seed_photos/#{user[:img_file]}"), filename: user[:img_file], content_type: 'image/jpeg')
   seed_user.save!
 
 end
@@ -181,175 +181,175 @@ tags = [
               name: 'ballsports',
               category: 'ballsports',
               icon: '<i class="fas fa-volleyball-ball"></i>',
-              img_file: 'ballsports_tag.jpg'
+              img_file: 'ballsports_tag.jpeg'
           },
           {
               name: 'baseball',
               category: 'ballsports',
               icon: '<i class="fas fa-baseball-ball"></i>',
-              img_file: 'ballsports_tag.jpg'
+              img_file: 'ballsports_tag.jpeg'
           },
           {
               name: 'basketball',
               category: 'ballsports',
               icon: '<i class="fas fa-basketball-ball"></i>',
-              img_file: 'ballsports_tag.jpg'
+              img_file: 'ballsports_tag.jpeg'
           },
           {
               name: 'bowling',
               category: 'ballsports',
               icon: '<i class="fas fa-bowling-ball"></i>',
-              img_file: 'ballsports_tag.jpg'
+              img_file: 'ballsports_tag.jpeg'
           },
           {
               name: 'football',
               category: 'ballsports',
               icon: '<i class="fas fa-futbol"></i>',
-              img_file: 'ballsports_tag.jpg'
+              img_file: 'ballsports_tag.jpeg'
           },
           {
               name: 'volleyball',
               category: 'ballsports',
               icon: '<i class="fas fa-volleyball-ball"></i>',
-              img_file: 'ballsports_tag.jpg'
+              img_file: 'ballsports_tag.jpeg'
           },
           {
               name: 'biking',
               category: 'biking',
               icon: '<i class="fas fa-bicycle"></i>',
-              img_file: 'biking_tag.jpg'
+              img_file: 'biking_tag.jpeg'
           },
           {
               name: 'bouldering',
               category: 'climbing',
               icon: '<i class="fas fa-hand-rock"></i>',
-              img_file: 'climbing_tag.jpg'
+              img_file: 'climbing_tag.jpeg'
           },
           {
               name: 'climbing',
               category: 'climbing',
               icon: '<i class="fas fa-hand-rock"></i>',
-              img_file: 'climbing_tag.jpg'
+              img_file: 'climbing_tag.jpeg'
           },
           {
               name: 'karate',
               category: 'combat sports',
               icon: '<i class="fas fa-hand-paper"></i>',
-              img_file: 'combat_tag.jpg'
+              img_file: 'combat_tag.jpeg'
           },
           {
               name: 'salsa',
               category: 'dancing',
               icon: '<i class="fas fa-music"></i>',
-              img_file: 'dancing_tag.jpg'
+              img_file: 'dancing_tag.jpeg'
           },
           {
               name: 'dancing',
               category: 'dancing',
               icon: '<i class="fas fa-music"></i>',
-              img_file: 'dancing_tag.jpg'
+              img_file: 'dancing_tag.jpeg'
           },
           {
               name: 'hiking',
               category: 'hiking',
               icon: '<i class="fas fa-hiking"></i>',
-              img_file: 'hiking_tag.jpg'
+              img_file: 'hiking_tag.jpeg'
           },
           {
               name: 'racket sports',
               category: 'racket sports',
               icon: '<i class="fas fa-table-tennis"></i>',
-              img_file: 'racket_tag.jpg'
+              img_file: 'racket_tag.jpeg'
           },
           {
               name: 'table tennis',
               category: 'racket sports',
               icon: '<i class="fas fa-table-tennis"></i>',
-              img_file: 'racket_tag.jpg'
+              img_file: 'racket_tag.jpeg'
           },
           {
               name: 'running',
               category: 'running',
               icon: '<i class="fas fa-running"></i>',
-              img_file: 'running_tag.jpg'
+              img_file: 'running_tag.jpeg'
           },
           {
               name: 'skating',
               category: 'skating',
               icon: '<i class="fas fa-skating"></i>',
-              img_file: 'skating_tag.jpg'
+              img_file: 'skating_tag.jpeg'
           },
           {
               name: 'fitness',
               category: 'fitness',
               icon: '<i class="fas fa-dumbbell"></i>',
-              img_file: 'fitness_tag.jpg'
+              img_file: 'fitness_tag.jpeg'
           },
           {
               name: 'canoe',
               category: 'watersports',
               icon: '<i class="fas fa-water"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'fishing',
               category: 'watersports',
               icon: '<i class="fas fa-fish"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'kayaking',
               category: 'watersports',
               icon: '<i class="fas fa-water"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'sailing',
               category: 'watersports',
               icon: '<i class="fas fa-anchor"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'SUP',
               category: 'watersports',
               icon: '<i class="fas fa-water"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'surfing',
               category: 'watersports',
               icon: '<i class="fas fa-water"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'watersports',
               category: 'watersports',
               icon: '<i class="fas fa-water"></i>',
-              img_file: 'watersports_tag.jpg'
+              img_file: 'watersports_tag.jpeg'
           },
           {
               name: 'skiing',
               category: 'wintersports',
               icon: '<i class="fas fa-skiing"></i>',
-              img_file: 'wintersports_tag.jpg'
+              img_file: 'wintersports_tag.jpeg'
           },
           {
               name: 'snowboarding',
               category: 'wintersports',
               icon: '<i class="fas fa-snowboarding"></i>',
-              img_file: 'wintersports_tag.jpg'
+              img_file: 'wintersports_tag.jpeg'
           },
           {
               name: 'wintersports',
               category: 'wintersports',
               icon: '<i class="fas fa-snowflake"></i>',
-              img_file: 'wintersports_tag.jpg'
+              img_file: 'wintersports_tag.jpeg'
           },
           {
               name: 'yoga',
               category: 'yoga',
               icon: '<i class="fas fa-praying-hands"></i>',
-              img_file: 'yoga_tag.jpg'
+              img_file: 'yoga_tag.jpeg'
           }
 ]
 
@@ -360,7 +360,7 @@ tags.each_with_index do |tag, index|
     category: tag[:category],
     icon: tag[:icon]
   )
-  seed_tag.photo.attach(io: File.open("db/seed_photos/#{tag[:img_file]}"), filename: tag[:img_file], content_type: 'image/jpg')
+  seed_tag.photo.attach(io: File.open("db/seed_photos/#{tag[:img_file]}"), filename: tag[:img_file], content_type: 'image/jpeg')
   seed_tag.save!
 end
 
