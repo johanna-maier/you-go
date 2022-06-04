@@ -12,7 +12,7 @@
           <% end %>
         </div>
     </div>
-    <% if @offer %>
+    <% if @likes.present? %>
       <div class="col-7 card-profile mt-5" data-show-offer-target="details">
         <div class="d-flex flex-column">
           <%= render 'wishlist_details', offer: @offer %>
