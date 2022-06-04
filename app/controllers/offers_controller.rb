@@ -8,12 +8,14 @@ class OffersController < ApplicationController
   def index
     @offers_in_future = policy_scope(Offer).where('offer_date > ?', DateTime.now)
     @offers = @offers_in_future.reorder("offers.offer_date ASC")
+
     if params[:city].present? && params[:query].present?
       @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).global_search(params[:query]).reorder("offers.offer_date ASC")
     else
       @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC") if params[:city].present?
       @offers = @offers_in_future.global_search(params[:query]).reorder("offers.offer_date ASC") if params[:query].present?
     end
+
 
     if params[:category].present?
       @offers = @offers_in_future.category_search(params[:category]).reorder("offers.offer_date ASC")
