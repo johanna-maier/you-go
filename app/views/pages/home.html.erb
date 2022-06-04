@@ -51,7 +51,7 @@
   <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-top mt-5">
     <h2>Top experiences in <%= current_user.location %></h2>
-      <% @offers.near(current_user.location, 50, min_radius: 1).first(4).each do |offer| %>
+      <% @offers.near(current_user.location, 50, min_radius: 1).sample(4).each do |offer| %>
         <div class="col-12 col-lg-5 col-xl-3 mt-3">
           <%= render 'shared/basic_offer_card', offer: offer %>
         </div>
