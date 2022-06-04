@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   # For Testing the offer is simply set to 562. That last bit will need to be removed afterwards!!!
   # Local ENV Johanna - offer_id 6
   def create
-    @conversation ||= Conversation.new(author_id: current_user.id, receiver_id: @receiver.id, offer_id: 562)
+    @conversation ||= Conversation.new(author_id: current_user.id, receiver_id: @receiver.id, offer_id: 2)
     @conversation.save! unless @conversation.save
     @message = current_user.messages.build(message_params)
     @message.conversation_id = @conversation.id
@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 
     flash[:success] = "Your message was sent!"
     # Might need to redirect somewhere else or not redirect anywhere
-    redirect_to conversation_path(@conversation)
+    redirect_to "/dashboard?conversation_id=#{@conversation.id}&page=conversations" # conversation_path(@conversation)
   end
 
   private
@@ -37,7 +37,7 @@ class MessagesController < ApplicationController
   def set_receiver
     # For Testing just set to one user: DANIEL
     # Local ENV Johanna - user_id 2
-    @receiver = User.find(2)
+    @receiver = User.find(3)
     # After connecting to Offers, the code below will replace the preset above and will need to be TESTED!!!
     # @offer = Offer.find(params[:id])
     # @receiver = @offer.user

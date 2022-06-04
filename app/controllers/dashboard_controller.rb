@@ -2,10 +2,9 @@ class DashboardController < ApplicationController
 
   def index
     @bookings = Booking.where(user: current_user)
-    @conversations = Conversation.participating(current_user).order('updated_at DESC')
     @likes = current_user.likes # Like.where(user: current_user)
-    # @conversations = policy_scope(Conversation).where(author_id: current_user.id).order('updated_at DESC')
-    @conversations = policy_scope(Conversation).participating(current_user).order('updated_at DESC')
+    @conversations = Conversation.participating(current_user).order('updated_at DESC')
+    @message = Message.new
     if params[:conversation_id]
       @conversation = Conversation.find(params[:conversation_id])
     else

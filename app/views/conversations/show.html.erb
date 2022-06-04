@@ -5,10 +5,5 @@
     <%= render @conversation.messages %>
   </div>
 
-  <%= form_for @message do |f| %>
-    <%= hidden_field_tag 'conversation_id', @conversation.id %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.submit %>
-  <% end %>
+  <%= render 'message_form' %>
 </div>
