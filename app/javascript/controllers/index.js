@@ -22,7 +22,6 @@ let i = 0;
 let timer;
 
 function typingEffect() {
-  console.log('a')
   let word = words[i].split("");
   var loopTyping = function () {
     // console.log('a');
@@ -40,7 +39,6 @@ function typingEffect() {
 }
 
 function deletingEffect() {
-  console.log('b')
   let word = words[i].split("");
   var loopDeleting = function () {
     if (word.length > 0) {
@@ -61,9 +59,9 @@ function deletingEffect() {
   };
   loopDeleting();
 }
-console.log('start typing')
+
 typingEffect();
 
 // document.addEventListener("DOMContentLoaded", () => {
-//   console.log("--------  DOM")
+//   typingEffect();
 // });
