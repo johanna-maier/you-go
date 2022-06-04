@@ -12,7 +12,10 @@
     padding-bottom: 50px;
   }
   font-weight: lighter;
-  #sidebar-tabs {
+  i {
+    margin-right: 20px;
+  }
+  #sidebar-tabs{
     position: sticky;
     top: 60px;
     height: 100vh;
@@ -80,11 +83,19 @@
   i {
     font-size: 40px;
   }
-  &:hover {
+  &:hover i{
     color: $primary;
   }
   cursor: pointer;
 }
+.clickable.active {
+  color: inherit;
+  border-color: $primary;
+  i {
+    color: $primary;
+  }
+}
+
 
 #your-sport {
   p {

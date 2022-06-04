@@ -29,7 +29,6 @@ class OffersController < ApplicationController
         image_url: helpers.asset_url("map_marker.png")
       }
     end
-
   end
 
   def show
@@ -41,7 +40,6 @@ class OffersController < ApplicationController
     # Add tracking for viewing an offers showpage only if user is logged in
     if current_user
       ahoy.track "View Offer Page ID #{@offer.id}", user: @user.id, offer: @offer.id
-
     end
   end
 
