@@ -7,7 +7,7 @@
 <div class="index-container">
   <div class="container cards">
     <% if @offers.empty? %>
-      <h2 class="warning">
+      <h4 class="warning">
         There seem to be no offers
         <% if params[:query].present? %>
           for "<%= "#{params[:query].capitalize}" %>"
@@ -15,8 +15,8 @@
         <% if params[:city].present? %>
           in <%= params[:city].capitalize %>
         <% end %>
-        .<br><br><b>Go for a different experience instead!</b>
-      </h2>
+        .<br><br>Go for a different experience instead!
+      </h4>
     <% end %>
     <div class="row">
       <% @offers.first(48).each do |offer| %>

@@ -5,6 +5,9 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  // .container-fluid {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  // }
 
   .avatar {
     border: 1.5px $primary solid;

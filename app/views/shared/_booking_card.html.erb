@@ -1,0 +1,15 @@
+ <%= link_to dashboard_index_path(offer_id: booking.offer_id, page: 'bookings'), class: "text-decoration-none" do %>
+  <div class="<%= 'border border-primary' if booking.offer == selected_offer %> category-card" id='booking-card'>
+
+     <% if booking.offer.photos.attached? %>
+        <%= cl_image_tag booking.offer.photos.first.key %>
+      <% else %>
+        <%= image_tag booking.offer.external_image_url %>
+      <% end %>
+    <div class="category-card-infos">
+      <h2><%= booking.offer.title.gsub(/(\.|!).*/, '').truncate(27) %></h2>
+      <p><strong><%= booking.offer.price_per_person %></strong>€/person</p>
+      <p><%= booking.offer.address.gsub(/(\.|!).*/, '').truncate(60) %></p>
+  </div>
+  </div>
+<% end %>
