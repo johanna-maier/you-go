@@ -3,7 +3,7 @@
     <div class="col-4 card-profile mt-5">
       <div class="d-flex justify-content-between align-items-center">
         <h2>Profile</h2>
-        <i class="far fa-edit" data-action="click->edit-profile#show"></i>
+        <i class="far fa-edit edit-icon" data-action="click->edit-profile#show" ></i>
       </div>
       <p><i class="fas fa-user"></i> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
       <p><i class="fas fa-map-marker-alt"></i> <%= current_user.location %> </p>
@@ -13,42 +13,45 @@
       <div id="your-sport" class="mt-5">
         <h2>Your Sports</h2>
         <p>
-          <span class='offer-tag'>Kayaking</span>
-          <span class='offer-tag'>Hiking</span>
-          <span class='offer-tag'>Volleyball</span>
-          <span class='offer-tag'>Football</span>
-          <span class='offer-tag'>Bouldering</span>
-          <span class='offer-tag'>Snowboard</span>
+          <% current_user.preferences.each do |tag_id| %>
+            <span class='offer-tag'><%= Tag.find(tag_id).name %></span>
+          <% end %>
         </p>
       </div>
     </div>
-    <div class="col-7 card-profile-details mt-5" data-edit-profile-target="form">
+
+    <div class="col-7 card-profile-details mt-5 d-none" data-edit-profile-target="form">
       <h2>Profile Details</h2>
-      <%# profile form %>
-      <%= simple_form_for(@user) do |f| %>
-        <div class="d-flex">
-          <%= f.input :first_name, label: 'FIRST NAME'%>
-          <%= f.input :last_name, label: 'LAST NAME'%>
-        </div>
-        <div class="d-flex">
-          <%= f.input :gender, label: 'GENDER'%>
-          <%= f.input :location, label: 'CITY'%>
-          <%= f.input :date_of_birth, label: 'DATE OF BIRTH', html5: true%>
-        </div>
+
+    <%= simple_form_for(@user, data: {
+                        action: "submit->edit-profile#send"
+                      }) do |f| %>
+      <div class="d-flex">
+        <%= f.input :first_name, label: 'FIRST NAME'%>
+        <%= f.input :last_name, label: 'LAST NAME'%>
+      </div>
+      <div class="d-flex">
+        <%= f.input :gender, label: 'GENDER'%>
+        <%= f.input :location, label: 'CITY'%>
+        <%= f.input :date_of_birth, label: 'DATE OF BIRTH', html5: true%>
+        <%= f.hidden_field :preferences, data: { edit_profile_target: "prefs"}, name: 'user[preferences][]' %>
+      </div>
 
 
       <h2>Choose you favorite sports here</h2>
       <!-- TODO cards -->
       <div class="row">
-        <% Tag.all.each do |tag| %>
-          <div class="card-sport-category">
+        <% Tag.where("name != category").each do |tag| %>
+          <div id="<%= tag.id %>"
+              class="card-sport-category clickable <%= 'active' if @user.preferences.include? tag.id %>"
+              data-action="click->edit-profile#toggleActiveClass"
+              data-edit-profile-target="card">
             <%= raw tag.icon %>
-            <%# <i class="fas fa-volleyball-ball"></i> %>
             <span><%= tag.name.capitalize %></span>
           </div>
         <% end %>
       </div>
-      <%= f.submit "Save changes", class: 'btn btn-slim'%>
+      <%= f.submit "Save changes", class: 'btn btn-slim' %>
       <% end%>
     </div>
   </div>

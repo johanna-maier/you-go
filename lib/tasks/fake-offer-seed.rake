@@ -95,7 +95,7 @@ namespace :offerSeeds do
         puts "New offer created"
         seed_offer.tag = tag
         seed_offer.user = User.first
-        puts "Offer associated with tag"
+        puts "Offer associated with tag and first user."
 
         puts tags[tag.name.to_sym]
         # adding 3 images per offer
