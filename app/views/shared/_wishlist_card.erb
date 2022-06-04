@@ -1,5 +1,5 @@
  <%= link_to dashboard_index_path(offer_id: like.offer_id, page: 'wishlist'), class: "text-decoration-none" do %>
-  <div class="<%= 'border border-primary' if like.offer == selected_offer %> category-card">
+  <div class="<%= 'border border-primary' if like.offer == selected_offer %> category-card" id='wishlist-card'>
 
      <% if like.offer.photos.attached? %>
         <%= cl_image_tag like.offer.photos.first.key %>
