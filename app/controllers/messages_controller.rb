@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 
     flash[:success] = "Your message was sent!"
     # Might need to redirect somewhere else or not redirect anywhere
-    redirect_to "/dashboard?conversation_id=#{@conversation.id}&page=conversations" # conversation_path(@conversation)
+    redirect_to "/dashboard?conversation_id=#{@conversation.id}&page=conversations"
   end
 
   private
