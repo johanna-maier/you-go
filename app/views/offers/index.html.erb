@@ -2,7 +2,6 @@
   <% Tag.all.sample(10).each do |tag| %>
     <a class='no-link-style' href='/offers?category=<%= tag.name %>'><div class='icon-box'><%=raw tag.icon %><%= tag.name.upcase %></div></a>
   <% end %>
-
 </div>
 <div class="index-container">
   <div class="container cards">
