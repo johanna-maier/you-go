@@ -1,8 +1,11 @@
-<div class="d-flex justify-content-evenly align-items-center icons-container">
-  <% Tag.all.sample(10).each do |tag| %>
-    <a class='no-link-style' href='/offers?category=<%= tag.name %>'><div class='icon-box'><%=raw tag.icon %><%= tag.name.upcase %></div></a>
-  <% end %>
+<div class=" icons-container">
+  <div class="icons-scrollable-area d-flex  align-items-center">
+    <% @tags_with_offers.each do |tag| %>
+      <a class='no-link-style' href='/offers?category=<%= tag.name %>'><div class='icon-box'><%=raw tag.icon %><%= tag.name.upcase %></div></a>
+    <% end %>
+  </div>
 </div>
+
 <div class="index-container">
   <div class="container cards">
     <% if @offers.empty? %>
@@ -14,7 +17,8 @@
         <% if params[:city].present? %>
           in <%= params[:city].capitalize %>
         <% end %>
-        .<br><br>Go for a different experience instead!
+        at the moment.
+        <br><br>Go for a different experience instead!
       </h4>
     <% end %>
     <div class="row">

@@ -3,6 +3,7 @@
     <div class="col-4 card-profile mt-5">
       <div class="d-flex flex-column" data-action="click->show-offer#show">
          <h2>Your Wishlist</h2>
+         <br>
          <% if @likes.present? %>
            <% @likes.each do |like| %>
              <%= render 'shared/wishlist_card', selected_offer: @offer, like: like %>

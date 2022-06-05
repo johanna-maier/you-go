@@ -131,12 +131,19 @@
   margin-top: 8px;
 }
 
-.conversation-card {
+.category-card .category-card-infos {
+  padding: 16px;
+  h2 {
+    color: black;
+  }
+}
+
+.dashboard-list-card {
   position: relative;
-  .conversation-card-infos {
+  .dashboard-list-card-infos {
     padding: 16px;
     position: absolute;
-    left: 70px;
+    left: 80px;
     h2 {
       color: black;
     }
@@ -144,27 +151,32 @@
       font-size: 16px;
     }
   }
-}
-.category-card .category-card-initials {
-  background-color: $primary;
-  height: 100%;
-  width: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-  color: white;
-  font-size: 32px;
-  position: absolute;
-  left: 0px;
+
+  .category-card-initials {
+    background-color: $primary;
+    height: 100%;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    left: 0px;
+  }
+
+  img {
+    height: 100%;
+    width: 80px;
+    display: flex;
+
+    position: absolute;
+    left: 0px;
+  }
 }
 
-.category-card .category-card-infos {
-  padding: 16px;
-  h2 {
-    color: black;
-  }
+.dashboard-list-card-active {
+  outline: 2.5px solid $primary;
 }
 
 // The big card with video on the homepage

@@ -3,11 +3,11 @@
     <h2>Conversation with <%= conversation.with(current_user).first_name %>
         about <%= conversation.offer.title %>
     </h2>
-    <%= render 'conversations/message_form' %>
     <br>
-    <% @conversation.messages.each do |message| %>
+    <% @messages.each do |message| %>
       <%= render 'shared/message_card', message: message %>
     <% end %>
     <br>
+    <%= render 'conversations/message_form' %>
   </div>
 <% end %>

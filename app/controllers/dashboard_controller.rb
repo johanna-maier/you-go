@@ -11,6 +11,8 @@ class DashboardController < ApplicationController
       @conversation = @conversations.first
     end
 
+    @messages = @conversation.messages.reorder('messages.created_at ASC')
+
     # authorize all objects?
     @user = current_user
     @offers = policy_scope(Offer)

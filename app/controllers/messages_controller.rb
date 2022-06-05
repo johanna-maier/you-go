@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
 
   def new
     @message = current_user.messages.build
-    authorize @message
   end
 
   def create
