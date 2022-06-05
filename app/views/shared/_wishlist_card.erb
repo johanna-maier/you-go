@@ -8,8 +8,10 @@
       <% end %>
     <div class="category-card-infos">
       <h2><%= like.offer.title.gsub(/(\.|!).*/, '').truncate(27) %></h2>
-      <p><strong><%= like.offer.price_per_person %></strong>€/person</p>
-      <p><%= like.offer.address.gsub(/(\.|!).*/, '').truncate(60) %></p>
+      <%# removing because we already have this info on wishlist details %>
+      <%# <p><strong><%= like.offer.price_per_person %>
+      <%# </strong>€/person</p> %>
+      <%# <p><%= like.offer.address.gsub(/(\.|!).*/, '').truncate(60) %></p>
   </div>
   </div>
 <% end %>

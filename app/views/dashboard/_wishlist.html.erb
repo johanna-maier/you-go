@@ -1,4 +1,4 @@
-<div id="page-wishlist" data-controller="show-offer">
+<div id="page-wishlist">
   <div class="row">
     <div class="col-4 card-profile mt-5">
       <div class="d-flex flex-column" data-action="click->show-offer#show">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <% if @likes.present? %>
-      <div class="col-7 card-profile mt-5" data-show-offer-target="details">
+      <div class="col-7 card-profile mt-5" data-tabs-target="details">
         <div class="d-flex flex-column">
           <%= render 'wishlist_details', offer: @offer %>
         </div>
