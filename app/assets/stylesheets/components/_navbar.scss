@@ -6,7 +6,7 @@
   top: 0;
   z-index: 1;
   // .container-fluid {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   // }
 
   .avatar {
@@ -20,23 +20,22 @@
 
   .search-navbar {
     align-items: center;
-  }
+    #input-city-navbar {
+      border: 1px solid black;
+      border-radius: 8px 0px 0px 8px;
+      font-size: 14px;
+      text-align: center;
+      width: 300px;
+    }
 
-  #input-city-navbar {
-    border: 1px solid black;
-    border-radius: 8px 0px 0px 8px;
-    font-size: 14px;
-    text-align: center;
-    width: 300px;
-  }
-
-  #input-sport-navbar {
-    border: 1px solid black;
-    border-left: 0px;
-    border-radius: 0px 8px 8px 0px;
-    font-size: 14px;
-    text-align: center;
-    width: 300px;
+    #input-sport-navbar {
+      border: 1px solid black;
+      border-left: 0px;
+      border-radius: 0px 8px 8px 0px;
+      font-size: 14px;
+      text-align: center;
+      width: 300px;
+    }
   }
 
   .fa-search {

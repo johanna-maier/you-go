@@ -19,22 +19,28 @@ class Offer < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :title, :description ],
+    against: {
+      title: "A",
+      description: "D"
+    },
     associated_against: {
-      tag: [ :name, :category ]
+      tag: {
+        name: "C",
+        category: "B"
+       }
     },
     using: {
         tsearch: { prefix: true }
     }
 
     pg_search_scope :category_search,
-     against: [],
-    associated_against: {
-      tag: [:name, :category ]
-    },
-    using: {
-        tsearch: { prefix: true }
-    }
+      against: [],
+      associated_against: {
+        tag: [:name, :category ]
+      },
+      using: {
+          tsearch: { prefix: true }
+      }
 
   def avg_rating
     reviews.average(:rating)

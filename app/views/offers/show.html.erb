@@ -1,8 +1,11 @@
 <!-- app/views/offers/show.html.erb -->
-<%# content_for :meta_title, "#{@offer.name} on #{DEFAULT_META["meta_product_name"]}" %>
-<%# content_for :meta_description, @offer.description.truncate(160) %>
-<%# content_for :meta_image, cl_image_path(@offer.photo.path) %>
-
+<% content_for :meta_title, "#{@offer.title} on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @offer.description.truncate(160) %>
+<% if @offer.is_external == true %>
+  <% content_for :meta_image, @offer.external_image_url %>
+<% else  %>
+  <% content_for :meta_image, cl_image_path(@offer.photos.first.key) %>
+<% end  %>
 
 <!-- info / title/ short description / Star rating / Add to wishlist-->
 <div class="container mt-4" data-controller="insert-review">
@@ -105,7 +108,7 @@
       </div>
 
       <div class="mt-4 row">
-        <%= render 'conversations/start_conversation_form' %>
+        <%#= render 'conversations/start_conversation_form' %>
       </div>
 
       <div class=" mt-5">
