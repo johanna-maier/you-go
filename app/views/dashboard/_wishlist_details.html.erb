@@ -1,8 +1,8 @@
 <div>
-<h2><%= @offer.title %></h2>
-<br>
-<%= @offer.description %>
-  <div class="col col-md-6">
+  <h2><%= @offer.title %></h2>
+  <br>
+  <%= @offer.description %>
+  <div class="col col-md-7 mt-5">
       <div class="card-offer-details mt-4 row">
         <h3>Details</h3>
         <p><i class="fas fa-map-marker-alt"></i>&ensp;&nbsp;<%=  @offer.address %></p>
@@ -13,6 +13,15 @@
         <% else %>
           <p><i class="fas fa-euro-sign"></i>&emsp;<%= @offer.price_per_person %> € per person</p>
        <% end %>
+
+      <% if @offer.is_external %>
+        <%= link_to 'Go to Meetup', @offer.url, class: 'btn btn-slim', target: '_blank' %>
+      <% else %>
+        <%= link_to 'Book now', "#", class: 'btn btn-slim', "data-bs-toggle" => "modal", "data-bs-target" => "#exampleModal"%>
+      <% end %>
+
+    <!-- Partial for Bootstrap modal with Booking Form -->
+    <%= render 'shared/booking_popup', offer: @offer, booking: @booking  %>
     </div>
   </div>
 </div>
