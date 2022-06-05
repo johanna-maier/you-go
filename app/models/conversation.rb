@@ -3,7 +3,7 @@ class Conversation < ApplicationRecord
   belongs_to :receiver, class_name: 'User'
   belongs_to :offer
   # scope: will need to be :offer once integrated with Offers
-  validates :author, uniqueness: { scope: :offer_id }
+  validates :author, uniqueness: { scope: :offer }
 
   has_many :messages, -> { order(created_at: :desc) }, dependent: :destroy
 
