@@ -12,8 +12,6 @@ class MessagesController < ApplicationController
     @message.conversation_id = @conversation.id
     @message.save!
     authorize @message
-
-    flash[:success] = "Your message was sent!"
     redirect_to "/dashboard?conversation_id=#{@conversation.id}&page=conversations"
   end
 
@@ -27,11 +25,19 @@ class MessagesController < ApplicationController
     params[:offer_id]
   end
 
+  def author_id
+    params[:author_id]
+  end
+
   def message_params
     params.require(:message).permit(:content)
   end
 
   def find_conversation!
-    @conversation = Conversation.find(params[:conversation_id]) unless params[:conversation_id].empty?
+    if offer_id
+      @conversation = Conversation.about(author_id, offer_id)[0]
+    else
+      @conversation = Conversation.find(params[:conversation_id])
+    end
   end
 end
