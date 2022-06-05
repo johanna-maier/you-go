@@ -23,7 +23,7 @@ class ConversationsController < ApplicationController
       @receiver = User.find(params[:receiver_id])
       # redirect_to "/dashboard?page=conversations" and return unless @receiver
 
-      @conversation = Conversation.between(current_user.id, @receiver.id)[0]
+      @conversation = Conversation.between(current_user.id, @receiver.id, params[:offer_id])[0]
     else
       @conversation = Conversation.find(params[:id])
       # redirect_to "/dashboard?page=conversations" and return unless @conversation&.participates?(current_user)
