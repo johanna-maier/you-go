@@ -26,6 +26,7 @@
   </div>
 </div>
 
+
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Explore by category</h2>
@@ -42,14 +43,14 @@
   <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-top">
     <h2>Recommended for you</h2>
-      <%= render 'shared/recommendation-box' %>
+      <%= render 'shared/recommendation-box', recommended_offers: @recommended_offers %>
     </div>
   </div>
 
   <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-top mt-5">
     <h2>Top experiences in <%= current_user.location %></h2>
-      <% @offers.near(current_user.location, 50, min_radius: 1).first(4).each do |offer| %>
+      <% @offers.near(current_user.location, 50, min_radius: 1).sample(4).each do |offer| %>
         <div class="col-12 col-lg-5 col-xl-3 mt-3">
           <%= render 'shared/basic_offer_card', offer: offer %>
         </div>
@@ -69,13 +70,15 @@
   </div>
 <% end %>
 
-<div class="container mt-5">
-  <div class="row d-flex justify-content-center align-items-top">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path("banner-woman-kayaking.jpg")%>)">
-    <h1>YOU GO KAYAKING</h1>
+<%= link_to "/offers?category=kayaking", class: "text-decoration-none" do %>
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center align-items-top">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path("banner-woman-kayaking.jpg")%>)">
+      <h1>YOU GO KAYAKING</h1>
+      </div>
     </div>
   </div>
-</div>
+<% end  %>
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center align-items-top">

@@ -1,3 +1,8 @@
+<!-- app/views/offers/show.html.erb -->
+<%# content_for :meta_title, "#{@offer.name} on #{DEFAULT_META["meta_product_name"]}" %>
+<%# content_for :meta_description, @offer.description.truncate(160) %>
+<%# content_for :meta_image, cl_image_path(@offer.photo.path) %>
+
 
 <!-- info / title/ short description / Star rating / Add to wishlist-->
 <div class="container mt-4" data-controller="insert-review">
@@ -97,6 +102,10 @@
     <div class="col col-md-4">
       <div class="card-offer-details mt-4 row">
         <%= render 'offers/offer_details_card' %>
+      </div>
+
+      <div class="mt-4 row">
+        <%= render 'conversations/start_conversation_form' %>
       </div>
 
       <div class=" mt-5">

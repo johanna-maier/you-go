@@ -4,7 +4,7 @@
           <%= show_svg('top-1.svg') %>
         </div>
         <div class="recommended-offer">
-          <%= render 'shared/basic_offer_card', offer: @offers.first %>
+          <%= render 'shared/basic_offer_card', offer: recommended_offers.first %>
         </div>
       </div>
       <div class="recommendation">
@@ -12,7 +12,7 @@
           <%= show_svg('top-2.svg') %>
         </div>
         <div class="recommended-offer">
-          <%= render 'shared/basic_offer_card', offer: @offers.second %>
+          <%= render 'shared/basic_offer_card', offer: recommended_offers.second %>
         </div>
       </div>
       <div class="recommendation">
@@ -20,16 +20,9 @@
           <%= show_svg('top-3.svg') %>
         </div>
         <div class="recommended-offer">
-          <%= render 'shared/basic_offer_card', offer: @offers.third %>
+          <%= render 'shared/basic_offer_card', offer: recommended_offers.third %>
         </div>
       </div>
-      <div class="recommendation">
-        <div class="svg-number">
-          <%= show_svg('top-4.svg') %>
-        </div>
-        <div class="recommended-offer">
-          <%= render 'shared/basic_offer_card', offer: @offers.fifth %>
-        </div>
-      </div>
+
 
     </div>

@@ -3,7 +3,7 @@ class Conversation < ApplicationRecord
   belongs_to :receiver, class_name: 'User'
   belongs_to :offer
   # scope: will need to be :offer once integrated with Offers
-  validates :author, uniqueness: { scope: :receiver }
+  validates :author, uniqueness: { scope: :offer }
 
   has_many :messages, -> { order(created_at: :desc) }, dependent: :destroy
 
@@ -19,7 +19,7 @@ class Conversation < ApplicationRecord
     author == current_user ? receiver : author
   end
 
-  def participates?(user)
-    author == user || receiver == user
-  end
+  # def participates?(user)
+  #   author == user || receiver == user
+  # end
 end
