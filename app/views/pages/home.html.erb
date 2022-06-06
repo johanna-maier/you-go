@@ -31,7 +31,7 @@
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Explore by category</h2>
 
-  <% Tag.where("name = category").sample(4).each do |tag| %>
+  <% @categories_with_offers.sample(4).each do |tag| %>
   <div class="col-12 col-lg-5 col-xl-3 mt-3 ">
       <%= render 'shared/category_card', tag: tag %>
     </div>

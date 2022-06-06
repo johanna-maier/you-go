@@ -1,8 +1,15 @@
-  <%= form_for @message do |f| %>
+<% if user_signed_in? %>
+  <h3>Contact the Organizer</h3>
+  <br><br>
+
+  <%= simple_form_for(@message) do |f| %>
     <%= hidden_field_tag 'conversation_id', @conversation.id %>
     <%= hidden_field_tag 'offer_id', @offer.id %>
     <%= hidden_field_tag 'receiver_id', @offer.user.id %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.submit %>
+    <%= f.input :content, label: 'CONTENT', placeholder: 'What do you want to write?' %>
+    <%= f.submit "Send message", class: 'btn btn-slim-secondary' %>
   <% end %>
+<% else %>
+  <h3>Contact the Organizer</h3>
+  <p> You must be logged in to send a message. </p>
+<% end %>

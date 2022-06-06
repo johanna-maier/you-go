@@ -3,6 +3,7 @@
     <div class="col-4 card-profile mt-5">
       <div class="d-flex flex-column" data-action="click->show-offer#show">
          <h2>Your Bookings</h2>
+         <br>
          <% if @bookings.present? %>
            <% @bookings.each do |booking| %>
              <%= render 'shared/booking_card', selected_offer: @offer, booking: booking %>

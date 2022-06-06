@@ -31,6 +31,8 @@ class OffersController < ApplicationController
         image_url: helpers.asset_url("map_marker.png")
       }
     end
+    # If we want to filter only by tags which are not categories as well add: .where.not("name = category")
+    @tags_with_offers = Tag.select { |x| x.offers.count > 1 }
   end
 
   def show
