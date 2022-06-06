@@ -4,7 +4,7 @@
   padding: 10px 4rem 0;
   position: sticky;
   top: 60px; //0; // to fit below navbar
-  z-index: 0;//1; // to go behind navbar
+  z-index: 1; //1; // to not go behind offer cards - .navbar-lewagon has z-index 2
 
   .icons-scrollable-area {
     overflow: visible;

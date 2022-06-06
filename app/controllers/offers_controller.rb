@@ -7,33 +7,45 @@ class OffersController < ApplicationController
 
   def index
     @offers_in_future = policy_scope(Offer).where('offer_date > ?', DateTime.now)
-    @offers = @offers_in_future.reorder("offers.offer_date ASC")
+    # If we want to filter only by tags which are not categories as well add: .where.not("name = category")
+    @tags_with_offers = Tag.select { |x| x.offers.count > 1 }
 
     if params[:city].present? && params[:query].present?
       @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).global_search(params[:query]).reorder("offers.offer_date ASC")
-    else
-      @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC") if params[:city].present?
-      @offers = @offers_in_future.global_search(params[:query]).reorder("offers.offer_date ASC") if params[:query].present?
-    end
-
-
-    if params[:category].present?
+    elsif params[:city].present?
+      @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC")
+    elsif params[:query].present?
+      @offers = @offers_in_future.global_search(params[:query]).reorder("offers.offer_date ASC")
+    elsif params[:category].present?
       @offers = @offers_in_future.category_search(params[:category]).reorder("offers.offer_date ASC")
+    else
+      @offers = @offers_in_future.reorder("offers.offer_date ASC")
     end
 
-    @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
-    @offers_in_europe = @offers_with_coordinates.near("Berlin", 20000, min_radius: 1)
-    # Markers for Map on Index page
-    @markers = @offers_in_europe.map do |offer|
-      {
-        lat: offer.latitude,
-        lng: offer.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { offer: offer }),
-        image_url: helpers.asset_url("map_marker.png")
-      }
+    if @offers.empty?
+      # Markers for Map on Index page
+      @markers = @offers.map do |offer|
+        {
+          lat: offer.latitude,
+          lng: offer.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { offer: offer }),
+          image_url: helpers.asset_url("map_marker.png")
+        }
+      end
+    else
+      # Throws errors when @offers.empty? > If statement to avoid this case.
+      @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
+      @offers_in_europe = @offers_with_coordinates.near("Berlin", 2000, min_radius: 1)
+      # Markers for Map on Index page
+      @markers = @offers_in_europe.map do |offer|
+        {
+          lat: offer.latitude,
+          lng: offer.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { offer: offer }),
+          image_url: helpers.asset_url("map_marker.png")
+        }
+      end
     end
-    # If we want to filter only by tags which are not categories as well add: .where.not("name = category")
-    @tags_with_offers = Tag.select { |x| x.offers.count > 1 }
   end
 
   def show
