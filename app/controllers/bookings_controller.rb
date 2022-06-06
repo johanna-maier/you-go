@@ -7,7 +7,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save!
-      redirect_to @offer, notice: 'Offer was successfully booked.'
+      # redirect_to @offer, notice: 'Offer was successfully booked.'
+      # redirect to dashboard after booking
+      redirect_to dashboard_index_path(offer_id: @booking.offer_id, page: 'bookings'), notice: 'Offer was successfully booked.'
     else
       render :new
     end

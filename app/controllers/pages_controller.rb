@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @offers = policy_scope(Offer)
+    @categories_with_offers = Tag.where("name = category").select { |x| x.offers.count > 1 }
 
     if current_user.present?
       recommender_url = "https://recommender-test-4ypjk67m2a-ew.a.run.app/recommender?user_id=#{current_user.id}"

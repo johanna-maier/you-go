@@ -1,8 +1,9 @@
-<div id="page-bookings" data-controller="show-offer">
+<div id="page-bookings">
   <div class="row">
     <div class="col-4 card-profile mt-5">
       <div class="d-flex flex-column" data-action="click->show-offer#show">
          <h2>Your Bookings</h2>
+         <br>
          <% if @bookings.present? %>
            <% @bookings.each do |booking| %>
              <%= render 'shared/booking_card', selected_offer: @offer, booking: booking %>
@@ -13,7 +14,7 @@
         </div>
     </div>
     <% if @offer %>
-      <div class="col-7 card-profile mt-5" data-show-offer-target="details">
+      <div class="col-7 card-profile mt-5" data-tabs-target="details">
         <div class="d-flex flex-column">
           <%= render 'bookings-details', offer: @offer %>
         </div>

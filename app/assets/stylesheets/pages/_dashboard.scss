@@ -8,14 +8,14 @@
   display: flex;
   justify-content: center;
   img {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
   font-weight: lighter;
   i {
     margin-right: 20px;
   }
-  #sidebar-tabs{
+  #sidebar-tabs {
     position: sticky;
     top: 60px;
     height: 100vh;
@@ -83,7 +83,7 @@
   i {
     font-size: 40px;
   }
-  &:hover i{
+  &:hover i {
     color: $primary;
   }
   cursor: pointer;
@@ -95,7 +95,6 @@
     color: $primary;
   }
 }
-
 
 #your-sport {
   p {
@@ -115,4 +114,24 @@
     color: rgba(20, 20, 20, 0.8);
   }
   margin: 0px 15px;
+}
+
+.new-message-input {
+  display: flex;
+  margin-top: 32px;
+  justify-content: flex-end;
+  height: 50px;
+
+  .btn {
+    padding: 5px;
+    margin-left: 12px;
+  }
+
+  div {
+    flex-grow: 1;
+  }
+
+  textarea {
+    height: 50px;
+  }
 }

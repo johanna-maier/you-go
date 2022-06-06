@@ -1,6 +1,6 @@
-  <%= form_for @message do |f| %>
+<hr>
+  <%= simple_form_for @message, html: { class: "new-message-input"} do |f| %>
     <%= hidden_field_tag 'conversation_id', @conversation.id %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.submit %>
+    <%= f.input :content, label: false, placeholder: 'Write a message...'%>
+    <%= f.submit "Send message", class: 'btn btn-slim-secondary' %>
   <% end %>

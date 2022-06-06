@@ -5,6 +5,7 @@
         <h2>Profile</h2>
         <i class="far fa-edit edit-icon" data-action="click->edit-profile#show" ></i>
       </div>
+      <hr>
       <p><i class="fas fa-user"></i> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
       <p><i class="fas fa-map-marker-alt"></i> <%= current_user.location %> </p>
       <p><i class="fas fa-birthday-cake"></i> <%= current_user.date_of_birth %> </p>
@@ -12,9 +13,10 @@
 
       <div id="your-sport" class="mt-5">
         <h2>Your Sports</h2>
+              <hr>
         <p>
           <% current_user.preferences.each do |tag_id| %>
-            <span class='offer-tag'><%= Tag.find(tag_id).name %></span>
+            <span class='offer-tag'><%= Tag.find(tag_id).name.capitalize %></span>
           <% end %>
         </p>
       </div>
@@ -51,7 +53,7 @@
           </div>
         <% end %>
       </div>
-      <%= f.submit "Save changes", class: 'btn btn-slim' %>
+      <%= f.submit "Save changes", class: 'btn btn-slim-secondary' %>
       <% end%>
     </div>
   </div>

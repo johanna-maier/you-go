@@ -1,12 +1,12 @@
  <%= link_to dashboard_index_path(conversation_id: conversation.id, page: 'conversations'), class: "text-decoration-none" do %>
  <%# <%= 'border border-primary' if like.offer == selected_offer %>
 
-   <div class="<%= 'border border-primary' if conversation == selected_conversation %> category-card conversation-card">
+   <div class="<%= 'dashboard-list-card-active' if conversation == selected_conversation %> category-card dashboard-list-card">
     <div class="category-card-initials">
      <%= conversation.with(current_user).first_name[0] %>
      <%= conversation.with(current_user).last_name[0] %>
     </div>
-    <div class="conversation-card-infos">
+    <div class="dashboard-list-card-infos">
       <p>Conversation with
         <%= conversation.with(current_user).first_name %>
         about

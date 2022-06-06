@@ -1,6 +1,7 @@
 <%# parent div is important! %>
 <div>
   <h3>Rate your Experience</h3>
+  <br>
   <% if user_signed_in? %>
     <%= simple_form_for([ offer, review ], # change this from @varible to variable
                         data: {
