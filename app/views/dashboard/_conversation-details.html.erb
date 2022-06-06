@@ -4,7 +4,7 @@
         about <%= conversation.offer.title %>
     </h2>
     <br>
-    <% @messages.each do |message| %>
+    <% conversation.messages.reorder('messages.created_at ASC').each do |message| %>
       <%= render 'shared/message_card', message: message %>
     <% end %>
     <br>

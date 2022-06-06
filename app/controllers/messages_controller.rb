@@ -24,17 +24,13 @@ class MessagesController < ApplicationController
     params[:offer_id]
   end
 
-  def author_id
-    params[:author_id]
-  end
-
   def message_params
     params.require(:message).permit(:content)
   end
 
   def find_conversation!
     if offer_id
-      @conversation = Conversation.about(author_id, offer_id)[0]
+      @conversation = Conversation.about(current_user.id, offer_id)[0]
     else
       @conversation = Conversation.find(params[:conversation_id])
     end
