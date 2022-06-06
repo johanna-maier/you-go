@@ -9,15 +9,16 @@
 
     <form class="d-flex search-navbar" action="/offers" method="get">
       <div>
-        <input name="city" type="city" class="form-control" id="input-city-navbar" placeholder="Where do you want to go?">
+        <input name="city" type="city" class="form-control" id="input-city-navbar" value="<%= params[:city] %>" placeholder="Where do you want to go?">
       </div>
       <div>
-          <input name="query" type="query" class="form-control" id="input-sport-navbar" placeholder="What is your sport?">
+          <input name="query" type="query" class="form-control" id="input-sport-navbar" value="<%= params[:query] %>" placeholder="What is your sport?">
       </div>
-
-      <button type="submit" class="btn">
-        <i class="fas fa-search"></i>
-      </button>
+      <div>
+        <button type="submit" class="btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
     </form>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

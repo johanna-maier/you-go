@@ -22,8 +22,9 @@ class OffersController < ApplicationController
     end
 
     @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
+    @offers_in_europe = @offers_with_coordinates.near("Berlin", 20000, min_radius: 1)
     # Markers for Map on Index page
-    @markers = @offers_with_coordinates.map do |offer|
+    @markers = @offers_in_europe.map do |offer|
       {
         lat: offer.latitude,
         lng: offer.longitude,
