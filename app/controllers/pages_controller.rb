@@ -2,7 +2,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @offers = policy_scope(Offer)
+    @offers_in_future = policy_scope(Offer).where('offer_date > ?', DateTime.now)
+    @offers_today_tomorrow = policy_scope(Offer).where(offer_date: Date.today..1.day.from_now)
+
     @categories_with_offers = Tag.where("name = category").select { |x| x.offers.count > 1 }
 
     if current_user.present?
@@ -15,7 +17,6 @@ class PagesController < ApplicationController
 
         @recommended_offers = []
         offer_id = Offer.first.id
-
 
         data.first(4).each_with_index do |recommendation, index|
           # recommended_offer = Offer.find(recommendation)

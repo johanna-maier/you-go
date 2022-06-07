@@ -50,7 +50,7 @@
   <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-top mt-5">
     <h2>Top experiences in <%= current_user.location %></h2>
-      <% @offers.near(current_user.location, 50, min_radius: 1).sample(4).each do |offer| %>
+      <% @offers_in_future.near(current_user.location, 50, min_radius: 1).sample(4).each do |offer| %>
         <div class="col-12 col-lg-5 col-xl-3 mt-3">
           <%= render 'shared/basic_offer_card', offer: offer %>
         </div>
@@ -61,7 +61,7 @@
   <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-top mt-5">
     <h2>Top experiences</h2>
-      <% @offers.sample(4).each do |offer| %>
+      <% @offers_in_future.sample(4).each do |offer| %>
         <div class="col-12 col-lg-5 col-xl-3 mt-3">
           <%= render 'shared/basic_offer_card', offer: offer %>
         </div>
@@ -83,7 +83,7 @@
 <div class="container my-5">
   <div class="row d-flex justify-content-center align-items-top">
   <h2>Upcoming highlights</h2>
-    <% @offers.where(offer_date: Date.today..1.day.from_now).sample(6).each do |offer| %>
+    <% @offers_today_tomorrow.sample(6).each do |offer| %>
       <div class="col-12 col-lg-5 col-xl-2 mt-3">
         <%= render 'shared/basic_offer_card', offer: offer %>
       </div>
