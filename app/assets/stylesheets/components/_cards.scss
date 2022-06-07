@@ -25,6 +25,7 @@
     top: 15px;
     color: $light-gray;
     font-size: 24px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7); // to make it visible on white cards
   }
   .card-favourites-active {
     position: absolute;
