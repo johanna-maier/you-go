@@ -1,5 +1,5 @@
-<div>
-  <h2><%= @offer.title %></h2>
+<div class="link-hover-red">
+  <h2><%= link_to @offer.title, offer_path(@offer) %></h2>
   <br>
   <%= @offer.description %>
   <div class="col col-md-7">
