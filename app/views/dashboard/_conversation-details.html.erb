@@ -1,13 +1,11 @@
-<div>
-  <%= link_to "/offers/#{conversation.offer_id}" do %>
-    <h2 class="text-decoration-none">Conversation with <%= conversation.with(current_user).first_name %>
-        about <%= conversation.offer.title %>
-    </h2>
-  <% end %>
-  <br>
-  <% conversation.messages.reorder('messages.created_at ASC').each do |message| %>
-    <%= render 'shared/message_card', message: message %>
-  <% end %>
-  <br>
-  <%= render 'conversations/message_form' %>
-</div>
+<%= link_to "/offers/#{conversation.offer_id}" do %>
+  <h2 class="text-decoration-none">Conversation with <%= conversation.with(current_user).first_name %>
+      about <span><%= conversation.offer.title %></span>
+  </h2>
+<% end %>
+<br>
+<% conversation.messages.reorder('messages.created_at ASC').each do |message| %>
+  <%= render 'shared/message_card', message: message %>
+<% end %>
+<br>
+<%= render 'conversations/message_form' %>

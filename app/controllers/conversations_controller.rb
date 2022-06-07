@@ -5,7 +5,6 @@ class ConversationsController < ApplicationController
 
   def show
     @message = Message.new
-    authorize @conversation
   end
 
   def new
