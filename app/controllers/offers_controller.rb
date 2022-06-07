@@ -17,9 +17,11 @@ class OffersController < ApplicationController
     elsif params[:query].present?
       @offers = @offers_in_future.global_search(params[:query]).reorder("offers.offer_date ASC")
     elsif params[:category].present?
-      @offers = @offers_in_future.category_search(params[:category]).reorder("offers.offer_date ASC")
+      # .near added here so that offers are scoped to Europe
+      @offers = @offers_in_future.category_search(params[:category]).near([51.165691, 10.451526], 2000, min_radius: 1).reorder("offers.offer_date ASC")
     else
-      @offers = @offers_in_future.reorder("offers.offer_date ASC")
+      # .near added here so that offers are scoped to Europe
+      @offers = @offers_in_future.near([51.165691, 10.451526], 2000, min_radius: 1).reorder("offers.offer_date ASC")
     end
 
     if @offers.empty?
@@ -34,10 +36,11 @@ class OffersController < ApplicationController
       end
     else
       # Throws errors when @offers.empty? > If statement to avoid this case.
-      @offers_with_coordinates = @offers.where.not(latitude: nil).and(@offers.where.not(longitude: nil))
-      @offers_in_europe = @offers_with_coordinates.near("Berlin", 2000, min_radius: 1)
+      @offers_with_coordinates = @offers.where.not(latitude: nil).or(@offers.where.not(longitude: nil))
+      # Europe scope added above where necessary.
+      # @offers_in_europe = @offers_with_coordinates.near([51.165691, 10.451526], 2000, min_radius: 1)
       # Markers for Map on Index page
-      @markers = @offers_in_europe.map do |offer|
+      @markers = @offers.map do |offer|
         {
           lat: offer.latitude,
           lng: offer.longitude,

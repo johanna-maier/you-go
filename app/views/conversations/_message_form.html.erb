@@ -1,6 +1,8 @@
-<hr>
+<div class="enter-message-section">
+  <hr>
   <%= simple_form_for @message, html: { class: "new-message-input"} do |f| %>
     <%= hidden_field_tag 'conversation_id', @conversation.id %>
     <%= f.input :content, label: false, placeholder: 'Write a message...'%>
     <%= f.submit "Send message", class: 'btn btn-slim-secondary' %>
   <% end %>
+</div>

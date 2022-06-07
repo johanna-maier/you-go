@@ -1,7 +1,6 @@
-<div class="container">
   <div class="row">
     <div class="col-4 card-profile mt-5">
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column justify-content-start">
         <h2>Your Conversations</h2>
         <br>
         <% if @conversations.present? %>
@@ -14,11 +13,10 @@
       </div>
     </div>
     <% if @conversation %>
-      <div class="col-7 card-profile mt-5">
+      <div class="col-7 card-profile mt-5 conversation-details-box">
         <div class="d-flex flex-column">
           <%= render 'conversation-details', conversation: @conversation %>
         </div>
       </div>
     <% end %>
   </div>
-</div>

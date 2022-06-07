@@ -68,6 +68,29 @@
   }
 }
 
+.conversation-details-box {
+  overflow-y: scroll;
+  height: 80vh;
+  position: relative;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  h2 {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    z-index: 50;
+    right: 0px;
+    padding: 20px 0px;
+  }
+  .enter-message-section {
+    position: sticky;
+    bottom: 0px;
+    background-color: white;
+    padding-bottom: 12px;
+  }
+}
+
 .card-sport-category {
   border: 1px solid $inactive-gray;
   border-radius: 8px;
