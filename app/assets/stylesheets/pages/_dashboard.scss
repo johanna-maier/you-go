@@ -68,12 +68,24 @@
   }
 }
 
+.link-hover-red {
+  a {
+    text-decoration-line: none;
+
+    &:hover, &:hover > h2 > span {
+      color: $coral;
+    }
+  }
+}
+
 .conversation-details-box {
   overflow-y: scroll;
   height: 80vh;
   position: relative;
   padding-top: 0px;
   padding-bottom: 0px;
+
+
   h2 {
     position: sticky;
     top: 0px;
@@ -83,6 +95,7 @@
     right: 0px;
     padding: 20px 0px;
   }
+
   .enter-message-section {
     position: sticky;
     bottom: 0px;
