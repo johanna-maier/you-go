@@ -28,10 +28,9 @@ users = [
       description: "Hi, my name is Johanna! I want to go on my next sporting adventure.",
       email: 'johanna@gmail.com',
       password: '123456',
-      img_file: 'johanna-profile.jpeg',
+      img_file: 'johanna-profile.jpg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
-      img_files: ['basket1.jpeg','basket2.jpeg','basket3.jpeg'],
       location: 'Munich'
     },
     {
@@ -40,7 +39,7 @@ users = [
       description: "Hi, my name is Anjali! I want to go on my next sporting adventure.",
       email: 'anjali@gmail.com',
       password: '123456',
-      img_file: 'anjali-profile.jpeg',
+      img_file: 'anjali-profile.jpg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Berlin'
@@ -51,7 +50,7 @@ users = [
       description: "Hi, my name is Alexandra! I want to go on my next sporting adventure.",
       email: 'alexandra@gmail.com',
       password: '123456',
-      img_file: 'alexandra-profile.jpeg',
+      img_file: 'alexandra-profile.jpg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Berlin'
@@ -62,7 +61,7 @@ users = [
       description: "Hi, my name is Ieva! I want to go on my next sporting adventure.",
       email: 'ieva@gmail.com',
       password: '123456',
-      img_file: 'ieva-profile.jpeg',
+      img_file: 'ieva-profile.jpg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Hamburg'
@@ -73,7 +72,7 @@ users = [
       description: "Hi, my name is Daniel! I want to go on my next sporting adventure.",
       email: 'daniel@gmail.com',
       password: '123456',
-      img_file: 'daniel-profile.jpeg',
+      img_file: 'daniel-profile.jpg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Munich'
@@ -84,7 +83,7 @@ users = [
       description: "Hi, my name is Julian! I want to go on my next sporting adventure.",
       email: 'julian@gmail.com',
       password: '123456',
-      img_file: 'julian-profile.jpeg',
+      img_file: 'julian-profile.jpg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Hamburg'
@@ -95,7 +94,7 @@ users = [
       description: "Hi, my name is Shreetama! I want to go on my next sporting adventure.",
       email: 'shreetama@gmail.com',
       password: '123456',
-      img_file: 'shreetama-profile.jpeg',
+      img_file: 'shreetama-profile.jpg',
       gender: 'female',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Cologne'
@@ -106,7 +105,7 @@ users = [
       description: "Hi, my name is Andrew! I want to go on my next sporting adventure.",
       email: 'andrew@gmail.com',
       password: '123456',
-      img_file: 'andrew-profile.jpeg',
+      img_file: 'andrew-profile.jpg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Cologne'
@@ -117,7 +116,7 @@ users = [
       description: "Hi, my name is Killian! I want to go on my next sporting adventure.",
       email: 'killian@gmail.com',
       password: '123456',
-      img_file: 'kilian-profile.jpeg',
+      img_file: 'kilian-profile.jpg',
       gender: 'male',
       date_of_birth: DateTime.strptime("01/25/1993", "%m/%d/%Y"),
       location: 'Stuttgart'
