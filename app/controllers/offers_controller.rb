@@ -40,7 +40,7 @@ class OffersController < ApplicationController
       # Europe scope added above where necessary.
       # @offers_in_europe = @offers_with_coordinates.near([51.165691, 10.451526], 2000, min_radius: 1)
       # Markers for Map on Index page
-      @markers = @offers.map do |offer|
+      @markers = @offers_with_coordinates.map do |offer|
         {
           lat: offer.latitude,
           lng: offer.longitude,
