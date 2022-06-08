@@ -13,7 +13,7 @@ export default class extends Controller {
     event.preventDefault();
     // console.log(this.heartTarget.dataset["url"]);
     const url = this.heartTarget.dataset["url"];
-    console.log (`add favorite ${url}`);
+    // console.log (`add favorite ${url}`);
 
     fetch(url, {
       method: "POST",
@@ -36,7 +36,7 @@ export default class extends Controller {
     event.preventDefault();
     // console.log(this.heartTarget.dataset["url"]);
     const url = this.heartTarget.dataset["url"];
-    console.log (`remove favorite ${url}`);
+    // console.log (`remove favorite ${url}`);
 
     fetch(url, {
       method: "DELETE",
