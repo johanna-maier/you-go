@@ -33,7 +33,7 @@
         <%= f.input :last_name, label: 'LAST NAME'%>
       </div>
       <div class="d-flex">
-        <%= f.input :gender, label: 'GENDER'%>
+        <%= f.input :gender, label: 'GENDER', collection: User::CATEGORY, include_blank: false %>
         <%= f.input :location, label: 'CITY'%>
         <%= f.input :date_of_birth, label: 'DATE OF BIRTH', html5: true%>
         <%= f.hidden_field :preferences, data: { edit_profile_target: "prefs"}, name: 'user[preferences][]' %>

@@ -12,9 +12,10 @@ class DashboardController < ApplicationController
     @user = current_user
     authorize @user
     if @user.update(user_params)
-      redirect_to dashboard_index_path, notice: 'Your profile was successfully updated.'
+      redirect_to dashboard_index_path(page: 'profile'), notice: 'Your profile was successfully updated.'
     else
-      render 'profile'
+      # render 'profile'
+      render 'dashboard/index'
     end
   end
 
