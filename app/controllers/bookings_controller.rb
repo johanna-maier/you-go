@@ -6,12 +6,13 @@ class BookingsController < ApplicationController
     @booking.offer = @offer
     @booking.user = current_user
     authorize @booking
-    if @booking.save!
-      # redirect_to @offer, notice: 'Offer was successfully booked.'
+    if @booking.save
       # redirect to dashboard after booking
       redirect_to dashboard_index_path(offer_id: @booking.offer_id, page: 'bookings'), notice: 'Offer was successfully booked.'
     else
-      render :new
+      render :new # does not work
+      # render partial: 'shared/booking_popup', locals: { offer: @offer, booking: @booking }
+      # render "offers/show" # does not work
     end
   end
 

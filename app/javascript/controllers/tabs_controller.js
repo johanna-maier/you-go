@@ -6,13 +6,6 @@ export default class extends Controller {
   connect() {
     console.log('tabs-controller connected!');
     // console.log(this.detailsTargets);
-
-    // if(window.location.hash) {
-    //   // Fragment exists
-    //   console.log('Fragment exists')
-    //   const tab_name = window.location.hash.substring(1); // Puts hash in variable, and removes the # character
-    //   this.show(tab_name)
-    // }
   }
 
   showTab(event){
@@ -28,7 +21,7 @@ export default class extends Controller {
     const tabElement = this.element.querySelector(`#${tab_name}`);
     tabElement.classList.remove('d-none');
 
-    // TODO
+    //
     if(tab_name == 'wishlist') {
       if(this.element.querySelector('#wishlist-card')) // check if wishlist item exists
         this.element.querySelector('#wishlist-card').click()
