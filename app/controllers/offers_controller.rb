@@ -11,14 +11,14 @@ class OffersController < ApplicationController
     @tags_with_offers = Tag.select { |x| x.offers.count > 1 }
 
     if params[:city].present? && params[:query].present?
-      @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).global_search(params[:query]).reorder("offers.offer_date ASC")
+      @offers = @offers_in_future.near(params[:city], 50).global_search(params[:query]).reorder("offers.offer_date ASC")
     elsif params[:city].present?
-      @offers = @offers_in_future.near(params[:city], 80, min_radius: 10).reorder("offers.offer_date ASC")
+      @offers = @offers_in_future.near(params[:city], 50).reorder("offers.offer_date ASC")
     elsif params[:query].present?
       @offers = @offers_in_future.global_search(params[:query]).reorder("offers.offer_date ASC")
     elsif params[:category].present?
       # .near added here so that offers are scoped to Europe
-      @offers = @offers_in_future.category_search(params[:category]).near([51.165691, 10.451526], 2000, min_radius: 1).reorder("offers.offer_date ASC")
+      @offers = @offers_in_future.category_search(params[:category]).near([51.165691, 10.451526], 2000).reorder("offers.offer_date ASC")
     else
       # .near added here so that offers are scoped to Europe
       @offers = @offers_in_future.near([51.165691, 10.451526], 2000, min_radius: 1).reorder("offers.offer_date ASC")
