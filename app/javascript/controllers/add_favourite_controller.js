@@ -2,18 +2,18 @@ import { Controller } from "stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["heart"];
+  static targets = ["heart", "label"];
   static values = { url: String }
 
   connect() {
-    // console.log('add-favourite-controller connected!');
+    console.log('add-favourite-controller connected!');
   }
 
   addHeart(event) {
     event.preventDefault();
     // console.log(this.heartTarget.dataset["url"]);
     const url = this.heartTarget.dataset["url"];
-    console.log (`add favorite ${url}`);
+    // console.log (`add favorite ${url}`);
 
     fetch(url, {
       method: "POST",
@@ -25,6 +25,9 @@ export default class extends Controller {
         if(data.success == 'true') {
           // 'like' successfully added, show active (red) heart icon
           this.heartTarget.outerHTML = data.icon
+          if (this.hasLabelTarget) {
+            this.labelTarget.innerText = "Remove from wishlist";
+          }
         }
       })
   }
@@ -33,7 +36,7 @@ export default class extends Controller {
     event.preventDefault();
     // console.log(this.heartTarget.dataset["url"]);
     const url = this.heartTarget.dataset["url"];
-    console.log (`remove favorite ${url}`);
+    // console.log (`remove favorite ${url}`);
 
     fetch(url, {
       method: "DELETE",
@@ -45,6 +48,9 @@ export default class extends Controller {
         if(data.success == 'true') {
           // 'like' successfully removed, show inactive (grey) heart icon
           this.heartTarget.outerHTML = data.icon
+          if (this.hasLabelTarget) {
+            this.labelTarget.innerText = "Add to wishlist";
+          }
         }
       })
   }

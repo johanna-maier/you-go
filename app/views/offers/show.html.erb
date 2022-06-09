@@ -31,8 +31,18 @@
            <% end %>
         </p>
       </div>
-      <div id="offer-add-favorite">
-        <p><i class="fas fa-heart"></i> Add to Wishlist</p>
+      <div id="offer-add-favorite"  data-controller="add-favourite">
+        <%# <p><i class="fas fa-heart"></i> Add to Wishlist</p> %>
+        <% like = user_signed_in? ? current_user.likes.find_by(offer: @offer.id) : nil %>
+        <p >
+        <% if like %>
+          <%= render 'likes/red_icon', offer: @offer, like: like %>
+          <span data-add-favourite-target="label">&nbsp;Remove from wishlist </span>
+        <% else %>
+          <%=  render 'likes/grey_icon', offer: @offer %>
+          <span data-add-favourite-target="label">&nbsp;Add to wishlist </span>
+        <% end %>
+        </p>
       </div>
     </div>
   </div>
