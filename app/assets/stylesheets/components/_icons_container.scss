@@ -1,9 +1,9 @@
 .icons-container {
   background-color: $light-gray;
-  height: 80px;
-  padding: 10px 4rem 0;
+  height: 120px;
+  padding: 20px 4rem 0;
   position: sticky;
-  top: 60px; //0; // to fit below navbar
+  top: 70px; //0; // to fit below navbar
   z-index: 1; //1; // to not go behind offer cards - .navbar-lewagon has z-index 2
 
   .icons-scrollable-area {
@@ -12,6 +12,7 @@
     overflow-y: clip;
     padding-bottom: 4px;
     margin-bottom: 16px;
+    height: 80px;
 
     .icon-box {
       display: flex;
@@ -31,7 +32,7 @@
   }
 
   .icon-box:hover {
-    border-bottom: 3px solid $blue;
+    // border-bottom: 3px solid $blue;
     color: $blue;
     cursor: pointer;
   }
