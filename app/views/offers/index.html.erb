@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="index-container">
+<div class="index-container mb-5">
   <div class="container cards">
     <% if @offers.empty? %>
       <h4 class="warning">
@@ -23,7 +23,7 @@
     <% end %>
     <div class="row">
       <% @offers.first(48).each do |offer| %>
-        <div class="col-6 mt-3">
+        <div class="col-6">
           <%= render "shared/basic_offer_card", offer: offer %>
         </div>
       <% end %>
