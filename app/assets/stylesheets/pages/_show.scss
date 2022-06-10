@@ -48,8 +48,9 @@
 
 .card-review {
   display: flex;
-  border: 1px solid $blue;
+  outline: 1px solid $blue;
   border-radius: 8px;
+  // position: relative;
 
   #review-rating {
     background-color: $blue;
@@ -62,7 +63,7 @@
       color: $yellow-star;
     }
     text-align: center;
-    width: 20%;
+    width: 125px;
   }
 
   #review-comment {
@@ -70,7 +71,7 @@
     p {
       margin-bottom: 0px; // kill margins
     }
-    width: 80%;
+    width: 350px;
   }
 }
 
@@ -82,7 +83,7 @@
 
 #offer-add-favorite {
   i {
-//     color: rgba(54, 54, 54, 0.5);
+    //     color: rgba(54, 54, 54, 0.5);
     font-size: 22px;
   }
 }
