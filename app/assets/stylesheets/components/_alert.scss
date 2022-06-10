@@ -1,13 +1,13 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 40px;
+  right: 40px;
   z-index: 1000;
 }
 
 .alert-warning {
-  background-color: #ffffff;
-  border-color: #ffc65a;
+  // background-color: #ffffff;
+  border: 2px solid #ffc65a;
   color: #b94a48;
   text-align: left;
   border-radius: 8px;
@@ -16,8 +16,8 @@
 .alert-info,
 .alert-success,
 .alert-notice  {
-  background-color: #ffffff;
-  border-color: #ffc65a;
+  // background-color: #ffffff;
+  border: 2px solid #ffc65a;
   color: #38868e;
   text-align: left;
   border-radius: 8px;
