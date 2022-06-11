@@ -1,6 +1,10 @@
-.form-devise{
+.form-devise {
   padding: 20px 20px;
   background: white;
   border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+#login-footer {
+  min-height: calc(100vh - 170px);
 }
